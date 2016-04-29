@@ -1,0 +1,57 @@
+sepBundle\Entity\Sales:
+    type: entity
+    table: sales
+    id:
+        salesId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: sales_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerName:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            column: customer_name
+        contactNum:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: contact_num
+        salesDate:
+            type: date
+            nullable: false
+            comment: ''
+            column: sales_date
+        month:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            comment: ''
+        year:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            comment: ''
+        salesAmount:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: sales_amount
+        paymentReceived:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: payment_received
+    lifecycleCallbacks: {  }

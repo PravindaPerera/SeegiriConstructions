@@ -1,0 +1,22 @@
+sepBundle\Entity\ExpenseDetails:
+    type: entity
+    table: expense_details
+    id:
+        expenseId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: expense_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        expenseTitle:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            column: expense_title
+    lifecycleCallbacks: {  }

@@ -1,0 +1,1397 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Seegiri Constructions</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{asset('fonts/font-awesome.min.css')}}">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="{{asset('template/dist/css/ionicons.min.css')}}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{asset('template/dist/css/AdminLTE.min.css')}}"> 
+        <!-- DataTables -->
+        <link rel="stylesheet" href="{{asset('template/plugins/datatables/dataTables.bootstrap.css')}}">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="{{asset('template/dist/css/skins/_all-skins.min.css')}}">
+        
+        <link rel="stylesheet" href="{{asset('css/custom-visibility.css')}}">
+        
+        
+        <script type="text/javascript">
+
+            function checkForm(form)
+            {
+                if (form.new_password.value != "" && form.new_password.value == form.re_new_password.value) {
+                    if (form.new_password.value.length < 6) {
+                        alert("Error: Password must contain at least six characters!");
+                        form.new_password.focus();
+                        return false;
+                    }
+
+                    re = /[0-9]/;
+                    if (!re.test(form.new_password.value)) {
+                        alert("Error: password must contain at least one number (0-9)!");
+                        form.new_password.focus();
+                        return false;
+                    }
+                    re = /[a-z]/;
+                    if (!re.test(form.new_password.value)) {
+                        alert("Error: password must contain at least one lowercase letter (a-z)!");
+                        form.new_password.focus();
+                        return false;
+                    }
+                    re = /[A-Z]/;
+                    if (!re.test(form.new_password.value)) {
+                        alert("Error: password must contain at least one uppercase letter (A-Z)!");
+                        form.new_password.focus();
+                        return false;
+                    }
+                }
+                else {
+                    alert("Error: Please check that you've entered and confirmed your password!");
+                    form.new_password.focus();
+                    return false;
+                }
+
+                //alert("You entered a valid password: " + form.new_password.value);
+                return true;
+            }
+            ;
+
+        </script>
+        
+        <script type="text/javascript">
+            function validateForm(form) {
+                if (form.FName.value != "") {
+
+                    re = /[0-9]/;
+                    if (re.test(form.FName.value)) {
+                        alert("Error: Fisrt Name cannot contain any numeric digits");
+                        form.FName.focus();
+                        return false;
+                    }
+                }
+                if (form.LName.value != "") {
+
+                    re = /[0-9]/;
+                    if (re.test(form.LName.value)) {
+                        alert("Error: Last Name cannot contain any numeric digits");
+                        form.LName.focus();
+                        return false;
+                    }
+                }
+
+                if (form.Contact.value != "") {
+
+                    re = /[a-z]/;
+                    if (re.test(form.Contact.value)) {
+                        alert("Error: Contact number cannot contain any lowercase letters (a-z)!");
+                        form.Contact.focus();
+                        return false;
+                    }
+                    re = /[A-Z]/;
+                    if (re.test(form.Contact.value)) {
+                        alert("Error: Contact number cannot contain any uppercase letter (A-Z)!");
+                        form.Contact.focus();
+                        return false;
+                    }
+
+                    if (form.Contact.value.length != 10) {
+                        alert("Error: Contact number should contain 10 digits!");
+                        form.Contact.focus();
+                        return false;
+                    }
+
+                }
+            }
+            ;
+        </script>
+        
+        <script id="source" language="javascript" type="text/javascript">
+            function selectCustomer() {
+                $(function()
+                {
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{path('select_customer',{'url': url})}}', //the script to call to get data          
+                        data: $('form').serialize(), //you can insert url argumnets here to pass to api.php
+                        //for example "id=5&parent=6"
+                        dataType: 'json', //data format      
+                        success: function(response)          //on recieve of reply
+                        {
+
+                            var myJSONText = JSON.stringify(response);
+                            var obj = JSON.parse(myJSONText);
+                            var html;
+                            for (var i = 0; i < obj.length; i++) {
+                                html += '<option ="">' + obj[i].customer_name
+                                        + '</option>';
+                            }
+                            html += '</option>';
+                            $('#customer').html(html);
+                        }
+                    });
+                });
+            }
+
+        </script>
+        
+        <script id="source" language="javascript" type="text/javascript">
+            function selectSalesOrderDetails() {
+                $(function()
+                {
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{path('select_sales_order_details',{'url': url})}}', //the script to call to get data          
+                        data: $('form').serialize(), //you can insert url argumnets here to pass to api.php
+                        //for example "id=5&parent=6"
+                        dataType: 'json', //data format      
+                        success: function(response)          //on recieve of reply
+                        {
+                            
+                            var myJSONText = JSON.stringify(response);
+                            var obj = JSON.parse(myJSONText);
+                            var html;
+                            for (var i = 0; i < obj.length; i++) {
+                                html += '<option ="">' + obj[i].customer_name
+                                        + '</option>';
+                            }
+                            html += '</option>';
+                            $('#customerName').html(html);
+                            
+                            var html2;
+                            for (var i = 0; i < obj.length; i++) {
+                                html2 += '<option ="">' + obj[i].contact_num
+                                        + '</option>';
+                            }
+                            html2 += '</option>';
+                            $('#contactNumber').html(html2);
+                        }
+                    });
+                });
+            }
+
+        </script>
+        
+        <script id="source" language="javascript" type="text/javascript">
+            function verifyCreditSales(){
+                $(function()
+                {
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{path('verify_credit_sales',{'url': url})}}', //the script to call to get data          
+                        data: $('form').serialize(), //you can insert url argumnets here to pass to api.php
+                        //for example "id=5&parent=6"
+                        dataType: 'json', //data format      
+                        success: function(response)          //on recieve of reply
+                        {
+
+                            var myJSONText = JSON.stringify(response);
+                            var obj = JSON.parse(myJSONText);
+                            if(obj == "False"){
+                              var html = '<div class="alert alert-danger" role="alert" style="width :300px"><h4>Error in Payment Received Field</h4></div>';  
+                                {
+                                    document.getElementById("searchPurchase").style.visibility = "hidden";
+                                }
+                                $('#creProceeds').html(html);
+                            }
+                            else{
+                                var html = '<div class="alert alert-success" role="alert" style="width :370px"><h4>Verified !! Proceed Submitting the entry !!</h4></div>';
+                                {
+                                    document.getElementById("searchPurchase").style.visibility = "visible";
+                                }
+                                $('#creProceeds').html(html);
+                            }
+                            
+                            
+                            
+                        }
+                    });
+                });
+            }
+
+        </script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="index2.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>S</b>C</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>Seegiri</b>Constructions</span>
+                </a>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    {%if flag1%}<img src="data:image/jpg;base64,{%for i in im%}{{i.image}}{%endfor%}" class="user-image" alt="User Image">{%endif%}
+                                        {%if flag2%}<img src="{{asset('template/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">{%endif%}
+                                    <span class="hidden-xs">{{userDetails.getFirstName()}} {{userDetails.getLastName()}}</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        {%if flag1%}<img src="data:image/jpg;base64,{%for i in im%}{{i.image}}{%endfor%}" class="img-circle" alt="User Image">{%endif%}
+                                        {%if flag2%}<img src="{{asset('template/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">{%endif%}
+                                        <p>
+                                            {{userDetails.getFirstName()}} {{userDetails.getLastName()}}
+                                        </p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <!-- Menu Footer-->                                    
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                             <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#ProfileModal">Profile</button>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="{{path('logout', {'url':url})}}"<button type="button" class="btn btn-info btn-flat">Sign out</button></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- Control Sidebar Toggle Button -->
+                            <li>
+                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            {%if flag1%}<img src="data:image/jpg;base64,{%for i in im%}{{i.image}}{%endfor%}" class="img-circle" alt="User Image">{%endif%}
+                            {%if flag2%}<img src="{{asset('template/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">{%endif%}
+                        </div>
+                        <div class="pull-left info">
+                            <p>{{userDetails.getFirstName()}} {{userDetails.getLastName()}}</p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li class="header">MAIN NAVIGATION</li>
+                        
+                        <li class="treeview">
+                            <a href="#user">
+                                <i class="fa fa-dashboard"></i><span><b>User</b></span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                 <li><a href="{{path('profile_home_user', {'url':url})}}"><i class="fa fa-circle-o"></i>{{userDetails.getFirstName()}} {{userDetails.getLastName()}}</a></li>                                 
+                             </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="{{path('orderRM', {'url':url})}}">
+                                <i class="fa fa-files-o"></i>
+                                <span><b>Order RM</b></span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="{{path('RMBalAnalysis', {'url':url})}}">
+                                <i class="fa fa-files-o"></i>
+                                <span><b>RM Balance Analysis</b></span>
+                            </a>
+                        </li>                       
+                        <li class="treeview">
+                            <a href="{{path('purAndinvtMgt', {'url':url})}}">
+                                <i class="fa fa-files-o"></i>
+                                <span><b>Purchases & Inventory Mgt</b></span>
+                            </a>
+                        </li>
+                        <li class="active  treeview">
+                            <a href="#user">
+                                <i class="fa fa-dashboard"></i><span><b>Sales Analysis</b></span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                 <li class="active"><a href="{{path('salesAnalysis',{'url':url})}}"><i class="fa fa-circle-o"></i>Sales History</a></li>
+                                 <li><a href="" data-toggle="modal" data-target="#SalesOrder"><i class="fa fa-circle-o"></i>Create Sales Order</a></li>
+                                 <li><a href="" data-toggle="modal" data-target="#NewSale"><i class="fa fa-circle-o"></i>New Sale/Cash Sale</a></li>
+                                 <li><a href="" data-toggle="modal" data-target="#CreditSale"><i class="fa fa-circle-o"></i>Credit Sale Proceeds</a></li>
+                            </ul>                                
+                        </li>
+                        <li class="treeview">
+                            <a href ="{{path('profitAnalysis',{'url':url})}}">
+                                <i class="fa fa-files-o"></i>
+                                <span><b>Profit Analysis</b></span>
+                            </a>
+                        </li>                        
+                        <li class="treeview">
+                            <a href ="{{path('otherExpenses',{'url':url})}}">
+                                <i class="fa fa-files-o"></i>
+                                <span><b>Other Expenses</b></span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href ="{{path('user_message',{'url':url})}}">
+                                <i class="fa fa-files-o"></i>
+                                <span><b>Message</b></span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="{{path('logout', {'url':url})}}">
+                                <i class="fa fa-files-o"></i>
+                                <span><b>Logout</b></span>
+                            </a>
+                        </li>
+                     </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Dashboard
+                        <small>Control panel</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </section>
+
+                <!-- Company Stats Tiled View --------->
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title">Sales History</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="sales" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Sales ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Total Sales Value(Rs)</th>
+                                            <th>Payment Received(Rs)</th>
+                                            <th>Date of Sales</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for ele in sales%}
+                                            <tr>
+                                                <td>{{ele.sales_id}}</td>
+                                                <td>{{ele.customer_name}}</td>
+                                                <td>{{ele.contact_num}}</td>
+                                                <td>{{ele.sales_amount}}</td>
+                                                <td>{{ele.payment_received}}</td>
+                                                <td>{{ele.sales_date|date('Y-m-d')}}</td>
+                                            </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Sales ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Total Sales Value(Rs)</th>
+                                            <th>Payment Received(Rs)</th>
+                                            <th>Date of Sales</th>
+                                        </tr>
+                                    </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                </section><!-- /.content -->
+                
+                <section class="content">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title">Sales Orders Posted (Still to be delivered)</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="salesOrdersPosted" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Sales Order ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Location</th>
+                                            <th>Grade</th>
+                                            <th>Qunatity</th>
+                                            <th>Sales Order Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for ele in salesOrderDet%}
+                                            <tr>
+                                                <td>{{ele.sales_order_id}}</td>
+                                                <td>{{ele.customer_name}}</td>
+                                                <td>{{ele.contact_num}}</td>
+                                                <td>{{ele.location}}</td>
+                                                <td>{{ele.grade}}</td>
+                                                <td>{{ele.quantity}}</td>
+                                                <td>{{ele.sales_order_date|date('Y-m-d')}}</td>
+                                            </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Sales Order ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Location</th>
+                                            <th>Grade</th>
+                                            <th>Qunatity</th>
+                                            <th>Sales Order Date</th>
+                                        </tr>
+                                    </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                </section><!-- /.content -->
+                
+                <section class="content">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="box">
+                        <div class="box-header">
+                          <h3 class="box-title">Cancel Sales Orders Posted</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                         <form role="form" method="POST" action="{{path('cancel_sales_orders',{'url':url})}}">
+                          <table id="example2" class="table table-bordered table-hover">
+                              <thead>
+                                    <tr>
+                                        <th>Sales Order ID</th>
+                                        <th>Customer Name</th>
+                                        <th>Customer Contact Number</th>
+                                        <th>Location</th>
+                                        <th>Grade</th>
+                                        <th>Qunatity</th>
+                                        <th>Sales Order Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for ele in salesOrderDet%}
+                                            <tr>
+                                                <td><input type="checkbox" name="{{ele.sales_order_id}}" id="{{ele.sales_order_id}}">{{ele.sales_order_id}}</td>
+                                                <td>{{ele.customer_name}}</td>
+                                                <td>{{ele.contact_num}}</td>
+                                                <td>{{ele.location}}</td>
+                                                <td>{{ele.grade}}</td>
+                                                <td>{{ele.quantity}}</td>
+                                                <td>{{ele.sales_order_date|date('Y-m-d')}}</td>
+                                            </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Sales Order ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Location</th>
+                                            <th>Grade</th>
+                                            <th>Qunatity</th>
+                                            <th>Sales Order Date</th>
+                                        </tr>
+                                    </tfoot>                                
+                          </table>
+                          <div class="footer" style="padding-top: 10px;">
+                            <input type="submit" name="submit" id="submit" value="Cancel Sales Order" class="btn btn-info pull-right">
+                          </div>
+                         </form>
+                        </div><!-- /.box-body -->
+                      </div><!-- /.box -->
+                      </div>
+                      </div>
+                </section>
+                
+                                
+                <section class="content">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box box-warning">
+                          <div class="box-header">
+                            <h3 class="box-title">Aged Debt Analysis - less than 30 days</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="agedDebt1" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Sales ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Total Sales Value(Rs)</th>
+                                            <th>Payment Received(Rs)</th>
+                                            <th>Date of Sales</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for ele in agedDebt1%}
+                                            <tr>
+                                                <td>{{ele.sales_id}}</td>
+                                                <td>{{ele.customer_name}}</td>
+                                                <td>{{ele.contact_num}}</td>
+                                                <td>{{ele.sales_amount}}</td>
+                                                <td>{{ele.payment_received}}</td>
+                                                <td>{{ele.sales_date|date('Y-m-d')}}</td>
+                                            </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Sales ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Total Sales Value(Rs)</th>
+                                            <th>Payment Received(Rs)</th>
+                                            <th>Date of Sales</th>
+                                        </tr>
+                                    </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                </section><!-- /.content -->
+                
+                                
+                <section class="content">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box box-warning">
+                          <div class="box-header">
+                            <h3 class="box-title">Aged Debt Analysis - between 30 and 60 days</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="agedDebt2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Sales ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Total Sales Value(Rs)</th>
+                                            <th>Payment Received(Rs)</th>
+                                            <th>Date of Sales</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for ele in agedDebt2%}
+                                            <tr>
+                                                <td>{{ele.sales_id}}</td>
+                                                <td>{{ele.customer_name}}</td>
+                                                <td>{{ele.contact_num}}</td>
+                                                <td>{{ele.sales_amount}}</td>
+                                                <td>{{ele.payment_received}}</td>
+                                                <td>{{ele.sales_date|date('Y-m-d')}}</td>
+                                            </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Sales ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Total Sales Value(Rs)</th>
+                                            <th>Payment Received(Rs)</th>
+                                            <th>Date of Sales</th>
+                                        </tr>
+                                    </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                </section><!-- /.content -->
+                
+                               
+                <section class="content">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box box-danger">
+                          <div class="box-header">
+                            <h3 class="box-title">Aged Debt Analysis - between 60 and 90 days</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="agedDebt3" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Sales ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Total Sales Value(Rs)</th>
+                                            <th>Payment Received(Rs)</th>
+                                            <th>Date of Sales</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for ele in agedDebt3%}
+                                            <tr>
+                                                <td>{{ele.sales_id}}</td>
+                                                <td>{{ele.customer_name}}</td>
+                                                <td>{{ele.contact_num}}</td>
+                                                <td>{{ele.sales_amount}}</td>
+                                                <td>{{ele.payment_received}}</td>
+                                                <td>{{ele.sales_date|date('Y-m-d')}}</td>
+                                            </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Sales ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Total Sales Value(Rs)</th>
+                                            <th>Payment Received(Rs)</th>
+                                            <th>Date of Sales</th>
+                                        </tr>
+                                    </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                </section><!-- /.content -->
+                
+                                
+                <section class="content">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box box-danger">
+                          <div class="box-header">
+                            <h3 class="box-title">Aged Debt Analysis - more than 90 days</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="agedDebt4" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Sales ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Total Sales Value(Rs)</th>
+                                            <th>Payment Received(Rs)</th>
+                                            <th>Date of Sales</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for ele in agedDebt4%}
+                                            <tr>
+                                                <td>{{ele.sales_id}}</td>
+                                                <td>{{ele.customer_name}}</td>
+                                                <td>{{ele.contact_num}}</td>
+                                                <td>{{ele.sales_amount}}</td>
+                                                <td>{{ele.payment_received}}</td>
+                                                <td>{{ele.sales_date|date('Y-m-d')}}</td>
+                                            </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Sales ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Total Sales Value(Rs)</th>
+                                            <th>Payment Received(Rs)</th>
+                                            <th>Date of Sales</th>
+                                        </tr>
+                                    </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                </section><!-- /.content -->
+                
+            </div><!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 1.1.0
+                </div>
+                <strong>Copyright &copy; 2014-2015 <a href="https://lk.linkedin.com/in/pravinda">Pravinda Perera</a>.</strong> All rights reserved.
+            </footer>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+          <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <!-- Home tab content -->
+          <div class="tab-pane" id="control-sidebar-home-tab">
+                <h3 class="control-sidebar-heading">Profile Settings</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a data-toggle="modal" data-target="#ChangeUsername">
+                            <i class="menu-icon fa fa-key bg-red"></i> 
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Change Username</h4>
+                                <p>Will be used to log in to the system</p>
+                            </div>
+                        </a>
+
+
+
+                    </li>
+                    <li>
+                        <a data-toggle="modal" data-target="#ChangePassword">
+                            <i class="menu-icon fa fa-lock bg-yellow"></i>
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Change Password</h4>
+                                <p>Will be used to log in to the system</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="modal" data-target="#ChangeUserDetails">
+                            <i class="menu-icon fa fa-user bg-light-blue"></i>
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Change Profile Name</h4>
+                                <p>Combination of your first name and the last name</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="modal" data-target="#ChangeProfilePicture">
+                            <i class="menu-icon fa fa-user bg-green"></i>
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Change Profile Picture</h4>
+                                <p>Unique user identification</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul><!-- /.control-sidebar-menu -->
+          </div><!-- /.tab-pane -->
+        </div>
+      </aside><!-- /.control-sidebar -->
+            <!-- Add the sidebar's background. This div must be placed
+                 immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+        </div><!-- ./wrapper -->
+  
+                    <!-- Modal -->
+                    <div id="ProfileModal" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">{{userDetails.getFirstName()}} {{userDetails.getLastName()}}</h4>
+                          </div>
+                          <div class="modal-body">
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <i class="ion ion-clipboard"></i>
+                                    <h3 class="box-title">Profile Details</h3>
+                                    <div class="box-tools pull-right">
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <ul class="todo-list">
+                                        <li>
+                                            <!-- drag handle -->
+                                            <span class="glyphicon glyphicon-th">
+                                            </span>
+                                            <!-- checkbox -->
+                                            <!-- todo text -->
+                                            <span class="text">User ID: {{userDetails.getDetailId()}}</span>
+                                            <!-- Emphasis label -->
+                                            <!-- General tools such as edit or delete-->
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-user">
+                                            </span>
+                                            <span class="text">Username:    {{user.getUsername()}}</span>
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-user">
+                                            </span>
+                                            <span class="text">First Name:  {{userDetails.getFirstName()}}</span>
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-user">
+                                            </span>
+                                            <span class="text">Last Name:   {{userDetails.getLastName()}}</span>
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-earphone">
+                                            </span>
+                                            <span class="text">Contact Number:  {{userDetails.getContactNumber()}}</span>
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- /.box-body -->
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+        
+        <!-- Modal Change User Name-->
+        <div id="ChangeUsername" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+                    <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{userDetails.getFirstName()}} {{userDetails.getLastName()}}</h4>
+              </div>
+              <form role="form" method="POST" action="{{path('user_change_username',{'url':url})}}">
+              <div class="modal-body">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <i class="ion ion-clipboard"></i>
+                        <h3 class="box-title">Change Username</h3>
+                        <div class="box-tools pull-right">
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <ul class="todo-list">
+                            <li>
+                                <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+                                            <input type="text" class="form-control" placeholder="Current Username" name ="current_username">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+                                    <input type="text" class="form-control" placeholder="New Username" name ="new_username">
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- /.box-body -->
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                </div>
+              </form>
+            </div>
+
+        </div>
+        </div>
+
+        <!-- Modal Change Password-->
+        <div id="ChangePassword" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+                    <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{userDetails.getFirstName()}} {{userDetails.getLastName()}}</h4>
+              </div>
+              <form role="form" method="POST" onsubmit="return checkForm(this);" action="{{path('user_change_password',{'url':url})}}">
+              <div class="modal-body">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <i class="ion ion-clipboard"></i>
+                        <h3 class="box-title">Change Password</h3>
+                        <div class="box-tools pull-right">
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <ul class="todo-list">
+                            <li>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+                                    <input type="password" class="form-control" placeholder="Current Password" name ="current_password">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+                                    <input type="password" class="form-control" placeholder="New Password" name ="new_password">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+                                    <input type="password" class="form-control" placeholder="Re-enter New Password" name ="re_new_password">
+                                </div>
+                            </li>                            
+                        </ul>
+                    </div><!-- /.box-body -->
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                </div>
+              </form>
+            </div>
+
+        </div>
+        </div>
+              
+        <!-- Modal Change User Details-->
+        <div id="ChangeUserDetails" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+                    <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{userDetails.getFirstName()}} {{userDetails.getLastName()}}</h4>
+              </div>
+              <form role="form" method="POST" onsubmit="return validateForm(this);" action="{{path('submit_edit_user_details',{'url':url})}}">
+              <div class="modal-body">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <i class="ion ion-clipboard"></i>
+                        <h3 class="box-title">Edit User Details</h3>
+                        <div class="box-tools pull-right">
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <ul class="todo-list">
+                            <li>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+                                    <input type="text" class="form-control" placeholder="First Name" name ="FName">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+                                     <input type="text" class="form-control" placeholder="Last Name" name ="LName">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+                                    <input type="text" class="form-control" placeholder="Company Contact Number" name ="Contact">
+                                </div>
+                            </li>                            
+                        </ul>
+                    </div><!-- /.box-body -->
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                </div>
+              </form>
+            </div>
+
+        </div>
+        </div>   
+              
+        <!-- Modal Create Sales Order-->
+        <div id="SalesOrder" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+                    <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{userDetails.getFirstName()}} {{userDetails.getLastName()}} - Seegiri Constructions</h4>
+              </div>
+              <form role="form" method="POST" action="{{path('submit_sales_order',{'url':url})}}">
+              <div class="modal-body">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <i class="ion ion-clipboard"></i>
+                        <h3 class="box-title">New Sales Proceeds</h3>
+                        <div class="box-tools pull-right">
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                         
+                        <div class="form-group">
+                            <label>Customer Name:</label>
+                            <input type="text" class="form-control" style="width: 200px" name ="cus_name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Customer Contact Number:</label>
+                            <input type="text" class="form-control" style="width: 200px" name ="contact">
+                        </div>
+                        
+                        <div class="form-group">     
+                            <label>Sales Order Date:</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                    </div>
+                                <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                            </div>                   
+                        </div>
+                            
+                        <div class="form-group">
+                            <label>Delivery Location:</label>
+                            <input type="text" class="form-control" style="width: 200px" name ="location">
+                        </div>
+                            
+                        <div class="form-group">
+                            <label>Grade:</label>
+                            <input type="text" class="form-control" style="width: 200px" name ="grade">
+                        </div>
+                            
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="text" class="form-control" style="width: 200px" name ="qty">
+                        </div>    
+                    </div><!-- /.box-body -->
+                </div>
+                <input type="submit" name="submit" id="submit" value="New Sales Proceeds" class="btn btn-info pull-left">    
+                </div>
+                <div class="modal-footer">
+                   
+                </div>
+              </form>
+            </div>
+
+        </div>
+        </div>      
+
+        <!-- Modal New Sale-->
+        <div id="NewSale" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+                    <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{userDetails.getFirstName()}} {{userDetails.getLastName()}} - Seegiri Constructions</h4>
+              </div>
+              <form role="form" method="POST" action="{{path('submit_sales',{'url':url})}}">
+              <div class="modal-body">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <i class="ion ion-clipboard"></i>
+                        <h3 class="box-title">New Sales Proceeds</h3>
+                        <div class="box-tools pull-right">
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                         
+                        <div class="form-group">
+                            <label>Sales Description ID:</label>
+                            <select class="form-control select2" name="salesID" onchange="selectSalesOrderDetails()" style="width: 100%;" required autocomplete="off"/>
+                            <option>Select Sales Description</option>
+                            {%for ele in salesOrderDet%}
+                                <option>{{ele.sales_order_id}} {{ele.customer_name}} {{ele.sales_order_date}}</option>  
+                            {%endfor%}
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Customer Name:</label>
+                            <select class="droplist form-control" id="customerName"  name ="cus_name" style="width: 200px" required autocomplete="off"/>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Customer Contact Number:</label>
+                            <select class="droplist form-control" id="contactNumber"  name ="contact" style="width: 200px" required autocomplete="off"/>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">     
+                            <label>Sales Date:</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                    </div>
+                                <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                            </div>                   
+                        </div>
+                            
+                        <div class="form-group">
+                            <label>Total Sales Value:</label>
+                            <input type="text" class="form-control" style="width: 200px" name ="sales">
+                        </div>
+                            
+                        <div class="form-group">
+                            <label>Cash Payament:</label>
+                            <input type="text" class="form-control" style="width: 200px" name ="payment">
+                        </div>
+                    </div><!-- /.box-body -->
+                </div>
+                <input type="submit" name="submit" id="submit" value="New Sales Proceeds" class="btn btn-info pull-left">    
+                </div>
+                <div class="modal-footer">
+                   
+                </div>
+              </form>
+            </div>
+
+        </div>
+        </div>
+                            
+        <!-- Modal Credit Sales-->
+        <div id="CreditSale" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+                    <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{userDetails.getFirstName()}} {{userDetails.getLastName()}} - Seegiri Constructions</h4>
+              </div>
+              <form role="form" method="POST" action="{{path('submit_credit_sales',{'url':url})}}">
+              <div class="modal-body">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <i class="ion ion-clipboard"></i>
+                        <h3 class="box-title">Credit Proceeds</h3>
+                        <div class="box-tools pull-right">
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Sales Description ID:</label>
+                            <select class="form-control select2" name="salesID" onchange="selectCustomer()" style="width: 100%;" required autocomplete="off"/>
+                            <option>Select Sales Description</option>
+                            {%for ele in sales%}
+                                {%if ele.sales_amount > ele.payment_received%}
+                                <option>{{ele.sales_id}} {{ele.customer_name}} {{ele.sales_date}}</option>
+                                {%else%}
+                                {%endif%}    
+                            {%endfor%}
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Customer Name:</label>
+                            <select class="droplist" id="customer"  name="customer" style="width: 100%;" required autocomplete="off"/>
+                            </select> 
+                        </div>
+                            
+                        <div class="form-group">
+                            <label>Payment Value:</label>
+                            <input type="text" class="form-control" style="width: 100px" name ="paymentVal">
+                        </div>
+                       
+                        <input type="button" id="btn-login" value="Search" onclick="verifyCreditSales()" class="btn btn-warning btn-info pull-left">   
+                    </div><!-- /.box-body -->
+                </div>
+                            
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <i class="ion ion-clipboard"></i>
+                        <h3 class="box-title">Credit Proceeds - Verification Results</h3>
+                        <div class="box-tools pull-right">
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div id="creProceeds" class="form-group">
+                            
+                        </div>
+                    </div><!-- /.box-body -->
+                </div>                           
+                            
+                </div>
+                <div class="modal-footer">
+                    <div id="searchPurchase">
+                        <input type="submit" name="submit" id="submit" value="Credit Sales Proceeds" class="btn btn-info pull-right">
+                    </div>    
+                </div>
+              </form>
+            </div>
+
+        </div>
+        </div>
+                            
+        <!-- Modal Change Profile Picture-->
+        <div id="ChangeProfilePicture" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+                    <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{userDetails.getFirstName()}} {{userDetails.getLastName()}}</h4>
+              </div>
+              <form method="POST" enctype="multipart/form-data" action="{{path('image_upload',{'url':url})}}">
+              <div class="modal-body">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <i class="ion ion-clipboard"></i>
+                        <h3 class="box-title">Change Profile Picture</h3>
+                        <div class="box-tools pull-right">
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <ul class="todo-list">
+                            <li>
+                                <div class="input-group">
+                                    <br/>
+                                    <input type="file" name="image">
+                                    <br/><br/>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- /.box-body -->
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" name="sumit" value="Upload" class="btn btn-info pull-right">
+                </div>
+              </form>
+            </div>
+
+        </div>
+        </div>                             
+                            
+              
+        <!-- jQuery 2.1.4 -->
+        <script src="{{asset('template/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+
+        <!-- Bootstrap 3.3.5 -->
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+        <!-- DataTables -->
+        <script src="{{asset('template/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('template/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+        
+        <!-- Slimscroll -->
+        <script src="{{asset('template/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
+        <!-- FastClick -->
+        <script src="{{asset('template/plugins/fastclick/fastclick.min.js')}}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{asset('template/dist/js/app.min.js')}}"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="{{asset('template/dist/js/demo.js')}}"></script>
+        
+        <script>
+            $(function () {
+              $("#sales").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+                
+        <script>
+            $(function () {
+              $("#agedDebt1").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+                
+        <script>
+            $(function () {
+              $("#agedDebt2").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+                
+        <script>
+            $(function () {
+              $("#agedDebt3").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+                
+        <script>
+            $(function () {
+              $("#agedDebt4").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+        <script>
+            $(function () {
+              $("#salesOrdersPosted").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+
+    </body>
+</html>
+{# empty Twig template #}

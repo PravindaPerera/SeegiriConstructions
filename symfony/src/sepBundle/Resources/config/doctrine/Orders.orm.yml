@@ -1,0 +1,54 @@
+sepBundle\Entity\Orders:
+    type: entity
+    table: orders
+    indexes:
+        sup_id:
+            columns:
+                - sup_id
+    id:
+        orderId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: order_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        amount:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        purchasedAmount:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: purchased_amount
+        date:
+            type: date
+            nullable: false
+            comment: ''
+        purDate:
+            type: date
+            nullable: true
+            comment: ''
+            column: pur_date
+        status:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    manyToOne:
+        sup:
+            targetEntity: UserLogin
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                sup_id:
+                    referencedColumnName: user_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

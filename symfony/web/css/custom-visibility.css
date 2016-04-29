@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 14, 2016, 10:53:14 AM
+    Author     : PRAVINDA PERERA
+*/
+
+#searchPurchase {
+    visibility: hidden;
+}
+
+#usagebtn {
+    visibility: hidden;
+}
+
+#creditPro{
+  visibility: hidden;  
+}
+
+#searchInv{
+    visibility: hidden;
+}

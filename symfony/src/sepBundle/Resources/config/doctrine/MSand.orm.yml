@@ -1,0 +1,61 @@
+sepBundle\Entity\MSand:
+    type: entity
+    table: m_sand
+    id:
+        mSandId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: m_sand_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        openingBalance:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: opening_balance
+        clossingBalance:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: clossing_balance
+        stockPurchased:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: stock_purchased
+        stockUsed:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: stock_used
+        netCost:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: net_cost
+        date:
+            type: date
+            nullable: false
+            comment: ''
+        month:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            comment: ''
+        year:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

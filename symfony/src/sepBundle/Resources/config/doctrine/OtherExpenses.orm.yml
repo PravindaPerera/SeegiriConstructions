@@ -1,0 +1,44 @@
+sepBundle\Entity\OtherExpenses:
+    type: entity
+    table: other_expenses
+    indexes:
+        expense_type_id:
+            columns:
+                - expense_type_id
+    id:
+        paymentId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: payment_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        amount:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        date:
+            type: date
+            nullable: false
+            comment: ''
+        paymentStatus:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: payment_status
+    manyToOne:
+        expenseType:
+            targetEntity: ExpenseDetails
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                expense_type_id:
+                    referencedColumnName: expense_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

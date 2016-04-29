@@ -1,0 +1,344 @@
+#Common Home Page 
+
+sep_homepage:
+    path:     /home
+    defaults: { _controller: sepBundle:Default:index }
+   
+signup_supplier:
+    path:    /home/signup/supplier
+    defaults: { _controller: sepBundle:SignUp:signUpSupplier }   
+    
+signup_user:
+    path:   /home/signup/user
+    defaults: { _controller: sepBundle:SignUp:signUpUser }
+
+login_fail:
+    path:   /home/login_fail
+    defaults: { _controller: sepBundle:Login:loginFail } 
+    
+logout:
+    path:  /home/profile/logout/{url}
+    defaults: { _controller: sepBundle:Logout:logout }
+       
+    
+#Internal User Operations 
+
+user_login:
+    path:   /home/login
+    defaults: { _controller: sepBundle:Login:login }
+       
+profile_home_user:
+    path:   /home/profile/user/{url}
+    defaults: { _controller: sepBundle:UserProfile:loginUser }
+    
+submit_edit_user_details:
+    path:   /home/profile/user/submit_edit_details/{url}
+    defaults: { _controller: sepBundle:UserProfile:submitEditDetails }
+    
+user_change_password:
+    path:   /home/profile/user/change_password/{url}
+    defaults: { _controller: sepBundle:UserProfile:changePassword }
+    
+user_change_username:
+    path:   /home/profile/user/changeUsername/{url}
+    defaults: { _controller: sepBundle:UserProfile:changeUsername }    
+ 
+#Order RM   
+
+orderRM:
+    path: /home/profile/user/orderRM/{url}
+    defaults: { _controller: sepBundle:UserProfile:orderRM }
+    
+order_selected_supplier:
+    path:  /home/profile/user/orderSelectsupplier/{url}
+    defaults: { _controller: sepBundle:UserProfile:selectSupplier }    
+    
+cancel_order:
+    path:  /home/profile/user/cancelOrder/{url}
+    defaults: { _controller: sepBundle:UserProfile:cancelOrder }
+    
+place_new_order:
+    path:  /home/profile/user/placeNewOrder/{url}
+    defaults: { _controller: sepBundle:UserProfile:placeOrder }    
+        
+#Message
+
+user_message:
+    path:  /home/profile/user/userMessage/{url}
+    defaults: { _controller: sepBundle:UserProfile:userMessage }
+    
+user_reply_message:
+    path:  /home/profile/user/userReplyMessage/{url}
+    defaults: { _controller: sepBundle:UserProfile:userReplyMessage }
+    
+user_compose_message:
+    path:  /home/profile/user/composeMessage/{url}
+    defaults: { _controller: sepBundle:UserProfile:composeMessage }    
+    
+    
+#RM Balance Analysis
+
+RMBalAnalysis:
+    path:  /home/profile/user/balAnalysisRM/{url}
+    defaults: { _controller: sepBundle:UserProfile:balAnalysisRM }
+
+
+#Purchases and Inventory Management
+    
+purAndinvtMgt:
+    path:  /home/profile/user/invenManagement/{url}
+    defaults: {  _controller: sepBundle:UserProfile:invenManagement }    
+        
+inventoryReorderMgt:
+    path:  /home/profile/user/inventoryReorderMgt/{url}
+    defaults: {  _controller: sepBundle:UserProfile:inventoryReorderMgt } 
+    
+stock_usage:
+    path:  /home/profile/user/cementUsage/{url}
+    defaults: {  _controller: sepBundle:UserProfile:stockUsage }
+    
+search_purchase:
+    path:   /home/profile/user/searchPurchases/{url}
+    defaults: { _controller: sepBundle:UserProfile:searchForOrder }
+    
+submit_purchase:
+    path: /home/profile/user/submitPurchase/{url}
+    defaults: { _controller: sepBundle:UserProfile:submitPurchase }    
+    
+
+#Sales Analysis
+
+salesAnalysis:
+    path:  /home/profile/user/salesAnalysis/{url}
+    defaults: { _controller: sepBundle:UserProfile:salesAnalysis }
+    
+submit_sales_order:  
+    path:  /home/profile/user/SalesOrderEntry/{url}
+    defaults: { _controller: sepBundle:UserProfile:salesOrderEntry }
+    
+select_sales_order_details:    
+    path:  /home/profile/user/SalesOrderDetails/{url}
+    defaults: { _controller: sepBundle:UserProfile:SalesOrderDetails }
+    
+submit_sales:
+    path:  /home/profile/user/SalesEntry/{url}
+    defaults: { _controller: sepBundle:UserProfile:salesEntry }    
+
+select_customer:
+    path:  /home/profile/user/selectCustomer/{url}
+    defaults: { _controller: sepBundle:UserProfile:selectCustomer } 
+    
+verify_credit_sales:
+    path:  /home/profile/user/verifyCreditSalesEntry/{url}
+    defaults: { _controller: sepBundle:UserProfile:verifyCreditSalesEntry }    
+    
+submit_credit_sales:
+    path:  /home/profile/user/creditSalesEntry/{url}
+    defaults: { _controller: sepBundle:UserProfile:creditSalesEntry }  
+    
+cancel_sales_orders:    
+    path:  /home/profile/user/cancelSalesOrder/{url}
+    defaults: { _controller: sepBundle:UserProfile:cancelSalesOrder }
+
+    
+#Profit Analysis 
+
+profitAnalysis:
+    path:  /home/profile/user/profitAnalysis/{url}
+    defaults: { _controller: sepBundle:UserProfile:profitAnalysis }    
+
+period_profit:
+    path:  /home/profile/user/period_profit/{url}
+    defaults: { _controller: sepBundle:UserProfile:periodProfit }
+    
+cashFlowAnalysis:    
+    path:  /home/profile/user/cashFlowAnalysis/{url}
+    defaults: { _controller: sepBundle:UserProfile:cashFlowAnalysis }
+    
+period_cashFlowAnalysis:
+    path:  /home/profile/user/periodCashFlowAnalysis/{url}
+    defaults: { _controller: sepBundle:UserProfile:periodCashFlowAnalysis }    
+    
+#Other Expenses    
+
+otherExpenses:
+    path:  /home/profile/user/otherExpenses/{url}
+    defaults: { _controller: sepBundle:UserProfile:otherExpenses }
+    
+    
+submit_Expense:
+    path:  /home/profile/user/submitExpenses/{url}
+    defaults: { _controller: sepBundle:UserProfile:submitExpenses }
+    
+newExpense:
+    path:  /home/profile/user/newExpenses/{url}
+    defaults: { _controller: sepBundle:UserProfile:newExpenses }
+    
+cancel_expense:
+    path:  /home/profile/user/cancelExpenses/{url}
+    defaults: { _controller: sepBundle:UserProfile:cancelExpenses }
+    
+update_payment_expense:
+    path:  /home/profile/user/updatePaymentExpenses/{url}
+    defaults: { _controller: sepBundle:UserProfile:updatePaymentExpenses }    
+
+    
+# Admin Page
+    
+admin_login:
+    path:  /home/profile/user/adminLogin/{url}
+    defaults: { _controller: sepBundle:AdminProfile:adminLogin }
+    
+acc_year_admin_display:    
+    path:  /home/profile/user/adminPage/{url}
+    defaults: { _controller: sepBundle:AdminProfile:selectedYearAdminDisplay }
+    
+admin_grant_acceptance:
+    path:  /home/profile/user/adminGrantAcceptance/{url}
+    defaults: { _controller: sepBundle:AdminProfile:adminGrantAcceptance }
+    
+admin_change_username:
+    path:  /home/profile/user/adminUsernameChange/{url}
+    defaults: { _controller: sepBundle:AdminProfile:adminUsernameChange }
+    
+admin_change_password:
+    path:  /home/profile/user/adminChangePassword/{url}
+    defaults: { _controller: sepBundle:AdminProfile:adminChangePassword }     
+
+
+
+#Image Upload    
+image_upload:    
+    path:  /home/profile/user/imageUpload/{url}
+    defaults: { _controller: sepBundle:UserProfile:imageUpload }
+    
+image_upload_operator:    
+    path:  /home/profile/user/imageUploadOperator/{url}
+    defaults: { _controller: sepBundle:PlantOperator:imageUploadOperator }    
+
+
+
+
+
+#Plant Operator 
+
+profile_home_operator:
+    path:   /home/profile/operator/{url}
+    defaults: { _controller: sepBundle:PlantOperator:loginOperator }
+    
+submit_edit_user_details_PO:
+    path:   /home/profile/plantOperator/submit_edit_details/{url}
+    defaults: { _controller: sepBundle:PlantOperator:submitEditDetails }
+    
+user_change_password_PO:
+    path:   /home/profile/plantOperator/change_password/{url}
+    defaults: { _controller: sepBundle:PlantOperator:changePassword }
+    
+user_change_username_PO:
+    path:   /home/profile/plantOperator/changeUsername/{url}
+    defaults: { _controller: sepBundle:PlantOperator:changeUsername }    
+ 
+#PO - Purchases and Inventory Management
+    
+purAndinvtMgt_PO:
+    path:  /home/profile/plantOperator/invenManagement/{url}
+    defaults: {  _controller: sepBundle:PlantOperator:invenManagement }    
+        
+inventoryReorderMgt_PO:
+    path:  /home/profile/plantOperator/inventoryReorderMgt/{url}
+    defaults: {  _controller: sepBundle:PlantOperator:inventoryReorderMgt } 
+    
+stock_usage_PO:
+    path:  /home/profile/plantOperator/cementUsage/{url}
+    defaults: {  _controller: sepBundle:PlantOperator:stockUsage }
+    
+submit_purchase_PO:
+    path: /home/profile/plantOperator/submitPurchase/{url}
+    defaults: { _controller: sepBundle:PlantOperator:submitPurchase }       
+
+      
+#PO - Orders
+
+orderRM_PO:
+    path: /home/profile/plantOperator/orderRM/{url}
+    defaults: { _controller: sepBundle:PlantOperator:orderRM }    
+    
+cancel_order_PO:
+    path:  /home/profile/plantOperator/cancelOrder/{url}
+    defaults: { _controller: sepBundle:PlantOperator:cancelOrder }
+    
+place_new_order_PO:
+    path:  /home/profile/plantOperator/placeNewOrder/{url}
+    defaults: { _controller: sepBundle:PlantOperator:placeOrder } 
+    
+
+#RM Balance Analysis
+
+RMBalAnalysis_PO:
+    path:  /home/profile/plantOperator/balAnalysisRM/{url}
+    defaults: { _controller: sepBundle:PlantOperator:balAnalysisRM }    
+  
+        
+ 
+    
+ 
+    
+#External Supplier Operations
+
+profile_home_supplier:
+    path:   /home/profile/sup/{url}
+    defaults: { _controller: sepBundle:SupplierProfile:login }
+    
+supplier_comp_image_upload:    
+    path:  /home/profile/supplier/imageUpload/{url}
+    defaults: { _controller: sepBundle:SupplierProfile:supplierImageUpload } 
+    
+submit_edit_sup_details:
+    path:   /home/profile/supplier/submit_edit_details/{url}
+    defaults: { _controller: sepBundle:SupplierProfile:submitEditDetails }
+    
+supplier_change_password:
+    path:  /home/profile/supplier/chage_password/{url}
+    defaults: { _controller: sepBundle:SupplierProfile:changePassword }
+    
+supplier_change_username:
+    path:  /home/profile/supplier/change_username/{url}
+    defaults: { _controller: sepBundle:SupplierProfile:changeUsername }    
+    
+viewOrders:
+    path:  /home/profile/supplier/viewOrders/{url}
+    defaults: { _controller: sepBundle:SupplierProfile:viewOrders }    
+      
+sup_message:
+    path:   /home/profile/supplier/message/{url}
+    defaults: { _controller: sepBundle:SupplierProfile:messagebox }
+    
+rep_sup_message:
+    path:   /home/profile/supplier/sendReply/{url}
+    defaults: { _controller: sepBundle:SupplierProfile:sendReply }
+    
+tempsup_message:
+    path:   /home/profile/supplier/tempmessage/{url}
+    defaults: { _controller: sepBundle:SupplierProfile:tempmessagebox }    
+    
+
+compose_message:
+    path:  /home/profile/supplier/compose_message/{url}
+    defaults: { _controller: sepBundle:SupplierProfile:composeMessage } 
+    
+sup_new_message:    
+    path:  /home/profile/supplier/newMessage/{url}
+    defaults: { _controller: sepBundle:SupplierProfile:newMessage } 
+    
+#This might be useful with the client requirement 
+#submit_clossing_balance:
+#    path:  /home/profile/user/closingBalance/{url}
+#    defaults: { _controller: sepBundle:UserProfile:closingBalance }
+
+#select_message:
+#    path:  /home/profile/user/selectMessage/{url}
+#    defaults: { _controller: sepBundle:UserProfile:selectMessage }
+
+#supplier_view_order:
+#    path: /home/profile/suppllier/view_order/{url}
+#    defaults: {_controller: sepBundle:SupplierProfile:viewOrder }

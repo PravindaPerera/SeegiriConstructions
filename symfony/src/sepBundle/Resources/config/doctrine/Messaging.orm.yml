@@ -1,0 +1,73 @@
+sepBundle\Entity\Messaging:
+    type: entity
+    table: messaging
+    indexes:
+        supplier_id:
+            columns:
+                - supplier_id
+    id:
+        messageId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: message_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        messageHeaderByCompany:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+            column: message_header_by_company
+        messageByCompany:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+            column: message_by_company
+        messageHeaderBySupplier:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+            column: message_header_by_supplier
+        messageBySupplier:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+            column: message_by_supplier
+        sendTime:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: send_time
+        replyTime:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: reply_time
+        messageStatus:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: message_status
+    manyToOne:
+        supplier:
+            targetEntity: UserLogin
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                supplier_id:
+                    referencedColumnName: user_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

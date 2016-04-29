@@ -1,0 +1,67 @@
+sepBundle\Entity\SupplierDetails:
+    type: entity
+    table: supplier_details
+    indexes:
+        user_id:
+            columns:
+                - user_id
+    id:
+        supId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: sup_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        supCompanyName:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            column: sup_company_name
+        supType:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            column: sup_type
+        contactNumber:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: contact_number
+        address:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+        name:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+        image:
+            type: blob
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    manyToOne:
+        user:
+            targetEntity: UserLogin
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: user_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

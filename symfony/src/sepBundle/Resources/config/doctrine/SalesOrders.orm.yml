@@ -1,0 +1,56 @@
+sepBundle\Entity\SalesOrders:
+    type: entity
+    table: sales_orders
+    id:
+        salesOrderId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: sales_order_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerName:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: customer_name
+        contactNum:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: contact_num
+        location:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+        grade:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        quantity:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        salesOrderDate:
+            type: date
+            nullable: false
+            comment: ''
+            column: sales_order_date
+        status:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    lifecycleCallbacks: {  }

@@ -1,0 +1,39 @@
+sepBundle\Entity\UserLogin:
+    type: entity
+    table: user_login
+    id:
+        userId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: user_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        password:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        userType:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            column: user_type
+        status:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+    lifecycleCallbacks: {  }

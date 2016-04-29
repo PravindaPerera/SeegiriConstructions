@@ -1,0 +1,61 @@
+sepBundle\Entity\UserDetails:
+    type: entity
+    table: user_details
+    indexes:
+        u_id:
+            columns:
+                - u_id
+    id:
+        detailId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: detail_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        firstName:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            column: first_name
+        lastName:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            column: last_name
+        contactNumber:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: contact_number
+        name:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+        image:
+            type: blob
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    manyToOne:
+        u:
+            targetEntity: UserLogin
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                u_id:
+                    referencedColumnName: user_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

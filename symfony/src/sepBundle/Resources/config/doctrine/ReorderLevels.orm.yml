@@ -1,0 +1,27 @@
+sepBundle\Entity\ReorderLevels:
+    type: entity
+    table: reorder_levels
+    id:
+        reorderId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: reorder_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        reorderLevel:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: reorder_level
+    lifecycleCallbacks: {  }
