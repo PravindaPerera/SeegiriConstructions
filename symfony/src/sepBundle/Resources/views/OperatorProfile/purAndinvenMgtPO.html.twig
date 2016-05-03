@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Seegiri Constructions</title>
+        <title>IBSL</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.5 -->
@@ -158,7 +158,7 @@
                             var obj = JSON.parse(myJSONText);
                             //alert(obj[0] == 'Empty');
                             if (obj[0] == 'Empty') {
-                                $('#searchResults').html("<h3><b>No Orders Found</b></h3>");
+                                $('#searchResults').html('<div class="alert alert-danger" role="alert" style="width :550px"><h4>No Orders Found !!</h4></div>');
                                 {
                                     document.getElementById("searchPurchase").style.visibility = "hidden";
                                 }
@@ -214,9 +214,9 @@
                 <!-- Logo -->
                 <a href="index2.html" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>S</b>C</span>
+                    <span class="logo-mini"><b>IBSL</b></span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Seegiri</b>Constructions</span>
+                    <span class="logo-lg"><h4><b>IndustrialBuilding</b><br>Systems</h4></span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
@@ -1846,6 +1846,11 @@
                             <select class="droplist" id="output"  name="supName" style="width: 100%;" required autocomplete="off"/>
                             </select> 
                         </div>
+                            
+                        <div class="form-group">
+                            <label>Delivery Order ID:</label>
+                            <input type="text" class="form-control" style="width: 200px" name ="deliveryOrderID">
+                        </div>    
                                                         
                         <div class="form-group">                              
                             <div class="input-group">
@@ -1858,7 +1863,7 @@
                             
                         <div class="form-group">
                             <label>Purchase Amount(Qty):</label>
-                            <input type="text" class="form-control" style="width: 200px" name ="quantity">
+                            <input type="text" class="form-control" style="width: 200px" name ="qty">
                         </div>
                             
                         <div class="form-group">

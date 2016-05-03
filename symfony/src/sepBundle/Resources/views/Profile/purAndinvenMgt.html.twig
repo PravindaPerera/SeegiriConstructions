@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Seegiri Constructions</title>
+        <title>IBSL</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.5 -->
@@ -214,9 +214,9 @@
                 <!-- Logo -->
                 <a href="index2.html" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>S</b>C</span>
+                    <span class="logo-mini"><b>IBSL</b></span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Seegiri</b>Constructions</span>
+                    <span class="logo-lg"><h4><b>IndustrialBuilding</b><br>Systems</h4></span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
@@ -1492,6 +1492,54 @@
 
                     </div><!-- /.row -->
                 </section><!-- /.content -->
+                
+                <section class="content">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title">RM - Purchases History</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="purchasesHistory" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Delivery Order ID</th>
+                                            <th>RM type</th>
+                                            <th>Supplier Name</th>
+                                            <th>Amount</th>
+                                            <th>Cost</th>
+                                            <th>Purchased Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for ele in purchasesHis%}
+                                            <tr>
+                                                <td>{{ele.delivery_order_id}}</td>
+                                                <td>{{ele.material}}</td>
+                                                <td>{{ele.supplier_name}}</td>
+                                                <td>{{ele.amount}}</td>
+                                                <td>{{ele.cost}}</td>
+                                                <td>{{ele.date|date('Y-m-d')}}</td>
+                                            </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Delivery Order ID</th>
+                                            <th>RM type</th>
+                                            <th>Supplier Name</th>
+                                            <th>Amount</th>
+                                            <th>Cost</th>
+                                            <th>Purchased Date</th>
+                                        </tr>
+                                    </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                </section><!-- /.content -->                
  
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
@@ -1824,8 +1872,14 @@
                             <select class="droplist" id="output"  name="supName" style="width: 100%;" required autocomplete="off"/>
                             </select> 
                         </div>
+                            
+                        <div class="form-group">
+                            <label>Delivery Order ID:</label>
+                            <input type="text" class="form-control" style="width: 200px" name ="deliveryOrderID">
+                        </div>
                                                         
-                        <div class="form-group">                              
+                        <div class="form-group">
+                            <label>Purchase Date:</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
@@ -1836,7 +1890,7 @@
                             
                         <div class="form-group">
                             <label>Purchase Amount(Qty):</label>
-                            <input type="text" class="form-control" style="width: 200px" name ="quantity">
+                            <input type="text" class="form-control" style="width: 200px" name ="qty">
                         </div>
                             
                         <div class="form-group">
@@ -1997,6 +2051,18 @@
         <!-- AdminLTE for demo purposes -->
         <script src="{{asset('template/dist/js/demo.js')}}"></script>
         
+        <script>
+            $(function () {
+              $("#purchasesHistory").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
 
     </body>
 </html>

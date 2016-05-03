@@ -646,8 +646,9 @@ class PlantOperatorController extends Controller
             if ($request->getMethod() == 'POST') {
             $supplier_name = $request->get('supName');
             $supplier_type = $request->get('type');
+            $doId = $request->get('deliveryOrderID');
             $formDate = $request->get('calDate');
-            $pur_amount = $request->get('quantity');
+            $pur_amount = $request->get('qty');
             $cost = $request->get('cost');
             
             $month;
@@ -868,8 +869,8 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $sand_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $opnBal = $sand_amount[0]['opening_balance'];
+                            $usedBal = $sand_amount[0]['stock_used'];
                             $kk = $sand_amount[0]['stock_purchased'];
                             $prevCost = $sand_amount[0]['net_cost'];
                             $new_sand_amount = (int) $kk + (int) $pur_amount;
@@ -931,9 +932,9 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $chemical_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $opnBal = $chemical_amount[0]['opening_balance'];
                             $kk = $chemical_amount[0]['stock_purchased'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
                             $new_chemical_amount = (int) $kk + (int) $pur_amount;
                             $new_net_cost = (int) $prevCost + (int) $cost;
@@ -994,9 +995,9 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $chips_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $opnBal = $chips_amount[0]['opening_balance'];
                             $kk = $chips_amount[0]['stock_purchased'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $usedBal = $chips_amount[0]['stock_used'];
                             $prevCost = $chips_amount[0]['net_cost'];
                             $new_chips_amount = (int) $kk + (int) $pur_amount;
                             $new_net_cost = (int) $prevCost + (int) $cost;
@@ -1057,9 +1058,9 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $diesel_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $opnBal = $diesel_amount[0]['opening_balance'];
                             $kk = $diesel_amount[0]['stock_purchased'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $usedBal = $diesel_amount[0]['stock_used'];
                             $prevCost = $diesel_amount[0]['net_cost'];
                             $new_diesel_amount = (int) $kk + (int) $pur_amount;
                             $new_net_cost = (int) $prevCost + (int) $cost;
@@ -1120,9 +1121,9 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $m_sand_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $opnBal = $m_sand_amount[0]['opening_balance'];
                             $kk = $m_sand_amount[0]['stock_purchased'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $usedBal = $m_sand_amount[0]['stock_used'];
                             $prevCost = $m_sand_amount[0]['net_cost'];
                             $new_m_sand_amount = (int) $kk + (int) $pur_amount;
                             $new_net_cost = (int) $prevCost + (int) $cost;
@@ -1183,9 +1184,9 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $metal_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $opnBal = $metal_amount[0]['opening_balance'];
                             $kk = $metal_amount[0]['stock_purchased'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $usedBal = $metal_amount[0]['stock_used'];
 
                             $prevCost = $metal_amount[0]['net_cost'];
                             $new_metal_amount = (int) $kk + (int) $pur_amount;
@@ -1236,7 +1237,22 @@ class PlantOperatorController extends Controller
                            
                         }
                     }
-                    return $this->redirect($this->generateUrl('RMBalAnalysis_PO', array('url' => $url)));
+                    
+                    $pur_fig = (int)$pur_amount;
+                    $pur_cos = (int)$cost;
+                    
+                    $pur_entry = new \sepBundle\Entity\Purchases();
+                    $pur_entry->setDeliveryOrderId($doId);
+                    $pur_entry->setMaterial($supplier_type);
+                    $pur_entry->setSupplierName($supplier_name);
+                    $pur_entry->setDate($date);
+                    $pur_entry->setAmount($pur_fig);
+                    $pur_entry->setCost($pur_cos);
+
+                    $em->persist($pur_entry);
+                    $em->flush();
+                    
+                    return $this->redirect($this->generateUrl('purAndinvtMgt_PO', array('url' => $url)));
                     //return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand, 'user'=>$user, 'userDetails' => $userDetails, 'types' => $typeDet));
                     
                 } else {
@@ -1404,19 +1420,23 @@ class PlantOperatorController extends Controller
             }
             $start = $end + (int) 1;
         }
+        $querry = $con->prepare('SELECT * FROM orders WHERE purchased_amount = 0 ORDER BY date DESC');
+        $querry->execute();
+        $repo_cancel_orders = $querry->fetchAll();
+        
         $repo_companies = $em->getRepository('sepBundle:SupplierDetails');
         $companies = $repo_companies->findAll();
         
         $userProfilePics = $this->displayImage($url);
         
         if($userProfilePics[0]['image'] == null){
-            return $this->render('sepBundle:OperatorProfile:orderPlacementPO.html.twig', array('url' => $url, 'orders' => $repo_orders, 'orderHistory' => $repo_orders_history, 
+            return $this->render('sepBundle:OperatorProfile:orderPlacementPO.html.twig', array('url' => $url, 'orders' => $repo_orders, 'cancelOrders' => $repo_cancel_orders, 'orderHistory' => $repo_orders_history, 
                 'names' => $companies, 'ranges' => $ranges, 'types' => $typeDet, 'toDate' => $testDate, 
                 'user'=>$user, 'userDetails' => $userDetails, 'im'=>$userProfilePics, 'flag1' => false, 'flag2' => true)); 
         }
         
         else{
-            return $this->render('sepBundle:OperatorProfile:orderPlacementPO.html.twig', array('url' => $url, 'orders' => $repo_orders, 'orderHistory' => $repo_orders_history, 
+            return $this->render('sepBundle:OperatorProfile:orderPlacementPO.html.twig', array('url' => $url, 'orders' => $repo_orders, 'cancelOrders' => $repo_cancel_orders, 'orderHistory' => $repo_orders_history, 
                 'names' => $companies, 'ranges' => $ranges, 'types' => $typeDet, 'toDate' => $testDate, 
                 'user'=>$user, 'userDetails' => $userDetails, 'im'=>$userProfilePics, 'flag1' => true, 'flag2' => false)); 
         }

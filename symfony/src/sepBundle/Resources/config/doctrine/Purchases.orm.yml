@@ -1,0 +1,49 @@
+sepBundle\Entity\Purchases:
+    type: entity
+    table: purchases
+    id:
+        purchaseId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: purchase_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        deliveryOrderId:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            column: delivery_order_id
+        material:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        supplierName:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: supplier_name
+        date:
+            type: date
+            nullable: false
+            comment: ''
+        amount:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        cost:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    lifecycleCallbacks: {  }

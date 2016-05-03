@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Seegiri Constructions</title>
+        <title>IBSL</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.5 -->
@@ -230,9 +230,9 @@
                 <!-- Logo -->
                 <a href="index2.html" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>S</b>C</span>
+                    <span class="logo-mini"><b>IBSL</b></span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Seegiri</b>Constructions</span>
+                    <span class="logo-lg"><h4><b>IndustrialBuilding</b><br>Systems</h4></span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
@@ -497,7 +497,7 @@
                         </div><!-- /.box-header -->
                         <div class="box-body">
                          <form role="form" method="POST" action="{{path('cancel_sales_orders',{'url':url})}}">
-                          <table id="example2" class="table table-bordered table-hover">
+                          <table id="CancelSales" class="table table-bordered table-hover">
                               <thead>
                                     <tr>
                                         <th>Sales Order ID</th>
@@ -1093,7 +1093,7 @@
                         </div>    
                     </div><!-- /.box-body -->
                 </div>
-                <input type="submit" name="submit" id="submit" value="New Sales Proceeds" class="btn btn-info pull-left">    
+                <input type="submit" name="submit" id="submit" value="New Sales Order" class="btn btn-info pull-left">    
                 </div>
                 <div class="modal-footer">
                    
@@ -1126,7 +1126,7 @@
                          
                         <div class="form-group">
                             <label>Sales Description ID:</label>
-                            <select class="form-control select2" name="salesID" onchange="selectSalesOrderDetails()" style="width: 100%;" required autocomplete="off"/>
+                            <select class="form-control select2" name="salesDescID"  onchange="selectSalesOrderDetails()" style="width: 100%;" required autocomplete="off"/>
                             <option>Select Sales Description</option>
                             {%for ele in salesOrderDet%}
                                 <option>{{ele.sales_order_id}} {{ele.customer_name}} {{ele.sales_order_date}}</option>  
@@ -1391,6 +1391,20 @@
               });
             });
         </script>
+        
+        <script>
+            $(function () {
+              $("#CancelSales").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
 
     </body>
 </html>

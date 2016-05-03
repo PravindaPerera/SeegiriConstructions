@@ -333,19 +333,25 @@ class UserProfileController extends Controller {
             }
             $start = $end + (int) 1;
         }
+        
+        $querry = $con->prepare('SELECT * FROM orders WHERE purchased_amount = 0 ORDER BY date DESC');
+        $querry->execute();
+        $repo_cancel_orders = $querry->fetchAll();
+        
+        
         $repo_companies = $em->getRepository('sepBundle:SupplierDetails');
         $companies = $repo_companies->findAll();
         
         $userProfilePics = $this->displayImage($url);
         
         if($userProfilePics[0]['image'] == null){
-            return $this->render('sepBundle:Profile:orderPlacement.html.twig', array('url' => $url, 'orders' => $repo_orders, 'orderHistory' => $repo_orders_history, 
+            return $this->render('sepBundle:Profile:orderPlacement.html.twig', array('url' => $url, 'orders' => $repo_orders, 'cancelOrders' => $repo_cancel_orders, 'orderHistory' => $repo_orders_history, 
                 'names' => $companies, 'ranges' => $ranges, 'types' => $typeDet, 'toDate' => $testDate, 
                 'user'=>$user, 'userDetails' => $userDetails, 'im'=>$userProfilePics, 'flag1' => false, 'flag2' => true)); 
         }
         
         else{
-            return $this->render('sepBundle:Profile:orderPlacement.html.twig', array('url' => $url, 'orders' => $repo_orders, 'orderHistory' => $repo_orders_history, 
+            return $this->render('sepBundle:Profile:orderPlacement.html.twig', array('url' => $url, 'orders' => $repo_orders, 'cancelOrders' => $repo_cancel_orders, 'orderHistory' => $repo_orders_history, 
                 'names' => $companies, 'ranges' => $ranges, 'types' => $typeDet, 'toDate' => $testDate, 
                 'user'=>$user, 'userDetails' => $userDetails, 'im'=>$userProfilePics, 'flag1' => true, 'flag2' => false)); 
         }
@@ -686,7 +692,7 @@ class UserProfileController extends Controller {
             $type = $request->get('type');
             $supplier = $request->get('supName');
             $date = $request->get('calDate');
-            $amount = $request->get('quantity');
+            $amount = $request->get('qty');
 
             $em1 = $this->getDoctrine()->getEntityManager();
             $con1 = $em1->getConnection();
@@ -698,10 +704,10 @@ class UserProfileController extends Controller {
 
             $id = $res[0]['user_id'];
 
-            $querry = $con1->prepare("SELECT * FROM orders WHERE (amount-purchased_amount)>= :qty AND pur_date= :dt AND sup_id= :sId");
-            $querry->bindValue('qty', $amount);
+            $querry = $con1->prepare("SELECT * FROM orders WHERE (amount-purchased_amount) >= :value AND pur_date = :dt AND sup_id = :sId");
             $querry->bindValue('dt', $date);
             $querry->bindValue('sId', $id);
+            $querry->bindValue('value', $amount);
             $querry->execute();
             $result = $querry->fetchAll();
 
@@ -736,8 +742,9 @@ class UserProfileController extends Controller {
             if ($request->getMethod() == 'POST') {
             $supplier_name = $request->get('supName');
             $supplier_type = $request->get('type');
+            $doId = $request->get('deliveryOrderID');
             $formDate = $request->get('calDate');
-            $pur_amount = $request->get('quantity');
+            $pur_amount = $request->get('qty');
             $cost = $request->get('cost');
             
             $month;
@@ -801,6 +808,8 @@ class UserProfileController extends Controller {
 
             $em = $this->getDoctrine()->getEntityManager();
             $con = $em->getConnection();
+            
+            
                                    
             $querry = $con->prepare("SELECT DISTINCT sup_type FROM supplier_details");
             $querry->execute();
@@ -958,8 +967,8 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $sand_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $opnBal = $sand_amount[0]['opening_balance'];
+                            $usedBal = $sand_amount[0]['stock_used'];
                             $kk = $sand_amount[0]['stock_purchased'];
                             $prevCost = $sand_amount[0]['net_cost'];
                             $new_sand_amount = (int) $kk + (int) $pur_amount;
@@ -1021,9 +1030,9 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $chemical_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $opnBal = $chemical_amount[0]['opening_balance'];
                             $kk = $chemical_amount[0]['stock_purchased'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
                             $new_chemical_amount = (int) $kk + (int) $pur_amount;
                             $new_net_cost = (int) $prevCost + (int) $cost;
@@ -1084,9 +1093,9 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $chips_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $opnBal = $chips_amount[0]['opening_balance'];
                             $kk = $chips_amount[0]['stock_purchased'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $usedBal = $chips_amount[0]['stock_used'];
                             $prevCost = $chips_amount[0]['net_cost'];
                             $new_chips_amount = (int) $kk + (int) $pur_amount;
                             $new_net_cost = (int) $prevCost + (int) $cost;
@@ -1147,9 +1156,9 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $diesel_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $opnBal = $diesel_amount[0]['opening_balance'];
                             $kk = $diesel_amount[0]['stock_purchased'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $usedBal = $diesel_amount[0]['stock_used'];
                             $prevCost = $diesel_amount[0]['net_cost'];
                             $new_diesel_amount = (int) $kk + (int) $pur_amount;
                             $new_net_cost = (int) $prevCost + (int) $cost;
@@ -1210,9 +1219,9 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $m_sand_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $opnBal = $m_sand_amount[0]['opening_balance'];
                             $kk = $m_sand_amount[0]['stock_purchased'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $usedBal = $m_sand_amount[0]['stock_used'];
                             $prevCost = $m_sand_amount[0]['net_cost'];
                             $new_m_sand_amount = (int) $kk + (int) $pur_amount;
                             $new_net_cost = (int) $prevCost + (int) $cost;
@@ -1273,9 +1282,9 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $metal_amount = $qur->fetchAll();
-                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $opnBal = $metal_amount[0]['opening_balance'];
                             $kk = $metal_amount[0]['stock_purchased'];
-                            $usedBal = $cement_amount[0]['stock_used'];
+                            $usedBal = $metal_amount[0]['stock_used'];
 
                             $prevCost = $metal_amount[0]['net_cost'];
                             $new_metal_amount = (int) $kk + (int) $pur_amount;
@@ -1326,7 +1335,22 @@ class UserProfileController extends Controller {
                            
                         }
                     }
-                    return $this->redirect($this->generateUrl('RMBalAnalysis', array('url' => $url)));
+                    
+                    $pur_fig = (int)$pur_amount;
+                    $pur_cos = (int)$cost;
+                    
+                    $pur_entry = new \sepBundle\Entity\Purchases();
+                    $pur_entry->setDeliveryOrderId($doId);
+                    $pur_entry->setMaterial($supplier_type);
+                    $pur_entry->setSupplierName($supplier_name);
+                    $pur_entry->setDate($date);
+                    $pur_entry->setAmount($pur_fig);
+                    $pur_entry->setCost($pur_cos);
+
+                    $em->persist($pur_entry);
+                    $em->flush();
+                    
+                    return $this->redirect($this->generateUrl('purAndinvtMgt', array('url' => $url)));
                     //return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand, 'user'=>$user, 'userDetails' => $userDetails, 'types' => $typeDet));
                     
                 } else {
@@ -1377,6 +1401,10 @@ class UserProfileController extends Controller {
         $querry = $con->prepare("SELECT * FROM reorder_levels");
         $querry->execute();
         $repo_reorderDetails = $querry->fetchAll();
+        
+        $querry = $con->prepare("SELECT * FROM purchases ORDER BY date DESC");
+        $querry->execute();
+        $repo_purchases = $querry->fetchAll();
                
         //cement
         $querry = $con->prepare("SELECT clossing_balance FROM cement ORDER BY date DESC LIMIT 1");
@@ -1523,7 +1551,7 @@ class UserProfileController extends Controller {
             'cbSand' => $cb_sand, 'cbMSand' => $cb_m_sand, 'cbDiesel' => $cb_diesel,
             'lCement' => $limitCement, 'lChemical' => $limitChemical, 'lChips' => $limitChips, 'lMetal' => $limitMetal,  
             'lSand' => $limitSand, 'lMSand' => $limitM_Sand, 'lDiesel' => $limitDiesel,
-            'reorderDetails' => $repo_reorderDetails, 'im'=>$userProfilePics, 'flag1' => false, 'flag2' => true)); 
+            'reorderDetails' => $repo_reorderDetails, 'purchasesHis' => $repo_purchases, 'im'=>$userProfilePics, 'flag1' => false, 'flag2' => true)); 
         }
         
         else{
@@ -1532,7 +1560,7 @@ class UserProfileController extends Controller {
             'cbSand' => $cb_sand, 'cbMSand' => $cb_m_sand, 'cbDiesel' => $cb_diesel,
             'lCement' => $limitCement, 'lChemical' => $limitChemical, 'lChips' => $limitChips, 'lMetal' => $limitMetal,  
             'lSand' => $limitSand, 'lMSand' => $limitM_Sand, 'lDiesel' => $limitDiesel,
-            'reorderDetails' => $repo_reorderDetails, 'im'=>$userProfilePics, 'flag1' => true, 'flag2' => false)); 
+            'reorderDetails' => $repo_reorderDetails, 'purchasesHis' => $repo_purchases, 'im'=>$userProfilePics, 'flag1' => true, 'flag2' => false)); 
         }
         
          
@@ -2024,15 +2052,13 @@ class UserProfileController extends Controller {
             $supId = $full_url[1];
             $year = $full_url[0];
             
-            $salesOrderDetails = $request->get('salesID');
-            $desc = explode(' ', $salesOrderDetails);
-            $salesID = $desc[0];
+            $salesOrderDetails = $request->get('salesDescID');
             
             
             $em = $this->getDoctrine()->getEntityManager();
             $con = $em->getConnection();
             $qur = $con->prepare("UPDATE sales_orders SET status = 1 WHERE sales_order_id = :id");
-            $qur->bindValue('id', $salesID);
+            $qur->bindValue('id', $salesOrderDetails);
             $qur->execute();
 
             
@@ -2237,16 +2263,12 @@ class UserProfileController extends Controller {
     
     public function SalesOrderDetailsAction($url, Request $request) {
         if ($request->getMethod() == "POST") {
-            $salesOrderDetails = $request->get('salesID');
-            $desc = explode(' ', $salesOrderDetails);
-            $salesID = $desc[0];
-            //$ss = $salesID;
-            
+            $salesOrderDetails = $request->get('salesDescID');
             $em = $this->getDoctrine()->getEntityManager();
 
             $con = $em->getConnection();
-            $qur = $con->prepare("SELECT customer_name, contact_num FROM sales_orders WHERE sales_order_id = 12");
-            $qur->bindValue('id', $salesID);
+            $qur = $con->prepare("SELECT customer_name, contact_num FROM sales_orders WHERE sales_order_id = :id");
+            $qur->bindValue('id', $salesOrderDetails);
             $qur->execute();
             $res = $qur->fetchAll();
             
