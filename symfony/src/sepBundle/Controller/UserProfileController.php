@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints\Length;
 
 class UserProfileController extends Controller {
 
+    //Done
     public function loginUserAction($url, Request $request) {
         $session = $request->getSession();
         $userid=$session->get('id');
@@ -67,6 +68,7 @@ class UserProfileController extends Controller {
         
     }
 
+    //Done
     public function submitEditDetailsAction($url, Request $request) {
         
         $session = $request->getSession();
@@ -152,6 +154,7 @@ class UserProfileController extends Controller {
 
     }
 
+    //Done
     public function changePasswordAction(Request $request, $url) {
                 $session = $request->getSession();
         $userid=$session->get('id');
@@ -209,6 +212,7 @@ class UserProfileController extends Controller {
 
     }
 
+    //Done
     public function changeUsernameAction($url, Request $request) {
                 $session = $request->getSession();
         $userid=$session->get('id');
@@ -274,6 +278,7 @@ class UserProfileController extends Controller {
 
     }
 
+    //Done
     public function orderRMAction($url, Request $request) {
         $session = $request->getSession();
         $userid=$session->get('id');
@@ -362,6 +367,7 @@ class UserProfileController extends Controller {
         }     
     }
 
+    //Done
     public function selectSupplierAction(Request $request, $url) {
         if ($request->getMethod() == 'POST') {
             $type = $request->get('type');
@@ -372,6 +378,7 @@ class UserProfileController extends Controller {
         }
     }
 
+    //Done
     public function placeOrderAction(Request $request, $url) {
      
         $session = $request->getSession();
@@ -427,6 +434,7 @@ class UserProfileController extends Controller {
 
     }
 
+    //Done
     public function cancelOrderAction($url, Request $request) {
         $session = $request->getSession();
         $userid=$session->get('id');
@@ -455,6 +463,7 @@ class UserProfileController extends Controller {
 
     }
 
+    //Done
     public function userMessageAction($url, Request $request) {
         $session = $request->getSession();
         $userid=$session->get('id');
@@ -499,6 +508,7 @@ class UserProfileController extends Controller {
     }
 
 
+    //Done
     public function composeMessageAction($url, Request $request) {
         
         $session = $request->getSession();
@@ -546,6 +556,7 @@ class UserProfileController extends Controller {
 
     }
     
+    //Done
     public function userReplyMessageAction($url, Request $request){
         
         $session = $request->getSession();
@@ -592,6 +603,7 @@ class UserProfileController extends Controller {
     }
 
 
+    //Done
     public function balAnalysisRMAction($url, Request $request) {
         $session = $request->getSession();
         $userid=$session->get('id');
@@ -623,15 +635,51 @@ class UserProfileController extends Controller {
         $companies = $repo_companies->findAll();
 
         $testDate = date('Y-m-d');
-        //Cement
-        $querry = $con->prepare('SELECT * FROM cement ORDER BY date DESC');
+        
+        //Cement1
+        $querry = $con->prepare('SELECT * FROM holcim_extra_cement ORDER BY date DESC');
         $querry->execute();
-        $repo_cement = $querry->fetchAll();
+        $repo_holcim_extra_cement = $querry->fetchAll();
+        
+        //Cement2
+        $querry = $con->prepare('SELECT * FROM holcim_ready_flow_plus_cement ORDER BY date DESC');
+        $querry->execute();
+        $repo_holcim_ready_flow_plus_cement = $querry->fetchAll();
+        
+        //Cement3
+        $querry = $con->prepare('SELECT * FROM ordinary_portland_cement_cement ORDER BY date DESC');
+        $querry->execute();
+        $repo_ordinary_portland_cement_cement = $querry->fetchAll();
 
-        //Chemical
-        $querry = $con->prepare('SELECT * FROM chemical ORDER BY date DESC');
+        //Chemical1
+        $querry = $con->prepare('SELECT * FROM adcrete_chemical ORDER BY date DESC');
         $querry->execute();
-        $repo_chemical = $querry->fetchAll();
+        $repo_adcrete_chemical = $querry->fetchAll();
+        
+        //Chemical2
+        $querry = $con->prepare('SELECT * FROM pozzolith300r_chemical ORDER BY date DESC');
+        $querry->execute();
+        $repo_pozzolith300r_chemical = $querry->fetchAll();
+        
+        //Chemical3
+        $querry = $con->prepare('SELECT * FROM rheobuild561_chemical ORDER BY date DESC');
+        $querry->execute();
+        $repo_rheobuild561_chemical = $querry->fetchAll();
+        
+        //Chemical4
+        $querry = $con->prepare('SELECT * FROM rheobuild1000_chemical ORDER BY date DESC');
+        $querry->execute();
+        $repo_rheobuild1000_chemical = $querry->fetchAll();
+        
+        //Chemical5
+        $querry = $con->prepare('SELECT * FROM supercrete_chemical ORDER BY date DESC');
+        $querry->execute();
+        $repo_supercrete_chemical = $querry->fetchAll();
+        
+        //Chemical6
+        $querry = $con->prepare('SELECT * FROM supercrete_hs_chemical ORDER BY date DESC');
+        $querry->execute();
+        $repo_supercrete_hs_chemical = $querry->fetchAll();
 
         //Chips
         $querry = $con->prepare('SELECT * FROM chips ORDER BY date DESC');
@@ -663,7 +711,10 @@ class UserProfileController extends Controller {
         if($userProfilePics[0]['image'] == null){
         return $this->render('sepBundle:Profile:balanceOfRM.html.twig', array('url' => $url, 
             'names' => $companies, 'toDate' => $testDate, 'types' => $typeDet, 
-            'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 
+            'holcim_extra_cement' => $repo_holcim_extra_cement, 'holcim_ready_flow_plus_cement' => $repo_holcim_ready_flow_plus_cement, 'ordinary_portland_cement' => $repo_ordinary_portland_cement_cement, 
+            'adcrete_chemical' => $repo_adcrete_chemical, 'pozzolith300r_chemical' => $repo_pozzolith300r_chemical, 'rheobuild561_chemical' => $repo_rheobuild561_chemical,
+            'rheobuild1000_chemical' => $repo_rheobuild1000_chemical, 'supercrete_chemical' => $repo_supercrete_chemical, 'supercrete_hs_chemical' => $repo_supercrete_hs_chemical,
+            'chips' => $repo_chips, 
             'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand, 
             'user'=>$user, 'userDetails' => $userDetails,  'im'=>$userProfilePics, 'flag1' => false, 'flag2' => true)); 
         }
@@ -671,7 +722,10 @@ class UserProfileController extends Controller {
         else{
         return $this->render('sepBundle:Profile:balanceOfRM.html.twig', array('url' => $url, 
             'names' => $companies, 'toDate' => $testDate, 'types' => $typeDet, 
-            'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 
+            'holcim_extra_cement' => $repo_holcim_extra_cement, 'holcim_ready_flow_plus_cement' => $repo_holcim_ready_flow_plus_cement, 'ordinary_portland_cement' => $repo_ordinary_portland_cement_cement, 
+            'adcrete_chemical' => $repo_adcrete_chemical, 'pozzolith300r_chemical' => $repo_pozzolith300r_chemical, 'rheobuild561_chemical' => $repo_rheobuild561_chemical,
+            'rheobuild1000_chemical' => $repo_rheobuild1000_chemical, 'supercrete_chemical' => $repo_supercrete_chemical, 'supercrete_hs_chemical' => $repo_supercrete_hs_chemical, 
+            'chips' => $repo_chips, 
             'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand, 
             'user'=>$user, 'userDetails' => $userDetails, 'im'=>$userProfilePics, 'flag1' => true, 'flag2' => false));
         }
@@ -683,6 +737,7 @@ class UserProfileController extends Controller {
         
     }
     
+    //Done
     public function searchForOrderAction($url, Request $request) {
             
         $session = $request->getSession();
@@ -734,6 +789,7 @@ class UserProfileController extends Controller {
     }
 
 
+    //Done
     public function submitPurchaseAction($url, Request $request) {
         
         $session = $request->getSession();
@@ -841,15 +897,50 @@ class UserProfileController extends Controller {
 
             $testDate = date('Y-m-d');
 
-            //Cement
-            $querry = $con->prepare('SELECT * FROM cement ORDER BY date DESC');
+            //Cement1
+            $querry = $con->prepare('SELECT * FROM holcim_extra_cement ORDER BY date DESC');
             $querry->execute();
-            $repo_cement = $querry->fetchAll();
+            $repo_holcim_extra_cement = $querry->fetchAll();
 
-            //Chemical
-            $querry = $con->prepare('SELECT * FROM chemical ORDER BY date DESC');
+            //Cement2
+            $querry = $con->prepare('SELECT * FROM holcim_ready_flow_plus_cement ORDER BY date DESC');
             $querry->execute();
-            $repo_chemical = $querry->fetchAll();
+            $repo_holcim_ready_flow_plus_cement = $querry->fetchAll();
+
+            //Cement3
+            $querry = $con->prepare('SELECT * FROM ordinary_portland_cement_cement ORDER BY date DESC');
+            $querry->execute();
+            $repo_ordinary_portland_cement_cement = $querry->fetchAll();
+
+            //Chemical1
+            $querry = $con->prepare('SELECT * FROM adcrete_chemical ORDER BY date DESC');
+            $querry->execute();
+            $repo_adcrete_chemical = $querry->fetchAll();
+
+            //Chemical2
+            $querry = $con->prepare('SELECT * FROM pozzolith300r_chemical ORDER BY date DESC');
+            $querry->execute();
+            $repo_pozzolith300r_chemical = $querry->fetchAll();
+
+            //Chemical3
+            $querry = $con->prepare('SELECT * FROM rheobuild561_chemical ORDER BY date DESC');
+            $querry->execute();
+            $repo_rheobuild561_chemical = $querry->fetchAll();
+
+            //Chemical4
+            $querry = $con->prepare('SELECT * FROM rheobuild1000_chemical ORDER BY date DESC');
+            $querry->execute();
+            $repo_rheobuild1000_chemical = $querry->fetchAll();
+
+            //Chemical5
+            $querry = $con->prepare('SELECT * FROM supercrete_chemical ORDER BY date DESC');
+            $querry->execute();
+            $repo_supercrete_chemical = $querry->fetchAll();
+
+            //Chemical6
+            $querry = $con->prepare('SELECT * FROM supercrete_hs_chemical ORDER BY date DESC');
+            $querry->execute();
+            $repo_supercrete_hs_chemical = $querry->fetchAll();
 
             //Chips
             $querry = $con->prepare('SELECT * FROM chips ORDER BY date DESC');
@@ -877,8 +968,10 @@ class UserProfileController extends Controller {
             $repo_m_sand = $querry->fetchAll();
 
             if ($result == []) {
+                
+                return $this->redirect($this->generateUrl('sep_homepage'));
 
-                return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => true, 'flag1' => false, 'flag2' => false, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand, 'user'=>$user, 'userDetails' => $userDetails, 'types' => $typeDet));
+                //return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => true, 'flag1' => false, 'flag2' => false, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand, 'user'=>$user, 'userDetails' => $userDetails, 'types' => $typeDet));
             } else {
                 $res = array($result[0]['order_id'], "$supplier_name", $result[0]['amount'], $result[0]['purchased_amount'], $result[0]['date']);
                 $extra = (int) $res[2] - (int) $res[3];
@@ -891,14 +984,32 @@ class UserProfileController extends Controller {
                     $querry->bindValue('id', $id);
                     $querry->execute();
 
-                    if ($supplier_type == "Cement") {
-                        $qur = $con->prepare("SELECT date FROM cement ORDER BY date DESC LIMIT 1");
+                    //Cement 1
+                    if ($supplier_type == "Holcim Extra") {
+                        $qur = $con->prepare("SELECT date FROM holcim_extra_cement ORDER BY date DESC LIMIT 1");
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
-                        $dd = $lastDate[0]['date'];
-
-                        if ($dd == $formDate) {
-                            $qur = $con->prepare("SELECT * FROM cement WHERE date = :date");
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\HolcimExtraCement();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                            $dd = $lastDate[0]['date'];
+                            
+                            if ($dd == $formDate) {
+                            $qur = $con->prepare("SELECT * FROM holcim_extra_cement WHERE date = :date");
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $cement_amount = $qur->fetchAll();
@@ -911,20 +1022,21 @@ class UserProfileController extends Controller {
                             $closeBal = (int) $opnBal + (int) $new_cement_amount - (int) $usedBal;
 
 
-                            $querry = $con->prepare("UPDATE cement SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
+                            $querry = $con->prepare("UPDATE holcim_extra_cement SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_cement_amount);
                             $querry->bindValue('nCost', $new_net_cost);
                             $querry->bindValue('stkUsed', $closeBal);
                             $querry->bindValue('date', $formDate);
                             $querry->execute();
+                            
                             //Cement
-                            $querry = $con->prepare('SELECT * FROM cement ORDER BY date DESC');
+                            $querry = $con->prepare('SELECT * FROM holcim_extra_cement ORDER BY date DESC');
                             $querry->execute();
                             $repo_cement = $querry->fetchAll();
 
                             // return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand,));
                         } else {
-                            $qur = $con->prepare("SELECT clossing_balance FROM cement WHERE date = :date");
+                            $qur = $con->prepare("SELECT clossing_balance FROM holcim_extra_cement WHERE date = :date");
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_cement = $qur->fetchAll();
@@ -935,7 +1047,7 @@ class UserProfileController extends Controller {
                             $cb = (int) $ob + (int) $pa;
 
 
-                            $entry = new \sepBundle\Entity\Cement();
+                            $entry = new \sepBundle\Entity\HolcimExtraCement();
                             $entry->setDate($date);
                             $entry->setOpeningBalance($ob);
                             $entry->setClossingBalance($cb);
@@ -949,18 +1061,212 @@ class UserProfileController extends Controller {
                             $em->flush();
 
                             //Cement
-                            $querry = $con->prepare('SELECT * FROM cement ORDER BY date DESC');
+                            $querry = $con->prepare('SELECT * FROM holcim_extra_cement ORDER BY date DESC');
                             $querry->execute();
                             $repo_cement = $querry->fetchAll();
 
                             // return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand,));
                         }
+                        }
+                        
+
+                        
                     }
+                    
+                    //Cement 2
+                    if ($supplier_type == "Holcim Ready Flow Plus") {
+                        $qur = $con->prepare("SELECT date FROM holcim_ready_flow_plus_cement ORDER BY date DESC LIMIT 1");
+                        $qur->execute();
+                        $lastDate = $qur->fetchAll();
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\HolcimReadyFlowPlusCement();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                           $dd = $lastDate[0]['date'];
+
+                        if ($dd == $formDate) {
+                            $qur = $con->prepare("SELECT * FROM holcim_ready_flow_plus_cement WHERE date = :date");
+                            $qur->bindValue('date', $formDate);
+                            $qur->execute();
+                            $cement_amount = $qur->fetchAll();
+                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $usedBal = $cement_amount[0]['stock_used'];
+                            $kk = $cement_amount[0]['stock_purchased'];
+                            $prevCost = $cement_amount[0]['net_cost'];
+                            $new_cement_amount = (int) $kk + (int) $pur_amount;
+                            $new_net_cost = (int) $prevCost + (int) $cost;
+                            $closeBal = (int) $opnBal + (int) $new_cement_amount - (int) $usedBal;
+
+
+                            $querry = $con->prepare("UPDATE holcim_ready_flow_plus_cement SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
+                            $querry->bindValue('s_amount', $new_cement_amount);
+                            $querry->bindValue('nCost', $new_net_cost);
+                            $querry->bindValue('stkUsed', $closeBal);
+                            $querry->bindValue('date', $formDate);
+                            $querry->execute();
+                            //Cement
+                            $querry = $con->prepare('SELECT * FROM holcim_ready_flow_plus_cement ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_cement = $querry->fetchAll();
+
+                            // return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand,));
+                        } else {
+                            $qur = $con->prepare("SELECT clossing_balance FROM holcim_ready_flow_plus_cement WHERE date = :date");
+                            $qur->bindValue('date', $dd);
+                            $qur->execute();
+                            $clossing_cement = $qur->fetchAll();
+                            $ob = (int) $clossing_cement[0]['clossing_balance'];
+                            $pa = (int) $pur_amount;
+                            $su = (int) 0;
+                            $newCost = (int) $cost;
+                            $cb = (int) $ob + (int) $pa;
+
+
+                            $entry = new \sepBundle\Entity\HolcimReadyFlowPlusCement();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance($ob);
+                            $entry->setClossingBalance($cb);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed($su);
+                            $entry->setNetCost($newCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+
+                            //Cement
+                            $querry = $con->prepare('SELECT * FROM holcim_ready_flow_plus_cement ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_cement = $querry->fetchAll();
+
+                            // return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand,));
+                        } 
+                        }
+                        
+                    }
+                    
+                    //Cement 3
+                    if ($supplier_type == "Ordinary Portland Cement") {
+                        $qur = $con->prepare("SELECT date FROM ordinary_portland_cement_cement ORDER BY date DESC LIMIT 1");
+                        $qur->execute();
+                        $lastDate = $qur->fetchAll();
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\OrdinaryPortlandCementCement();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                            $dd = $lastDate[0]['date'];
+
+                        if ($dd == $formDate) {
+                            $qur = $con->prepare("SELECT * FROM ordinary_portland_cement_cement WHERE date = :date");
+                            $qur->bindValue('date', $formDate);
+                            $qur->execute();
+                            $cement_amount = $qur->fetchAll();
+                            $opnBal = $cement_amount[0]['opening_balance'];
+                            $usedBal = $cement_amount[0]['stock_used'];
+                            $kk = $cement_amount[0]['stock_purchased'];
+                            $prevCost = $cement_amount[0]['net_cost'];
+                            $new_cement_amount = (int) $kk + (int) $pur_amount;
+                            $new_net_cost = (int) $prevCost + (int) $cost;
+                            $closeBal = (int) $opnBal + (int) $new_cement_amount - (int) $usedBal;
+
+
+                            $querry = $con->prepare("UPDATE ordinary_portland_cement_cement SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
+                            $querry->bindValue('s_amount', $new_cement_amount);
+                            $querry->bindValue('nCost', $new_net_cost);
+                            $querry->bindValue('stkUsed', $closeBal);
+                            $querry->bindValue('date', $formDate);
+                            $querry->execute();
+                            //Cement
+                            $querry = $con->prepare('SELECT * FROM ordinary_portland_cement_cement ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_cement = $querry->fetchAll();
+
+                            // return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand,));
+                        } else {
+                            $qur = $con->prepare("SELECT clossing_balance FROM ordinary_portland_cement_cement WHERE date = :date");
+                            $qur->bindValue('date', $dd);
+                            $qur->execute();
+                            $clossing_cement = $qur->fetchAll();
+                            $ob = (int) $clossing_cement[0]['clossing_balance'];
+                            $pa = (int) $pur_amount;
+                            $su = (int) 0;
+                            $newCost = (int) $cost;
+                            $cb = (int) $ob + (int) $pa;
+
+
+                            $entry = new \sepBundle\Entity\OrdinaryPortlandCementCement();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance($ob);
+                            $entry->setClossingBalance($cb);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed($su);
+                            $entry->setNetCost($newCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+
+                            //Cement
+                            $querry = $con->prepare('SELECT * FROM ordinary_portland_cement_cement ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_cement = $querry->fetchAll();
+
+                            // return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand,));
+                        }
+                        }
+                        
+                    }
+                    
                     if ($supplier_type == "Sand") {
                         $qur = $con->prepare("SELECT date FROM sand ORDER BY date DESC LIMIT 1");
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
-                        $dd = $lastDate[0]['date'];
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\Sand();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                           $dd = $lastDate[0]['date'];
 
                         if ($dd == $formDate) {
                             $qur = $con->prepare("SELECT * FROM sand WHERE date = :date");
@@ -1017,16 +1323,37 @@ class UserProfileController extends Controller {
                             $repo_sand = $querry->fetchAll();
 
                             //  return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        } 
                         }
+                        
                     }
-                    if ($supplier_type == "Chemical") {
-                        $qur = $con->prepare("SELECT date FROM chemical ORDER BY date DESC LIMIT 1");
+                    
+                    //Chemical 1
+                    if ($supplier_type == "Adcrete") {
+                        $qur = $con->prepare("SELECT date FROM adcrete_chemical ORDER BY date DESC LIMIT 1");
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
-                        $dd = $lastDate[0]['date'];
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\AdcreteChemical();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                           $dd = $lastDate[0]['date'];
 
                         if ($dd == $formDate) {
-                            $qur = $con->prepare("SELECT * FROM chemical WHERE date = :date");
+                            $qur = $con->prepare("SELECT * FROM adcrete_chemical WHERE date = :date");
                             $qur->bindValue('date', $formDate);
                             $qur->execute();
                             $chemical_amount = $qur->fetchAll();
@@ -1038,20 +1365,20 @@ class UserProfileController extends Controller {
                             $new_net_cost = (int) $prevCost + (int) $cost;
                             $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
 
-                            $querry = $con->prepare("UPDATE chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
+                            $querry = $con->prepare("UPDATE adcrete_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
                             $querry->bindValue('nCost', $new_net_cost);
                             $querry->bindValue('stkUsed', $closeBal);
                             $querry->bindValue('date', $formDate);
                             $querry->execute();
                             //Chemical
-                            $querry = $con->prepare('SELECT * FROM chemical ORDER BY date DESC');
+                            $querry = $con->prepare('SELECT * FROM adcrete_chemical ORDER BY date DESC');
                             $querry->execute();
                             $repo_chemical = $querry->fetchAll();
 
                             //   return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
                         } else {
-                            $qur = $con->prepare("SELECT clossing_balance FROM chemical WHERE date = :date");
+                            $qur = $con->prepare("SELECT clossing_balance FROM adcrete_chemical WHERE date = :date");
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
@@ -1061,7 +1388,7 @@ class UserProfileController extends Controller {
                             $newCost = (int) $cost;
                             $cb = (int) $ob + (int) $pa;
 
-                            $entry = new \sepBundle\Entity\Chemical();
+                            $entry = new \sepBundle\Entity\AdcreteChemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance($ob);
                             $entry->setClossingBalance($cb);
@@ -1075,18 +1402,458 @@ class UserProfileController extends Controller {
                             $em->flush();
 
                             //Chemical
-                            $querry = $con->prepare('SELECT * FROM chemical ORDER BY date DESC');
+                            $querry = $con->prepare('SELECT * FROM adcrete_chemical ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_chemical = $querry->fetchAll();
+
+                            //  return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        } 
+                        }
+                        
+                    }
+                    
+                    //Chemical 2
+                    if ($supplier_type == "Supercrete") {
+                        $qur = $con->prepare("SELECT date FROM supercrete_chemical ORDER BY date DESC LIMIT 1");
+                        $qur->execute();
+                        $lastDate = $qur->fetchAll();
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\SupercreteChemical();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                            $dd = $lastDate[0]['date'];
+
+                        if ($dd == $formDate) {
+                            $qur = $con->prepare("SELECT * FROM supercrete_chemical WHERE date = :date");
+                            $qur->bindValue('date', $formDate);
+                            $qur->execute();
+                            $chemical_amount = $qur->fetchAll();
+                            $opnBal = $chemical_amount[0]['opening_balance'];
+                            $kk = $chemical_amount[0]['stock_purchased'];
+                            $usedBal = $chemical_amount[0]['stock_used'];
+                            $prevCost = $chemical_amount[0]['net_cost'];
+                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
+                            $new_net_cost = (int) $prevCost + (int) $cost;
+                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+
+                            $querry = $con->prepare("UPDATE supercrete_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
+                            $querry->bindValue('s_amount', $new_chemical_amount);
+                            $querry->bindValue('nCost', $new_net_cost);
+                            $querry->bindValue('stkUsed', $closeBal);
+                            $querry->bindValue('date', $formDate);
+                            $querry->execute();
+                            //Chemical
+                            $querry = $con->prepare('SELECT * FROM supercrete_chemical ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_chemical = $querry->fetchAll();
+
+                            //   return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        } else {
+                            $qur = $con->prepare("SELECT clossing_balance FROM supercrete_chemical WHERE date = :date");
+                            $qur->bindValue('date', $dd);
+                            $qur->execute();
+                            $clossing_chemical = $qur->fetchAll();
+                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (int) $pur_amount;
+                            $su = (int) 0;
+                            $newCost = (int) $cost;
+                            $cb = (int) $ob + (int) $pa;
+
+                            $entry = new \sepBundle\Entity\SupercreteChemical();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance($ob);
+                            $entry->setClossingBalance($cb);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed($su);
+                            $entry->setNetCost($newCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+
+                            $em->persist($entry);
+                            $em->flush();
+
+                            //Chemical
+                            $querry = $con->prepare('SELECT * FROM supercrete_chemical ORDER BY date DESC');
                             $querry->execute();
                             $repo_chemical = $querry->fetchAll();
 
                             //  return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
                         }
+                        }
+                        
                     }
+                    
+                    //Chemical 3
+                    if ($supplier_type == "Supercrete - HS") {
+                        $qur = $con->prepare("SELECT date FROM supercrete_hs_chemical ORDER BY date DESC LIMIT 1");
+                        $qur->execute();
+                        $lastDate = $qur->fetchAll();
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\SupercreteHsChemical();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                            $dd = $lastDate[0]['date'];
+
+                        if ($dd == $formDate) {
+                            $qur = $con->prepare("SELECT * FROM supercrete_hs_chemical WHERE date = :date");
+                            $qur->bindValue('date', $formDate);
+                            $qur->execute();
+                            $chemical_amount = $qur->fetchAll();
+                            $opnBal = $chemical_amount[0]['opening_balance'];
+                            $kk = $chemical_amount[0]['stock_purchased'];
+                            $usedBal = $chemical_amount[0]['stock_used'];
+                            $prevCost = $chemical_amount[0]['net_cost'];
+                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
+                            $new_net_cost = (int) $prevCost + (int) $cost;
+                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+
+                            $querry = $con->prepare("UPDATE supercrete_hs_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
+                            $querry->bindValue('s_amount', $new_chemical_amount);
+                            $querry->bindValue('nCost', $new_net_cost);
+                            $querry->bindValue('stkUsed', $closeBal);
+                            $querry->bindValue('date', $formDate);
+                            $querry->execute();
+                            //Chemical
+                            $querry = $con->prepare('SELECT * FROM supercrete_hs_chemical ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_chemical = $querry->fetchAll();
+
+                            //   return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        } else {
+                            $qur = $con->prepare("SELECT clossing_balance FROM supercrete_hs_chemical WHERE date = :date");
+                            $qur->bindValue('date', $dd);
+                            $qur->execute();
+                            $clossing_chemical = $qur->fetchAll();
+                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (int) $pur_amount;
+                            $su = (int) 0;
+                            $newCost = (int) $cost;
+                            $cb = (int) $ob + (int) $pa;
+
+                            $entry = new \sepBundle\Entity\SupercreteHsChemical();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance($ob);
+                            $entry->setClossingBalance($cb);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed($su);
+                            $entry->setNetCost($newCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+
+                            $em->persist($entry);
+                            $em->flush();
+
+                            //Chemical
+                            $querry = $con->prepare('SELECT * FROM supercrete_hs_chemical ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_chemical = $querry->fetchAll();
+
+                            //  return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        }
+                        }
+                        
+                    }
+                    
+                    //Chemical 4
+                    if ($supplier_type == "Rheobuild 561") {
+                        $qur = $con->prepare("SELECT date FROM rheobuild561_chemical ORDER BY date DESC LIMIT 1");
+                        $qur->execute();
+                        $lastDate = $qur->fetchAll();
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\Rheobuild561Chemical();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                           $dd = $lastDate[0]['date'];
+
+                        if ($dd == $formDate) {
+                            $qur = $con->prepare("SELECT * FROM rheobuild561_chemical WHERE date = :date");
+                            $qur->bindValue('date', $formDate);
+                            $qur->execute();
+                            $chemical_amount = $qur->fetchAll();
+                            $opnBal = $chemical_amount[0]['opening_balance'];
+                            $kk = $chemical_amount[0]['stock_purchased'];
+                            $usedBal = $chemical_amount[0]['stock_used'];
+                            $prevCost = $chemical_amount[0]['net_cost'];
+                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
+                            $new_net_cost = (int) $prevCost + (int) $cost;
+                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+
+                            $querry = $con->prepare("UPDATE rheobuild561_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
+                            $querry->bindValue('s_amount', $new_chemical_amount);
+                            $querry->bindValue('nCost', $new_net_cost);
+                            $querry->bindValue('stkUsed', $closeBal);
+                            $querry->bindValue('date', $formDate);
+                            $querry->execute();
+                            //Chemical
+                            $querry = $con->prepare('SELECT * FROM rheobuild561_chemical ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_chemical = $querry->fetchAll();
+
+                            //   return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        } else {
+                            $qur = $con->prepare("SELECT clossing_balance FROM rheobuild561_chemical WHERE date = :date");
+                            $qur->bindValue('date', $dd);
+                            $qur->execute();
+                            $clossing_chemical = $qur->fetchAll();
+                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (int) $pur_amount;
+                            $su = (int) 0;
+                            $newCost = (int) $cost;
+                            $cb = (int) $ob + (int) $pa;
+
+                            $entry = new \sepBundle\Entity\Rheobuild561Chemical();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance($ob);
+                            $entry->setClossingBalance($cb);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed($su);
+                            $entry->setNetCost($newCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+
+                            $em->persist($entry);
+                            $em->flush();
+
+                            //Chemical
+                            $querry = $con->prepare('SELECT * FROM rheobuild561_chemical ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_chemical = $querry->fetchAll();
+
+                            //  return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        } 
+                        }
+                        
+                    }
+                    
+                    //Chemical 5
+                    if ($supplier_type == "Rheobuild 1000") {
+                        $qur = $con->prepare("SELECT date FROM rheobuild1000_chemical ORDER BY date DESC LIMIT 1");
+                        $qur->execute();
+                        $lastDate = $qur->fetchAll();
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\Rheobuild1000Chemical();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                         $dd = $lastDate[0]['date'];
+
+                        if ($dd == $formDate) {
+                            $qur = $con->prepare("SELECT * FROM rheobuild1000_chemical WHERE date = :date");
+                            $qur->bindValue('date', $formDate);
+                            $qur->execute();
+                            $chemical_amount = $qur->fetchAll();
+                            $opnBal = $chemical_amount[0]['opening_balance'];
+                            $kk = $chemical_amount[0]['stock_purchased'];
+                            $usedBal = $chemical_amount[0]['stock_used'];
+                            $prevCost = $chemical_amount[0]['net_cost'];
+                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
+                            $new_net_cost = (int) $prevCost + (int) $cost;
+                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+
+                            $querry = $con->prepare("UPDATE rheobuild1000_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
+                            $querry->bindValue('s_amount', $new_chemical_amount);
+                            $querry->bindValue('nCost', $new_net_cost);
+                            $querry->bindValue('stkUsed', $closeBal);
+                            $querry->bindValue('date', $formDate);
+                            $querry->execute();
+                            //Chemical
+                            $querry = $con->prepare('SELECT * FROM rheobuild1000_chemical ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_chemical = $querry->fetchAll();
+
+                            //   return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        } else {
+                            $qur = $con->prepare("SELECT clossing_balance FROM rheobuild1000_chemical WHERE date = :date");
+                            $qur->bindValue('date', $dd);
+                            $qur->execute();
+                            $clossing_chemical = $qur->fetchAll();
+                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (int) $pur_amount;
+                            $su = (int) 0;
+                            $newCost = (int) $cost;
+                            $cb = (int) $ob + (int) $pa;
+
+                            $entry = new \sepBundle\Entity\Rheobuild1000Chemical();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance($ob);
+                            $entry->setClossingBalance($cb);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed($su);
+                            $entry->setNetCost($newCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+
+                            $em->persist($entry);
+                            $em->flush();
+
+                            //Chemical
+                            $querry = $con->prepare('SELECT * FROM rheobuild1000_chemical ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_chemical = $querry->fetchAll();
+
+                            //  return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        }   
+                        }
+                        
+                    }
+                    
+                    //Chemical 6
+                    if ($supplier_type == "Pozzolith 300R") {
+                        $qur = $con->prepare("SELECT date FROM pozzolith300r_chemical ORDER BY date DESC LIMIT 1");
+                        $qur->execute();
+                        $lastDate = $qur->fetchAll();
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\Pozzolith300rChemical();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                          $dd = $lastDate[0]['date'];
+
+                        if ($dd == $formDate) {
+                            $qur = $con->prepare("SELECT * FROM pozzolith300r_chemical WHERE date = :date");
+                            $qur->bindValue('date', $formDate);
+                            $qur->execute();
+                            $chemical_amount = $qur->fetchAll();
+                            $opnBal = $chemical_amount[0]['opening_balance'];
+                            $kk = $chemical_amount[0]['stock_purchased'];
+                            $usedBal = $chemical_amount[0]['stock_used'];
+                            $prevCost = $chemical_amount[0]['net_cost'];
+                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
+                            $new_net_cost = (int) $prevCost + (int) $cost;
+                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+
+                            $querry = $con->prepare("UPDATE pozzolith300r_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
+                            $querry->bindValue('s_amount', $new_chemical_amount);
+                            $querry->bindValue('nCost', $new_net_cost);
+                            $querry->bindValue('stkUsed', $closeBal);
+                            $querry->bindValue('date', $formDate);
+                            $querry->execute();
+                            //Chemical
+                            $querry = $con->prepare('SELECT * FROM pozzolith300r_chemical ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_chemical = $querry->fetchAll();
+
+                            //   return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        } else {
+                            $qur = $con->prepare("SELECT clossing_balance FROM pozzolith300r_chemical WHERE date = :date");
+                            $qur->bindValue('date', $dd);
+                            $qur->execute();
+                            $clossing_chemical = $qur->fetchAll();
+                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (int) $pur_amount;
+                            $su = (int) 0;
+                            $newCost = (int) $cost;
+                            $cb = (int) $ob + (int) $pa;
+
+                            $entry = new \sepBundle\Entity\Pozzolith300rChemical();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance($ob);
+                            $entry->setClossingBalance($cb);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed($su);
+                            $entry->setNetCost($newCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+
+                            $em->persist($entry);
+                            $em->flush();
+
+                            //Chemical
+                            $querry = $con->prepare('SELECT * FROM pozzolith300r_chemical ORDER BY date DESC');
+                            $querry->execute();
+                            $repo_chemical = $querry->fetchAll();
+
+                            //  return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        }  
+                        }
+                        
+                    }
+                    
                     if ($supplier_type == "Chips") {
                         $qur = $con->prepare("SELECT date FROM chips ORDER BY date DESC LIMIT 1");
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
-                        $dd = $lastDate[0]['date'];
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\Chips();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                          $dd = $lastDate[0]['date'];
 
                         if ($dd == $formDate) {
                             $qur = $con->prepare("SELECT * FROM chips WHERE date = :date");
@@ -1143,13 +1910,32 @@ class UserProfileController extends Controller {
                             $repo_chips = $querry->fetchAll();
 
                             //  return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        } 
                         }
+                        
                     }
                     if ($supplier_type == "Diesel") {
                         $qur = $con->prepare("SELECT date FROM diesel ORDER BY date DESC LIMIT 1");
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
-                        $dd = $lastDate[0]['date'];
+                        if($lastDate == 0){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\Diesel();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                          $dd = $lastDate[0]['date'];
 
                         if ($dd == $formDate) {
                             $qur = $con->prepare("SELECT * FROM diesel WHERE date = :date");
@@ -1206,13 +1992,32 @@ class UserProfileController extends Controller {
                             $repo_diesel = $querry->fetchAll();
 
                             //  return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
+                        }  
                         }
+                        
                     }
                     if ($supplier_type == "M-Sand") {
                         $qur = $con->prepare("SELECT date FROM m_sand ORDER BY date DESC LIMIT 1");
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
-                        $dd = $lastDate[0]['date'];
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\MSand();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                        else{
+                            $dd = $lastDate[0]['date'];
 
                         if ($dd == $formDate) {
                             $qur = $con->prepare("SELECT * FROM m_sand WHERE date = :date");
@@ -1270,12 +2075,32 @@ class UserProfileController extends Controller {
 
                             //  return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => false, 'flag1' => false, 'flag2' => true, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_sand, 'sand' => $repo_sand));
                         }
+                        }
+                        
                     }
                     if ($supplier_type == "Metal") {
                         $qur = $con->prepare("SELECT date FROM metal ORDER BY date DESC LIMIT 1");
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
-                        $dd = $lastDate[0]['date'];
+                        if($lastDate == []){
+                            $pa = (int)$pur_amount;
+                            $nCost = (int)$cost;
+                            $entry = new \sepBundle\Entity\Metal();
+                            $entry->setDate($date);
+                            $entry->setOpeningBalance(0);
+                            $entry->setClossingBalance($pa);
+                            $entry->setStockPurchased($pa);
+                            $entry->setStockUsed(0);
+                            $entry->setNetCost($nCost);
+                            $entry->setMonth($month);
+                            $entry->setYear($year);
+                            
+                            $em->persist($entry);
+                            $em->flush();
+                        }
+                            
+                        else{
+                            $dd = $lastDate[0]['date'];
 
                         if ($dd == $formDate) {
                             $qur = $con->prepare("SELECT * FROM metal WHERE date = :date");
@@ -1334,6 +2159,8 @@ class UserProfileController extends Controller {
 
                            
                         }
+                        }
+                        
                     }
                     
                     $pur_fig = (int)$pur_amount;
@@ -1368,6 +2195,7 @@ class UserProfileController extends Controller {
 
     }
 
+    //Done
     public function invenManagementAction($url, Request $request) {
         $session = $request->getSession();
         $userid=$session->get('id');
@@ -1390,8 +2218,17 @@ class UserProfileController extends Controller {
         $querry->execute();
         $typeDet = $querry->fetchAll();
 
-        $cementVal = (int) 0;
-        $chemVal = (int) 0;
+        $limitholcim_extra_cementVal = (int) 0;
+        $limitholcim_ready_flow_plus_cementVal = (int) 0;
+        $limitordinary_portland_cement_cementVal = (int) 0;
+        
+        $limitadcrete_chemicalVal = (int) 0;
+        $pozzolith300rVal = (int) 0;
+        $rheobuild561Val = (int) 0;
+        $rheobuild1000_chemicalVal = (int) 0;
+        $supercrete_chemicalVal = (int) 0;
+        $supercrete_hs_chemicalVal = (int) 0;
+        
         $metalVal = (int) 0;
         $sandVal = (int) 0;
         $dieselVal = (int) 0;
@@ -1406,31 +2243,100 @@ class UserProfileController extends Controller {
         $querry->execute();
         $repo_purchases = $querry->fetchAll();
                
-        //cement
-        $querry = $con->prepare("SELECT clossing_balance FROM cement ORDER BY date DESC LIMIT 1");
+        //cement 1
+        $querry = $con->prepare("SELECT clossing_balance FROM holcim_extra_cement ORDER BY date DESC LIMIT 1");
         $querry->execute();
         $result = $querry->fetchAll();
-        $rr = (int) $result[0]["clossing_balance"];
-        $cb_cement = $rr;
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+            $rr = (int) $result[0]["clossing_balance"];
+        }
+        
+        $cb_holcim_extra_cement = $rr;
         
         $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
-        $querry->bindValue('rm', "Cement");
+        $querry->bindValue('rm', "Holcim Extra");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitCement = (int) $result[0]["reorder_level"];
+        $limitholcim_extra_cement = (int) $result[0]["reorder_level"];
         
-        if ($rr <= $limitCement) {
+        if ($rr <= $limitholcim_extra_cement) {
             
         }
         else{
-            $cementVal = (int) 1;
+            $limitholcim_extra_cementVal = (int) 1;
+        }
+        
+        //cement 2
+        $querry = $con->prepare("SELECT clossing_balance FROM holcim_ready_flow_plus_cement ORDER BY date DESC LIMIT 1");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
+        
+        $cb_holcim_ready_flow_plus_cement = $rr;
+        
+        $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
+        $querry->bindValue('rm', "Holcim Ready Flow Plus");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        $limitholcim_ready_flow_plus_cement = (int) $result[0]["reorder_level"];
+        
+        if ($rr <= $limitholcim_ready_flow_plus_cement) {
+            
+        }
+        else{
+            $limitholcim_ready_flow_plus_cementVal = (int) 1;
+        }
+        
+        //cement 3
+        $querry = $con->prepare("SELECT clossing_balance FROM ordinary_portland_cement_cement ORDER BY date DESC LIMIT 1");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
+        $cb_ordinary_portland_cement_cement = $rr;
+        
+        $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
+        $querry->bindValue('rm', "Ordinary Portland Cement");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        $limitordinary_portland_cement_cement = (int) $result[0]["reorder_level"];
+        
+        if ($rr <= $limitordinary_portland_cement_cement) {
+            
+        }
+        else{
+            $limitordinary_portland_cement_cementVal = (int) 1;
         }
         
         //Sand
         $querry = $con->prepare("SELECT clossing_balance FROM sand ORDER BY date DESC LIMIT 1");
         $querry->execute();
         $result = $querry->fetchAll();
-        $rr = (int) $result[0]["clossing_balance"];
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
         $cb_sand = $rr;
         
         $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
@@ -1444,30 +2350,181 @@ class UserProfileController extends Controller {
         else{
             $sandVal = (int) 1;
         }
-        //Chemical
-        $querry = $con->prepare("SELECT clossing_balance FROM chemical ORDER BY date DESC LIMIT 1");
+        
+        //Chemical 1
+        $querry = $con->prepare("SELECT clossing_balance FROM adcrete_chemical ORDER BY date DESC LIMIT 1");
         $querry->execute();
         $result = $querry->fetchAll();
-        $rr = (int) $result[0]["clossing_balance"];
-        $cb_chemical = $rr;
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
+        $cb_adcrete_chemical = $rr;
         
         $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
-        $querry->bindValue('rm', "Chemical");
+        $querry->bindValue('rm', "Adcrete");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitChemical = (int) $result[0]["reorder_level"];
+        $limitadcrete_chemical = (int) $result[0]["reorder_level"];
         
-        if ($rr <= $limitChemical) {
+        if ($rr <= $limitadcrete_chemical) {
             
         }
-        if ($rr > $limitChemical) {
-            $chemVal = (int) 1;
+        if ($rr > $limitadcrete_chemical) {
+            $limitadcrete_chemicalVal = (int) 1;
         }
+        
+        //Chemical 2
+        $querry = $con->prepare("SELECT clossing_balance FROM pozzolith300r_chemical ORDER BY date DESC LIMIT 1");
+        $querry->execute();
+        $result = $querry->fetchAll(); 
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
+        $cb_pozzolith300r = $rr;
+        
+        $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
+        $querry->bindValue('rm', "Pozzolith 300R");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        $limitpozzolith300r = (int) $result[0]["reorder_level"];
+        
+        if ($rr <= $limitpozzolith300r) {
+            
+        }
+        if ($rr > $limitpozzolith300r) {
+            $pozzolith300rVal = (int) 1;
+        }
+        
+        //Chemical 3
+        $querry = $con->prepare("SELECT clossing_balance FROM rheobuild561_chemical ORDER BY date DESC LIMIT 1");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
+        $cb_rheobuild561 = $rr;
+        
+        $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
+        $querry->bindValue('rm', "Rheobuild 561");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        $limitrheobuild561 = (int) $result[0]["reorder_level"];
+        
+        if ($rr <= $limitrheobuild561) {
+            
+        }
+        if ($rr > $limitrheobuild561) {
+            $rheobuild561Val = (int) 1;
+        }
+        
+        //Chemical 4
+        $querry = $con->prepare("SELECT clossing_balance FROM rheobuild1000_chemical ORDER BY date DESC LIMIT 1");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
+        $cb_rheobuild1000_chemical = $rr;
+        
+        $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
+        $querry->bindValue('rm', "Rheobuild 1000");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        $limitrheobuild1000_chemical = (int) $result[0]["reorder_level"];
+        
+        if ($rr <= $limitrheobuild1000_chemical) {
+            
+        }
+        if ($rr > $limitrheobuild1000_chemical) {
+            $rheobuild1000_chemicalVal = (int) 1;
+        }
+        
+        //Chemical 5
+        $querry = $con->prepare("SELECT clossing_balance FROM supercrete_chemical ORDER BY date DESC LIMIT 1");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
+        $cb_supercrete_chemical = $rr;
+        
+        $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
+        $querry->bindValue('rm', "Supercrete");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        $limitsupercrete_chemical = (int) $result[0]["reorder_level"];
+        
+        if ($rr <= $limitsupercrete_chemical) {
+            
+        }
+        if ($rr > $limitsupercrete_chemical) {
+            $supercrete_chemicalVal = (int) 1;
+        }
+        
+        //Chemical 6
+        $querry = $con->prepare("SELECT clossing_balance FROM supercrete_hs_chemical ORDER BY date DESC LIMIT 1");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
+        $cb_supercrete_hs_chemical = $rr;
+        
+        $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
+        $querry->bindValue('rm', "Supercrete - HS");
+        $querry->execute();
+        $result = $querry->fetchAll();
+        $limitsupercrete_hs_chemical = (int) $result[0]["reorder_level"];
+        
+        if ($rr <= $limitsupercrete_hs_chemical) {
+            
+        }
+        if ($rr > $limitsupercrete_hs_chemical) {
+            $supercrete_hs_chemicalVal = (int) 1;
+        }
+        
         //Metal
         $querry = $con->prepare("SELECT clossing_balance FROM metal ORDER BY date DESC LIMIT 1");
         $querry->execute();
         $result = $querry->fetchAll();
-        $rr = (int) $result[0]["clossing_balance"];
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
         $cb_metal = $rr;
         
         $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
@@ -1487,7 +2544,14 @@ class UserProfileController extends Controller {
         $querry = $con->prepare("SELECT clossing_balance FROM diesel ORDER BY date DESC LIMIT 1");
         $querry->execute();
         $result = $querry->fetchAll();
-        $rr = (int) $result[0]["clossing_balance"];
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
         $cb_diesel = $rr;
          
         $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
@@ -1507,7 +2571,14 @@ class UserProfileController extends Controller {
         $querry = $con->prepare("SELECT clossing_balance FROM chips ORDER BY date DESC LIMIT 1");
         $querry->execute();
         $result = $querry->fetchAll();
-        $rr = (int) $result[0]["clossing_balance"];
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
         $cb_chips = $rr;
         
         $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
@@ -1526,7 +2597,14 @@ class UserProfileController extends Controller {
         $querry = $con->prepare("SELECT clossing_balance FROM m_sand ORDER BY date DESC LIMIT 1");
         $querry->execute();
         $result = $querry->fetchAll();
-        $rr = (int) $result[0]["clossing_balance"];
+        
+        if($result == []){
+          $rr = 0;  
+        }
+        else{
+           $rr = (int) $result[0]["clossing_balance"];
+        }
+        
         $cb_m_sand = $rr;
           
         $querry = $con->prepare("SELECT reorder_level FROM reorder_levels WHERE title = :rm");
@@ -1541,24 +2619,40 @@ class UserProfileController extends Controller {
         else {
             $m_sandVal = (int) 1;
         }
-        $counts = array("$cementVal", "$chemVal", "$metalVal", "$sandVal", "$dieselVal", "$m_sandVal", "$chipsVal");
+        $counts = array("$limitholcim_extra_cementVal", "$limitholcim_ready_flow_plus_cementVal", "$limitordinary_portland_cement_cementVal", "$supercrete_hs_chemicalVal", "$pozzolith300rVal", "$rheobuild561Val", "$rheobuild1000_chemicalVal", "$supercrete_chemicalVal", "$limitadcrete_chemicalVal", "$metalVal", "$sandVal", "$dieselVal", "$m_sandVal", "$chipsVal");
 
         $userProfilePics = $this->displayImage($url);
         
         if($userProfilePics[0]['image'] == null){
         return $this->render('sepBundle:Profile:purAndinvenMgt.html.twig', array('url' => $url, 'toDate' => $testDate, 'types' => $typeDet, 'clbalance' => $counts, 'user'=>$user, 'userDetails' => $userDetails,
-            'cbCement' => $cb_cement, 'cbChemical' => $cb_chemical, 'cbChips' => $cb_chips, 'cbMetal' => $cb_metal,  
+            'cbHolcim' => $cb_holcim_extra_cement, 'cbReadyFlow'=>$cb_holcim_ready_flow_plus_cement, 'cbPortland'=>$cb_ordinary_portland_cement_cement,
+            'cbadcrete' => $cb_adcrete_chemical, 'cbpozzolith300r' => $cb_pozzolith300r, 'cbrheobuild561' => $cb_rheobuild561,
+            
+            'cbrheobuild1000' => $cb_rheobuild1000_chemical, 'cbsupercrete' => $cb_supercrete_chemical, 'cbsupercrete_hs' => $cb_supercrete_hs_chemical,
+            'cbChips' => $cb_chips, 'cbMetal' => $cb_metal,  
             'cbSand' => $cb_sand, 'cbMSand' => $cb_m_sand, 'cbDiesel' => $cb_diesel,
-            'lCement' => $limitCement, 'lChemical' => $limitChemical, 'lChips' => $limitChips, 'lMetal' => $limitMetal,  
+            'lholcim' => $limitholcim_extra_cement, 'lreadyFlow'=> $limitholcim_ready_flow_plus_cement, 'lPortland'=>$limitordinary_portland_cement_cement,
+            'ladcrete' => $limitadcrete_chemical, 'lpozzolith300r' => $limitpozzolith300r, 'lrheobuild561' => $limitrheobuild561,
+            
+            'lrheobuild1000' => $limitrheobuild1000_chemical, 'lsupercrete' => $limitsupercrete_chemical, 'lsupercrete_hs' => $limitsupercrete_hs_chemical,
+            'lChips' => $limitChips, 'lMetal' => $limitMetal,  
             'lSand' => $limitSand, 'lMSand' => $limitM_Sand, 'lDiesel' => $limitDiesel,
             'reorderDetails' => $repo_reorderDetails, 'purchasesHis' => $repo_purchases, 'im'=>$userProfilePics, 'flag1' => false, 'flag2' => true)); 
         }
         
         else{
         return $this->render('sepBundle:Profile:purAndinvenMgt.html.twig', array('url' => $url, 'toDate' => $testDate, 'types' => $typeDet, 'clbalance' => $counts, 'user'=>$user, 'userDetails' => $userDetails,
-            'cbCement' => $cb_cement, 'cbChemical' => $cb_chemical, 'cbChips' => $cb_chips, 'cbMetal' => $cb_metal,  
+            'cbHolcim' => $cb_holcim_extra_cement, 'cbReadyFlow'=>$cb_holcim_ready_flow_plus_cement, 'cbPortland'=>$cb_ordinary_portland_cement_cement,
+            'cbadcrete' => $cb_adcrete_chemical, 'cbpozzolith300r' => $cb_pozzolith300r, 'cbrheobuild561' => $cb_rheobuild561,
+            
+            'cbrheobuild1000' => $cb_rheobuild1000_chemical, 'cbsupercrete' => $cb_supercrete_chemical, 'cbsupercrete_hs' => $cb_supercrete_hs_chemical,
+            'cbChips' => $cb_chips, 'cbMetal' => $cb_metal,  
             'cbSand' => $cb_sand, 'cbMSand' => $cb_m_sand, 'cbDiesel' => $cb_diesel,
-            'lCement' => $limitCement, 'lChemical' => $limitChemical, 'lChips' => $limitChips, 'lMetal' => $limitMetal,  
+            'lholcim' => $limitholcim_extra_cement, 'lreadyFlow'=> $limitholcim_ready_flow_plus_cement, 'lPortland'=>$limitordinary_portland_cement_cement,
+            'ladcrete' => $limitadcrete_chemical, 'lpozzolith300r' => $limitpozzolith300r, 'lrheobuild561' => $limitrheobuild561,
+            
+            'lrheobuild1000' => $limitrheobuild1000_chemical, 'lsupercrete' => $limitsupercrete_chemical, 'lsupercrete_hs' => $limitsupercrete_hs_chemical,
+            'lChips' => $limitChips, 'lMetal' => $limitMetal,  
             'lSand' => $limitSand, 'lMSand' => $limitM_Sand, 'lDiesel' => $limitDiesel,
             'reorderDetails' => $repo_reorderDetails, 'purchasesHis' => $repo_purchases, 'im'=>$userProfilePics, 'flag1' => true, 'flag2' => false)); 
         }
@@ -1572,6 +2666,7 @@ class UserProfileController extends Controller {
         
     }
        
+    //Done
     public function stockUsageAction($url, Request $request) {
         if ($request->getMethod() == "POST") {
             $usedDate = $request->get('calDate');
@@ -1627,21 +2722,23 @@ class UserProfileController extends Controller {
 
             $em = $this->getDoctrine()->getEntityManager();
             $con = $em->getConnection();
-            if ($rmType == "Cement") {
-                $querry = $con->prepare("SELECT * FROM cement ORDER BY date DESC LIMIT 1");
+            
+            //Cement 1
+            if ($rmType == "Holcim Extra") {
+                $querry = $con->prepare("SELECT * FROM holcim_extra_cement ORDER BY date DESC LIMIT 1");
                 $querry->execute();
                 $nRes = $querry->fetchAll();
                 $dt = $nRes[0]['date'];
 
                 if ($dt == $usedDate) {
-                    $querry = $con->prepare("SELECT * FROM cement WHERE date = :date");
+                    $querry = $con->prepare("SELECT * FROM holcim_extra_cement WHERE date = :date");
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
                     $val1 = (int) $val[0]['stock_used'] + (int) $qty;
                     $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
 
-                    $querry = $con->prepare("UPDATE cement SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
+                    $querry = $con->prepare("UPDATE holcim_extra_cement SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
                     $querry->bindValue('cb', $closeBal);
                     $querry->bindValue('date', $usedDate);
@@ -1650,7 +2747,7 @@ class UserProfileController extends Controller {
    
                 } else {
                     $date = new \DateTime($usedDate);
-                    $entry = new \sepBundle\Entity\Cement();
+                    $entry = new \sepBundle\Entity\HolcimExtraCement();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
                     $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
@@ -1663,33 +2760,123 @@ class UserProfileController extends Controller {
                     $em->persist($entry);
                     $em->flush();
                 }
-                $querry = $con->prepare("SELECT * FROM cement WHERE date = :date");
+                $querry = $con->prepare("SELECT * FROM holcim_extra_cement WHERE date = :date");
                 $querry->bindValue('date', $usedDate);
                 $querry->execute();
                 $res = $querry->fetchAll();
 
             }
-            if ($rmType == "Chemical") {
-                $querry = $con->prepare("SELECT * FROM chemical ORDER BY date DESC LIMIT 1");
+            
+            //Cement 2
+            if ($rmType == "Holcim Ready Flow Plus") {
+                $querry = $con->prepare("SELECT * FROM holcim_ready_flow_plus_cement ORDER BY date DESC LIMIT 1");
                 $querry->execute();
                 $nRes = $querry->fetchAll();
                 $dt = $nRes[0]['date'];
+
                 if ($dt == $usedDate) {
-                    $querry = $con->prepare("SELECT * FROM chemical WHERE date = :date");
+                    $querry = $con->prepare("SELECT * FROM holcim_ready_flow_plus_cement WHERE date = :date");
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
                     $val1 = (int) $val[0]['stock_used'] + (int) $qty;
                     $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
 
-                    $querry = $con->prepare("UPDATE chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
+                    $querry = $con->prepare("UPDATE holcim_ready_flow_plus_cement SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
+                    $querry->bindValue('val1', $val1);
+                    $querry->bindValue('cb', $closeBal);
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+
+   
+                } else {
+                    $date = new \DateTime($usedDate);
+                    $entry = new \sepBundle\Entity\HolcimReadyFlowPlusCement();
+                    $entry->setDate($date);
+                    $entry->setOpeningBalance($nRes[0]['clossing_balance']);
+                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setStockPurchased(0);
+                    $entry->setStockUsed($qty);
+                    $entry->setNetCost(0);
+                    $entry->setMonth($month);
+                    $entry->setYear($year);
+
+                    $em->persist($entry);
+                    $em->flush();
+                }
+                $querry = $con->prepare("SELECT * FROM holcim_ready_flow_plus_cement WHERE date = :date");
+                $querry->bindValue('date', $usedDate);
+                $querry->execute();
+                $res = $querry->fetchAll();
+
+            }
+            
+            //Cement 3
+            if ($rmType == "Ordinary Portland Cement") {
+                $querry = $con->prepare("SELECT * FROM ordinary_portland_cement_cement ORDER BY date DESC LIMIT 1");
+                $querry->execute();
+                $nRes = $querry->fetchAll();
+                $dt = $nRes[0]['date'];
+
+                if ($dt == $usedDate) {
+                    $querry = $con->prepare("SELECT * FROM ordinary_portland_cement_cement WHERE date = :date");
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                    $val = $querry->fetchAll();
+                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
+                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+
+                    $querry = $con->prepare("UPDATE ordinary_portland_cement_cement SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
+                    $querry->bindValue('val1', $val1);
+                    $querry->bindValue('cb', $closeBal);
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+
+   
+                } else {
+                    $date = new \DateTime($usedDate);
+                    $entry = new \sepBundle\Entity\OrdinaryPortlandCementCement();
+                    $entry->setDate($date);
+                    $entry->setOpeningBalance($nRes[0]['clossing_balance']);
+                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setStockPurchased(0);
+                    $entry->setStockUsed($qty);
+                    $entry->setNetCost(0);
+                    $entry->setMonth($month);
+                    $entry->setYear($year);
+
+                    $em->persist($entry);
+                    $em->flush();
+                }
+                $querry = $con->prepare("SELECT * FROM ordinary_portland_cement_cement WHERE date = :date");
+                $querry->bindValue('date', $usedDate);
+                $querry->execute();
+                $res = $querry->fetchAll();
+
+            }
+            
+            //Chemical 1
+            if ($rmType == "Chemical") {
+                $querry = $con->prepare("SELECT * FROM adcrete_chemical ORDER BY date DESC LIMIT 1");
+                $querry->execute();
+                $nRes = $querry->fetchAll();
+                $dt = $nRes[0]['date'];
+                if ($dt == $usedDate) {
+                    $querry = $con->prepare("SELECT * FROM adcrete_chemical WHERE date = :date");
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                    $val = $querry->fetchAll();
+                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
+                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+
+                    $querry = $con->prepare("UPDATE adcrete_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
                     $querry->bindValue('cb', $closeBal);
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                 } else {
                     $date = new \DateTime($usedDate);
-                    $entry = new \sepBundle\Entity\Chemical();
+                    $entry = new \sepBundle\Entity\AdcreteChemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
                     $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
@@ -1704,12 +2891,228 @@ class UserProfileController extends Controller {
                 }
 
 
-                $querry = $con->prepare("SELECT * FROM chemical WHERE date = :date");
+                $querry = $con->prepare("SELECT * FROM adcrete_chemical WHERE date = :date");
                 $querry->bindValue('date', $usedDate);
                 $querry->execute();
                 $res = $querry->fetchAll();
 
             }
+            
+            //Chemical 2
+            if ($rmType == "Supercrete") {
+                $querry = $con->prepare("SELECT * FROM supercrete_chemical ORDER BY date DESC LIMIT 1");
+                $querry->execute();
+                $nRes = $querry->fetchAll();
+                $dt = $nRes[0]['date'];
+                if ($dt == $usedDate) {
+                    $querry = $con->prepare("SELECT * FROM supercrete_chemical WHERE date = :date");
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                    $val = $querry->fetchAll();
+                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
+                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+
+                    $querry = $con->prepare("UPDATE supercrete_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
+                    $querry->bindValue('val1', $val1);
+                    $querry->bindValue('cb', $closeBal);
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                } else {
+                    $date = new \DateTime($usedDate);
+                    $entry = new \sepBundle\Entity\SupercreteChemical();
+                    $entry->setDate($date);
+                    $entry->setOpeningBalance($nRes[0]['clossing_balance']);
+                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setStockPurchased(0);
+                    $entry->setStockUsed($qty);
+                    $entry->setNetCost(0);
+                    $entry->setMonth($month);
+                    $entry->setYear($year);
+
+                    $em->persist($entry);
+                    $em->flush();
+                }
+
+
+                $querry = $con->prepare("SELECT * FROM supercrete_chemical WHERE date = :date");
+                $querry->bindValue('date', $usedDate);
+                $querry->execute();
+                $res = $querry->fetchAll();
+
+            }
+            
+            //Chemical 3
+            if ($rmType == "Supercrete - HS") {
+                $querry = $con->prepare("SELECT * FROM supercrete_hs_chemical ORDER BY date DESC LIMIT 1");
+                $querry->execute();
+                $nRes = $querry->fetchAll();
+                $dt = $nRes[0]['date'];
+                if ($dt == $usedDate) {
+                    $querry = $con->prepare("SELECT * FROM supercrete_hs_chemical WHERE date = :date");
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                    $val = $querry->fetchAll();
+                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
+                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+
+                    $querry = $con->prepare("UPDATE supercrete_hs_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
+                    $querry->bindValue('val1', $val1);
+                    $querry->bindValue('cb', $closeBal);
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                } else {
+                    $date = new \DateTime($usedDate);
+                    $entry = new \sepBundle\Entity\SupercreteHsChemical();
+                    $entry->setDate($date);
+                    $entry->setOpeningBalance($nRes[0]['clossing_balance']);
+                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setStockPurchased(0);
+                    $entry->setStockUsed($qty);
+                    $entry->setNetCost(0);
+                    $entry->setMonth($month);
+                    $entry->setYear($year);
+
+                    $em->persist($entry);
+                    $em->flush();
+                }
+
+
+                $querry = $con->prepare("SELECT * FROM supercrete_hs_chemical WHERE date = :date");
+                $querry->bindValue('date', $usedDate);
+                $querry->execute();
+                $res = $querry->fetchAll();
+
+            }
+            
+            //Chemical 4
+            if ($rmType == "Rheobuild 561") {
+                $querry = $con->prepare("SELECT * FROM rheobuild561_chemical ORDER BY date DESC LIMIT 1");
+                $querry->execute();
+                $nRes = $querry->fetchAll();
+                $dt = $nRes[0]['date'];
+                if ($dt == $usedDate) {
+                    $querry = $con->prepare("SELECT * FROM rheobuild561_chemical WHERE date = :date");
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                    $val = $querry->fetchAll();
+                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
+                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+
+                    $querry = $con->prepare("UPDATE rheobuild561_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
+                    $querry->bindValue('val1', $val1);
+                    $querry->bindValue('cb', $closeBal);
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                } else {
+                    $date = new \DateTime($usedDate);
+                    $entry = new \sepBundle\Entity\Rheobuild561Chemical();
+                    $entry->setDate($date);
+                    $entry->setOpeningBalance($nRes[0]['clossing_balance']);
+                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setStockPurchased(0);
+                    $entry->setStockUsed($qty);
+                    $entry->setNetCost(0);
+                    $entry->setMonth($month);
+                    $entry->setYear($year);
+
+                    $em->persist($entry);
+                    $em->flush();
+                }
+
+
+                $querry = $con->prepare("SELECT * FROM rheobuild561_chemical WHERE date = :date");
+                $querry->bindValue('date', $usedDate);
+                $querry->execute();
+                $res = $querry->fetchAll();
+
+            }
+            
+            //Chemical 5
+            if ($rmType == "Rheobuild 1000") {
+                $querry = $con->prepare("SELECT * FROM rheobuild1000_chemical ORDER BY date DESC LIMIT 1");
+                $querry->execute();
+                $nRes = $querry->fetchAll();
+                $dt = $nRes[0]['date'];
+                if ($dt == $usedDate) {
+                    $querry = $con->prepare("SELECT * FROM rheobuild1000_chemical WHERE date = :date");
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                    $val = $querry->fetchAll();
+                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
+                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+
+                    $querry = $con->prepare("UPDATE rheobuild1000_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
+                    $querry->bindValue('val1', $val1);
+                    $querry->bindValue('cb', $closeBal);
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                } else {
+                    $date = new \DateTime($usedDate);
+                    $entry = new \sepBundle\Entity\Rheobuild1000Chemical();
+                    $entry->setDate($date);
+                    $entry->setOpeningBalance($nRes[0]['clossing_balance']);
+                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setStockPurchased(0);
+                    $entry->setStockUsed($qty);
+                    $entry->setNetCost(0);
+                    $entry->setMonth($month);
+                    $entry->setYear($year);
+
+                    $em->persist($entry);
+                    $em->flush();
+                }
+
+
+                $querry = $con->prepare("SELECT * FROM rheobuild1000_chemical WHERE date = :date");
+                $querry->bindValue('date', $usedDate);
+                $querry->execute();
+                $res = $querry->fetchAll();
+
+            }
+            
+            //Chemical 6
+            if ($rmType == "Pozzolith 300R") {
+                $querry = $con->prepare("SELECT * FROM pozzolith300r_chemical ORDER BY date DESC LIMIT 1");
+                $querry->execute();
+                $nRes = $querry->fetchAll();
+                $dt = $nRes[0]['date'];
+                if ($dt == $usedDate) {
+                    $querry = $con->prepare("SELECT * FROM pozzolith300r_chemical WHERE date = :date");
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                    $val = $querry->fetchAll();
+                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
+                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+
+                    $querry = $con->prepare("UPDATE pozzolith300r_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
+                    $querry->bindValue('val1', $val1);
+                    $querry->bindValue('cb', $closeBal);
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                } else {
+                    $date = new \DateTime($usedDate);
+                    $entry = new \sepBundle\Entity\Pozzolith300rChemical();
+                    $entry->setDate($date);
+                    $entry->setOpeningBalance($nRes[0]['clossing_balance']);
+                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setStockPurchased(0);
+                    $entry->setStockUsed($qty);
+                    $entry->setNetCost(0);
+                    $entry->setMonth($month);
+                    $entry->setYear($year);
+
+                    $em->persist($entry);
+                    $em->flush();
+                }
+
+
+                $querry = $con->prepare("SELECT * FROM pozzolith300r_chemical WHERE date = :date");
+                $querry->bindValue('date', $usedDate);
+                $querry->execute();
+                $res = $querry->fetchAll();
+
+            }
+            
             if ($rmType == "Sand") {
                 $querry = $con->prepare("SELECT * FROM sand ORDER BY date DESC LIMIT 1");
                 $querry->execute();
@@ -1922,6 +3325,7 @@ class UserProfileController extends Controller {
         }
     }
 
+    //Done
     public function inventoryReorderMgtAction($url, Request $request){
         $session = $request->getSession();
         $userid=$session->get('id');
@@ -1954,7 +3358,7 @@ class UserProfileController extends Controller {
     }
 
 
-    
+    //Done
     public function salesAnalysisAction($url, Request $request) {
         $session = $request->getSession();
         $userid=$session->get('id');
@@ -2034,6 +3438,7 @@ class UserProfileController extends Controller {
         }
     }
     
+    //Done
     public function salesEntryAction($url, Request $request) {
         
         $session = $request->getSession();
@@ -2136,6 +3541,7 @@ class UserProfileController extends Controller {
 
     }
 
+    //Done
         public function salesOrderEntryAction($url, Request $request) {
         
         $session = $request->getSession();
@@ -2185,6 +3591,7 @@ class UserProfileController extends Controller {
 
     }
     
+    //Done
     public function verifyCreditSalesEntryAction($url, Request $request) {
         if ($request->getMethod() == "POST") {
             $val = $request->get('paymentVal');
@@ -2209,6 +3616,7 @@ class UserProfileController extends Controller {
         }
     }
 
+    //Done
     public function creditSalesEntryAction($url, Request $request) {
         
         $session = $request->getSession();
@@ -2246,6 +3654,7 @@ class UserProfileController extends Controller {
 
     }
 
+    //Done
     public function selectCustomerAction($url, Request $request) {
         if ($request->getMethod() == "POST") {
             $sid = $request->get('salesID');
@@ -2261,6 +3670,7 @@ class UserProfileController extends Controller {
         }
     }
     
+    //Done
     public function SalesOrderDetailsAction($url, Request $request) {
         if ($request->getMethod() == "POST") {
             $salesOrderDetails = $request->get('salesDescID');
@@ -2278,6 +3688,7 @@ class UserProfileController extends Controller {
         }
     }
     
+    //Done
     public function cancelSalesOrderAction($url, Request $request) {
         $session = $request->getSession();
         $userid=$session->get('id');
@@ -2306,6 +3717,7 @@ class UserProfileController extends Controller {
 
     }
 
+    //Done
         public function profitAnalysisAction($url, Request $request) {
         $session = $request->getSession();
         $userid=$session->get('id');
@@ -2326,8 +3738,18 @@ class UserProfileController extends Controller {
         $con = $em->getConnection();
         $income = (int) 0;
         $cost = (int) 0;
-        $cost_cement = (int) 0;
-        $cost_chemical = (int) 0;
+        
+        $cost_holcim_extra_cement = (int) 0;
+        $cost_holcim_ready = (int) 0;
+        $cost_ordinary_portland = (int) 0;
+        
+        $cost_adcrete = (int) 0;
+        $cost_pozzolith300r = (int) 0;
+        $cost_rheobuild561 = (int) 0;
+        $cost_rheobuild1000 = (int) 0;
+        $cost_supercrete = (int) 0;
+        $cost_supercrete_hs = (int) 0;
+        
         $cost_sand = (int) 0;
         $cost_metal = (int) 0;
         $cost_m_sand = (int) 0;
@@ -2342,20 +3764,76 @@ class UserProfileController extends Controller {
             $income = $income + (int) $sales[$i]["sales_amount"];
         }
 
-        //Costs - Cement
-        $q1 = $con->prepare("SELECT * FROM cement ORDER BY date DESC");
+        //Costs - Cement 1
+        $q1 = $con->prepare("SELECT * FROM holcim_extra_cement ORDER BY date DESC");
         $q1->execute();
-        $cement = $q1->fetchAll();
-        for ($i = 0; $i < sizeof($cement); $i++) {
-            $cost_cement = $cost_cement + (int) $cement[$i]["net_cost"];
+        $holcim_extra_cement = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($holcim_extra_cement); $i++) {
+            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (int) $holcim_extra_cement[$i]["net_cost"];
+        }
+        
+        //Costs - Cement 2
+        $q1 = $con->prepare("SELECT * FROM holcim_ready_flow_plus_cement ORDER BY date DESC");
+        $q1->execute();
+        $holcim_ready_flow_plus = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($holcim_ready_flow_plus); $i++) {
+            $cost_holcim_ready = $cost_holcim_ready + (int) $holcim_ready_flow_plus[$i]["net_cost"];
+        }
+        
+        //Costs - Cement 3
+        $q1 = $con->prepare("SELECT * FROM ordinary_portland_cement_cement ORDER BY date DESC");
+        $q1->execute();
+        $ordinary_portland = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($ordinary_portland); $i++) {
+            $cost_ordinary_portland = $cost_ordinary_portland + (int) $ordinary_portland[$i]["net_cost"];
         }
 
-        //Costs - Chemical
-        $q1 = $con->prepare("SELECT * FROM chemical ORDER BY date DESC");
+        //Costs - Chemical 1
+        $q1 = $con->prepare("SELECT * FROM adcrete_chemical ORDER BY date DESC");
         $q1->execute();
-        $chemical = $q1->fetchAll();
-        for ($i = 0; $i < sizeof($chemical); $i++) {
-            $cost_chemical = $cost_chemical + (int) $chemical[$i]["net_cost"];
+        $adcrete = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($adcrete); $i++) {
+            $cost_adcrete = $cost_adcrete + (int) $adcrete[$i]["net_cost"];
+        }
+        
+        //Costs - Chemical 2
+        $q1 = $con->prepare("SELECT * FROM pozzolith300r_chemical ORDER BY date DESC");
+        $q1->execute();
+        $pozzolith300r = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($pozzolith300r); $i++) {
+            $cost_pozzolith300r = $cost_pozzolith300r + (int) $pozzolith300r[$i]["net_cost"];
+        }
+        
+        //Costs - Chemical 3
+        $q1 = $con->prepare("SELECT * FROM rheobuild561_chemical ORDER BY date DESC");
+        $q1->execute();
+        $rheobuild561 = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($rheobuild561); $i++) {
+            $cost_rheobuild561 = $cost_rheobuild561 + (int) $rheobuild561[$i]["net_cost"];
+        }
+        
+        //Costs - Chemical 4
+        $q1 = $con->prepare("SELECT * FROM rheobuild1000_chemical ORDER BY date DESC");
+        $q1->execute();
+        $rheobuild1000 = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($rheobuild1000); $i++) {
+            $cost_rheobuild1000 = $cost_rheobuild1000 + (int) $rheobuild1000[$i]["net_cost"];
+        }
+        
+        //Costs - Chemical 5
+        $q1 = $con->prepare("SELECT * FROM supercrete_chemical ORDER BY date DESC");
+        $q1->execute();
+        $supercrete = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($supercrete); $i++) {
+            $cost_supercrete = $cost_supercrete + (int) $supercrete[$i]["net_cost"];
+        }
+        
+        //Costs - Chemical 6
+        $q1 = $con->prepare("SELECT * FROM supercrete_hs_chemical ORDER BY date DESC");
+        $q1->execute();
+        $supercrete_hs = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($supercrete_hs); $i++) {
+            $cost_supercrete_hs = $cost_supercrete_hs + (int) $supercrete_hs[$i]["net_cost"];
         }
 
         //Costs - Sand
@@ -2411,7 +3889,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $adminExpTitles = $q1->fetchAll();
 
-        $cost = (int) $cost_cement + (int) $cost_chemical + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
+        $cost = (int) $cost_holcim_extra_cement + (int) $cost_holcim_ready + (int) $cost_ordinary_portland + (int) $cost_adcrete + (int) $cost_pozzolith300r + (int) $cost_rheobuild561 + (int) $cost_rheobuild1000 + (int) $cost_supercrete + (int) $cost_supercrete_hs + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
         $pOrl = $this->calcProfit($income, $cost, $totAdminCost);
         
         
@@ -2420,14 +3898,26 @@ class UserProfileController extends Controller {
         if($userProfilePics[0]['image'] == null){
         return $this->render('sepBundle:Profile:profitAnalysis.html.twig', array('url' => $url, 'toDate' => $testDate, 'user'=>$user, 'userDetails' => $userDetails,
             'profitOrloss' => $pOrl, 'costOfSales'=>$cost, 'income'=>$income, 'adminCost'=>$totAdminCost,
-            'cement'=>$cement, 'chemical'=>$chemical, 'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
+            'holcim_extra'=>$holcim_extra_cement, 'holcim_ready'=>$holcim_ready_flow_plus, 'ordinary_portland'=>$ordinary_portland,
+            
+            'adcrete'=>$adcrete, 'pozzolith300r'=>$pozzolith300r, 'rheobuild561'=>$rheobuild561,
+            
+            'rheobuild1000'=>$rheobuild1000, 'supercrete'=>$supercrete, 'supercrete_hs'=>$supercrete_hs,
+            
+            'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
             'im'=>$userProfilePics, 'flag1' => false, 'flag2' => true));
         }
         
         else{
         return $this->render('sepBundle:Profile:profitAnalysis.html.twig', array('url' => $url, 'toDate' => $testDate, 'user'=>$user, 'userDetails' => $userDetails,
             'profitOrloss' => $pOrl, 'costOfSales'=>$cost, 'income'=>$income, 'adminCost'=>$totAdminCost,
-            'cement'=>$cement, 'chemical'=>$chemical, 'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
+            'holcim_extra'=>$holcim_extra_cement, 'holcim_ready'=>$holcim_ready_flow_plus, 'ordinary_portland'=>$ordinary_portland,
+            
+            'adcrete'=>$adcrete, 'pozzolith300r'=>$pozzolith300r, 'rheobuild561'=>$rheobuild561,
+            
+            'rheobuild1000'=>$rheobuild1000, 'supercrete'=>$supercrete, 'supercrete_hs'=>$supercrete_hs,
+            
+            'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
             'im'=>$userProfilePics, 'flag1' => true, 'flag2' => false));
         }
         
@@ -2438,6 +3928,7 @@ class UserProfileController extends Controller {
         }
     } 
     
+    //Done
     public function periodProfitAction($url, Request $request) {
         
                 $session = $request->getSession();
@@ -2483,8 +3974,18 @@ class UserProfileController extends Controller {
             $con = $em->getConnection();
             $income = (int) 0;
             $cost = (int) 0;
-            $cost_cement = (int) 0;
-            $cost_chemical = (int) 0;
+            
+            $cost_holcim_extra_cement = (int) 0;
+            $cost_holcim_ready = (int) 0;
+            $cost_ordinary_portland = (int) 0;
+
+            $cost_adcrete = (int) 0;
+            $cost_pozzolith300r = (int) 0;
+            $cost_rheobuild561 = (int) 0;
+            $cost_rheobuild1000 = (int) 0;
+            $cost_supercrete = (int) 0;
+            $cost_supercrete_hs = (int) 0;
+
             $cost_sand = (int) 0;
             $cost_metal = (int) 0;
             $cost_m_sand = (int) 0;
@@ -2501,25 +4002,95 @@ class UserProfileController extends Controller {
                 $income = $income + (int) $sales[$i]["sales_amount"];
             }
 
-            //Costs - Cement
-            $q1 = $con->prepare("SELECT * FROM cement WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            //Costs - Cement 1
+            $q1 = $con->prepare("SELECT * FROM holcim_extra_cement WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
             $q1->bindValue('sd', $strtDate);
             $q1->bindValue('ed', $endDate);
             $q1->execute();
-            $cement = $q1->fetchAll();
-            for ($i = 0; $i < sizeof($cement); $i++) {
-                $cost_cement = $cost_cement + (int) $cement[$i]["net_cost"];
-            }
-
-            //Costs - Chemical
-            $q1 = $con->prepare("SELECT * FROM chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $holcim_extra_cement = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($holcim_extra_cement); $i++) {
+            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (int) $holcim_extra_cement[$i]["net_cost"];
+        }
+            
+            //Costs - Cement 2
+            $q1 = $con->prepare("SELECT * FROM holcim_ready_flow_plus_cement WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
             $q1->bindValue('sd', $strtDate);
             $q1->bindValue('ed', $endDate);
             $q1->execute();
-            $chemical = $q1->fetchAll();
-            for ($i = 0; $i < sizeof($chemical); $i++) {
-                $cost_chemical = $cost_chemical + (int) $chemical[$i]["net_cost"];
-            }
+            $holcim_ready_flow_plus = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($holcim_ready_flow_plus); $i++) {
+            $cost_holcim_ready = $cost_holcim_ready + (int) $holcim_ready_flow_plus[$i]["net_cost"];
+        }
+            
+            //Costs - Cement 3
+            $q1 = $con->prepare("SELECT * FROM ordinary_portland_cement_cement WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+            $ordinary_portland = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($ordinary_portland); $i++) {
+            $cost_ordinary_portland = $cost_ordinary_portland + (int) $ordinary_portland[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 1
+            $q1 = $con->prepare("SELECT * FROM adcrete_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+           $adcrete = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($adcrete); $i++) {
+            $cost_adcrete = $cost_adcrete + (int) $adcrete[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 2
+            $q1 = $con->prepare("SELECT * FROM pozzolith300r_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+            $pozzolith300r = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($pozzolith300r); $i++) {
+            $cost_pozzolith300r = $cost_pozzolith300r + (int) $pozzolith300r[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 3
+            $q1 = $con->prepare("SELECT * FROM rheobuild561_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+           $rheobuild561 = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($rheobuild561); $i++) {
+            $cost_rheobuild561 = $cost_rheobuild561 + (int) $rheobuild561[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 4
+            $q1 = $con->prepare("SELECT * FROM rheobuild1000_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+            $rheobuild1000 = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($rheobuild1000); $i++) {
+            $cost_rheobuild1000 = $cost_rheobuild1000 + (int) $rheobuild1000[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 5
+            $q1 = $con->prepare("SELECT * FROM supercrete_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+            $supercrete = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($supercrete); $i++) {
+            $cost_supercrete = $cost_supercrete + (int) $supercrete[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 6
+            $q1 = $con->prepare("SELECT * FROM supercrete_hs_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+            $supercrete_hs = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($supercrete_hs); $i++) {
+            $cost_supercrete_hs = $cost_supercrete_hs + (int) $supercrete_hs[$i]["net_cost"];
+        }
 
             //Costs - Sand
             $q1 = $con->prepare("SELECT * FROM sand WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
@@ -2586,7 +4157,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $adminExpTitles = $q1->fetchAll();
 
-            $cost = (int) $cost_cement + (int) $cost_chemical + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
+            $cost = (int) $cost_holcim_extra_cement + (int) $cost_holcim_ready + (int) $cost_ordinary_portland + (int) $cost_adcrete + (int) $cost_pozzolith300r + (int) $cost_rheobuild561 + (int) $cost_rheobuild1000 + (int) $cost_supercrete + (int) $cost_supercrete_hs + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
             $pOrl = $this->calcProfit($income, $cost, $totAdminCost);
             
             $userProfilePics = $this->displayImage($url);
@@ -2595,14 +4166,24 @@ class UserProfileController extends Controller {
             {
                 return $this->render('sepBundle:Profile:profitAnalysis.html.twig', array('url' => $url, 'toDate' => $testDate, 'user'=>$user, 'userDetails' => $userDetails,
                     'profitOrloss' => $pOrl, 'costOfSales'=>$cost, 'income'=>$income, 'adminCost'=>$totAdminCost,
-                    'cement'=>$cement, 'chemical'=>$chemical, 'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
+                    'holcim_extra'=>$holcim_extra_cement, 'holcim_ready'=>$holcim_ready_flow_plus, 'ordinary_portland'=>$ordinary_portland,
+            
+                    'adcrete'=>$adcrete, 'pozzolith300r'=>$pozzolith300r, 'rheobuild561'=>$rheobuild561,
+            
+                    'rheobuild1000'=>$rheobuild1000, 'supercrete'=>$supercrete, 'supercrete_hs'=>$supercrete_hs, 
+                    'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
                     'im'=>$userProfilePics, 'flag1' => false, 'flag2' => true));
             }
 
             else{
                 return $this->render('sepBundle:Profile:profitAnalysis.html.twig', array('url' => $url, 'toDate' => $testDate, 'user'=>$user, 'userDetails' => $userDetails,
                     'profitOrloss' => $pOrl, 'costOfSales'=>$cost, 'income'=>$income, 'adminCost'=>$totAdminCost,
-                    'cement'=>$cement, 'chemical'=>$chemical, 'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
+                    'holcim_extra'=>$holcim_extra_cement, 'holcim_ready'=>$holcim_ready_flow_plus, 'ordinary_portland'=>$ordinary_portland,
+            
+                    'adcrete'=>$adcrete, 'pozzolith300r'=>$pozzolith300r, 'rheobuild561'=>$rheobuild561,
+            
+                    'rheobuild1000'=>$rheobuild1000, 'supercrete'=>$supercrete, 'supercrete_hs'=>$supercrete_hs,
+                    'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
                     'im'=>$userProfilePics, 'flag1' => true, 'flag2' => false));
             }
         
@@ -2636,8 +4217,18 @@ class UserProfileController extends Controller {
         $con = $em->getConnection();
         $income = (int) 0;
         $cost = (int) 0;
-        $cost_cement = (int) 0;
-        $cost_chemical = (int) 0;
+        
+        $cost_holcim_extra_cement = (int) 0;
+        $cost_holcim_ready = (int) 0;
+        $cost_ordinary_portland = (int) 0;
+
+        $cost_adcrete = (int) 0;
+        $cost_pozzolith300r = (int) 0;
+        $cost_rheobuild561 = (int) 0;
+        $cost_rheobuild1000 = (int) 0;
+        $cost_supercrete = (int) 0;
+        $cost_supercrete_hs = (int) 0;
+        
         $cost_sand = (int) 0;
         $cost_metal = (int) 0;
         $cost_m_sand = (int) 0;
@@ -2652,20 +4243,76 @@ class UserProfileController extends Controller {
             $income = $income + (int) $sales[$i]["payment_received"];
         }
 
-        //Costs - Cement
-        $q1 = $con->prepare("SELECT * FROM cement ORDER BY date DESC");
+        //Costs - Cement 1
+        $q1 = $con->prepare("SELECT * FROM holcim_extra_cement ORDER BY date DESC");
         $q1->execute();
-        $cement = $q1->fetchAll();
-        for ($i = 0; $i < sizeof($cement); $i++) {
-            $cost_cement = $cost_cement + (int) $cement[$i]["net_cost"];
+        $holcim_extra_cement = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($holcim_extra_cement); $i++) {
+            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (int) $holcim_extra_cement[$i]["net_cost"];
+        }
+        
+        //Costs - Cement 2
+        $q1 = $con->prepare("SELECT * FROM holcim_ready_flow_plus_cement ORDER BY date DESC");
+        $q1->execute();
+        $holcim_ready_flow_plus = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($holcim_ready_flow_plus); $i++) {
+            $cost_holcim_ready = $cost_holcim_ready + (int) $holcim_ready_flow_plus[$i]["net_cost"];
+        }
+        
+        //Costs - Cement 3
+        $q1 = $con->prepare("SELECT * FROM ordinary_portland_cement_cement ORDER BY date DESC");
+        $q1->execute();
+        $ordinary_portland = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($ordinary_portland); $i++) {
+            $cost_ordinary_portland = $cost_ordinary_portland + (int) $ordinary_portland[$i]["net_cost"];
         }
 
-        //Costs - Chemical
-        $q1 = $con->prepare("SELECT * FROM chemical ORDER BY date DESC");
+        //Costs - Chemical 1
+        $q1 = $con->prepare("SELECT * FROM adcrete_chemical ORDER BY date DESC");
         $q1->execute();
-        $chemical = $q1->fetchAll();
-        for ($i = 0; $i < sizeof($chemical); $i++) {
-            $cost_chemical = $cost_chemical + (int) $chemical[$i]["net_cost"];
+        $adcrete = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($adcrete); $i++) {
+            $cost_adcrete = $cost_adcrete + (int) $adcrete[$i]["net_cost"];
+        }
+        
+        //Costs - Chemical 2
+        $q1 = $con->prepare("SELECT * FROM pozzolith300r_chemical ORDER BY date DESC");
+        $q1->execute();
+        $pozzolith300r = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($pozzolith300r); $i++) {
+            $cost_pozzolith300r = $cost_pozzolith300r + (int) $pozzolith300r[$i]["net_cost"];
+        }
+        
+        //Costs - Chemical 3
+        $q1 = $con->prepare("SELECT * FROM rheobuild561_chemical ORDER BY date DESC");
+        $q1->execute();
+        $rheobuild561 = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($rheobuild561); $i++) {
+            $cost_rheobuild561 = $cost_rheobuild561 + (int) $rheobuild561[$i]["net_cost"];
+        }
+        
+        //Costs - Chemical 4
+        $q1 = $con->prepare("SELECT * FROM rheobuild1000_chemical ORDER BY date DESC");
+        $q1->execute();
+        $rheobuild1000 = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($rheobuild1000); $i++) {
+            $cost_rheobuild1000 = $cost_rheobuild1000 + (int) $rheobuild1000[$i]["net_cost"];
+        }
+        
+        //Costs - Chemical 5
+        $q1 = $con->prepare("SELECT * FROM supercrete_chemical ORDER BY date DESC");
+        $q1->execute();
+        $supercrete = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($supercrete); $i++) {
+            $cost_supercrete = $cost_supercrete + (int) $supercrete[$i]["net_cost"];
+        }
+        
+        //Costs - Chemical 6
+        $q1 = $con->prepare("SELECT * FROM supercrete_hs_chemical ORDER BY date DESC");
+        $q1->execute();
+        $supercrete_hs = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($supercrete_hs); $i++) {
+            $cost_supercrete_hs = $cost_supercrete_hs + (int) $supercrete_hs[$i]["net_cost"];
         }
 
         //Costs - Sand
@@ -2721,7 +4368,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $adminExpTitles = $q1->fetchAll();
 
-        $cost = (int) $cost_cement + (int) $cost_chemical + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
+        $cost = (int) $cost_holcim_extra_cement + (int) $cost_holcim_ready + (int) $cost_ordinary_portland + (int) $cost_adcrete + (int) $cost_pozzolith300r + (int) $cost_rheobuild561 + (int) $cost_rheobuild1000 + (int) $cost_supercrete + (int) $cost_supercrete_hs + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
         $pOrl = $this->calcProfit($income, $cost, $totAdminCost);
         
         
@@ -2730,14 +4377,24 @@ class UserProfileController extends Controller {
         if($userProfilePics[0]['image'] == null){
         return $this->render('sepBundle:Profile:cashFlowAnalysis.html.twig', array('url' => $url, 'toDate' => $testDate, 'user'=>$user, 'userDetails' => $userDetails,
             'profitOrloss' => $pOrl, 'costOfSales'=>$cost, 'income'=>$income, 'adminCost'=>$totAdminCost,
-            'cement'=>$cement, 'chemical'=>$chemical, 'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
+            'holcim_extra'=>$holcim_extra_cement, 'holcim_ready'=>$holcim_ready_flow_plus, 'ordinary_portland'=>$ordinary_portland,
+            
+            'adcrete'=>$adcrete, 'pozzolith300r'=>$pozzolith300r, 'rheobuild561'=>$rheobuild561,
+            
+            'rheobuild1000'=>$rheobuild1000, 'supercrete'=>$supercrete, 'supercrete_hs'=>$supercrete_hs, 
+            'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
             'im'=>$userProfilePics, 'flag1' => false, 'flag2' => true));
         }
         
         else{
         return $this->render('sepBundle:Profile:cashFlowAnalysis.html.twig', array('url' => $url, 'toDate' => $testDate, 'user'=>$user, 'userDetails' => $userDetails,
             'profitOrloss' => $pOrl, 'costOfSales'=>$cost, 'income'=>$income, 'adminCost'=>$totAdminCost,
-            'cement'=>$cement, 'chemical'=>$chemical, 'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
+            'holcim_extra'=>$holcim_extra_cement, 'holcim_ready'=>$holcim_ready_flow_plus, 'ordinary_portland'=>$ordinary_portland,
+            
+            'adcrete'=>$adcrete, 'pozzolith300r'=>$pozzolith300r, 'rheobuild561'=>$rheobuild561,
+            
+            'rheobuild1000'=>$rheobuild1000, 'supercrete'=>$supercrete, 'supercrete_hs'=>$supercrete_hs, 
+            'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
             'im'=>$userProfilePics, 'flag1' => true, 'flag2' => false));
         }
         
@@ -2792,10 +4449,21 @@ class UserProfileController extends Controller {
 
             $em = $this->getDoctrine()->getEntityManager();
             $con = $em->getConnection();
+            
             $income = (int) 0;
             $cost = (int) 0;
-            $cost_cement = (int) 0;
-            $cost_chemical = (int) 0;
+            
+            $cost_holcim_extra_cement = (int) 0;
+            $cost_holcim_ready = (int) 0;
+            $cost_ordinary_portland = (int) 0;
+
+            $cost_adcrete = (int) 0;
+            $cost_pozzolith300r = (int) 0;
+            $cost_rheobuild561 = (int) 0;
+            $cost_rheobuild1000 = (int) 0;
+            $cost_supercrete = (int) 0;
+            $cost_supercrete_hs = (int) 0;
+            
             $cost_sand = (int) 0;
             $cost_metal = (int) 0;
             $cost_m_sand = (int) 0;
@@ -2812,25 +4480,95 @@ class UserProfileController extends Controller {
                 $income = $income + (int) $sales[$i]["payment_received"];
             }
 
-            //Costs - Cement
-            $q1 = $con->prepare("SELECT * FROM cement WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            //Costs - Cement 1
+            $q1 = $con->prepare("SELECT * FROM holcim_extra_cement WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
             $q1->bindValue('sd', $strtDate);
             $q1->bindValue('ed', $endDate);
             $q1->execute();
-            $cement = $q1->fetchAll();
-            for ($i = 0; $i < sizeof($cement); $i++) {
-                $cost_cement = $cost_cement + (int) $cement[$i]["net_cost"];
-            }
-
-            //Costs - Chemical
-            $q1 = $con->prepare("SELECT * FROM chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $holcim_extra_cement = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($holcim_extra_cement); $i++) {
+            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (int) $holcim_extra_cement[$i]["net_cost"];
+        }
+            
+            //Costs - Cement 2
+            $q1 = $con->prepare("SELECT * FROM holcim_ready_flow_plus_cement WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
             $q1->bindValue('sd', $strtDate);
             $q1->bindValue('ed', $endDate);
             $q1->execute();
-            $chemical = $q1->fetchAll();
-            for ($i = 0; $i < sizeof($chemical); $i++) {
-                $cost_chemical = $cost_chemical + (int) $chemical[$i]["net_cost"];
-            }
+            $holcim_ready_flow_plus = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($holcim_ready_flow_plus); $i++) {
+            $cost_holcim_ready = $cost_holcim_ready + (int) $holcim_ready_flow_plus[$i]["net_cost"];
+        }
+            
+            //Costs - Cement 3
+            $q1 = $con->prepare("SELECT * FROM ordinary_portland_cement_cement WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+            $ordinary_portland = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($ordinary_portland); $i++) {
+            $cost_ordinary_portland = $cost_ordinary_portland + (int) $ordinary_portland[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 1
+            $q1 = $con->prepare("SELECT * FROM adcrete_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+           $adcrete = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($adcrete); $i++) {
+            $cost_adcrete = $cost_adcrete + (int) $adcrete[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 2
+            $q1 = $con->prepare("SELECT * FROM pozzolith300r_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+            $pozzolith300r = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($pozzolith300r); $i++) {
+            $cost_pozzolith300r = $cost_pozzolith300r + (int) $pozzolith300r[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 3
+            $q1 = $con->prepare("SELECT * FROM rheobuild561_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+           $rheobuild561 = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($rheobuild561); $i++) {
+            $cost_rheobuild561 = $cost_rheobuild561 + (int) $rheobuild561[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 4
+            $q1 = $con->prepare("SELECT * FROM rheobuild1000_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+            $rheobuild1000 = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($rheobuild1000); $i++) {
+            $cost_rheobuild1000 = $cost_rheobuild1000 + (int) $rheobuild1000[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 5
+            $q1 = $con->prepare("SELECT * FROM supercrete_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+            $supercrete = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($supercrete); $i++) {
+            $cost_supercrete = $cost_supercrete + (int) $supercrete[$i]["net_cost"];
+        }
+            
+            //Costs - Chemical 6
+            $q1 = $con->prepare("SELECT * FROM supercrete_hs_chemical WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
+            $q1->bindValue('sd', $strtDate);
+            $q1->bindValue('ed', $endDate);
+            $q1->execute();
+            $supercrete_hs = $q1->fetchAll();
+        for ($i = 0; $i < sizeof($supercrete_hs); $i++) {
+            $cost_supercrete_hs = $cost_supercrete_hs + (int) $supercrete_hs[$i]["net_cost"];
+        }
 
             //Costs - Sand
             $q1 = $con->prepare("SELECT * FROM sand WHERE date BETWEEN :sd AND :ed ORDER BY date DESC");
@@ -2897,7 +4635,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $adminExpTitles = $q1->fetchAll();
 
-            $cost = (int) $cost_cement + (int) $cost_chemical + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
+            $cost = (int) $cost_holcim_extra_cement + (int) $cost_holcim_ready + (int) $cost_ordinary_portland + (int) $cost_adcrete + (int) $cost_pozzolith300r + (int) $cost_rheobuild561 + (int) $cost_rheobuild1000 + (int) $cost_supercrete + (int) $cost_supercrete_hs + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
             $pOrl = $this->calcProfit($income, $cost, $totAdminCost);
             
             $userProfilePics = $this->displayImage($url);
@@ -2906,14 +4644,24 @@ class UserProfileController extends Controller {
             {
                 return $this->render('sepBundle:Profile:cashFlowAnalysis.html.twig', array('url' => $url, 'toDate' => $testDate, 'user'=>$user, 'userDetails' => $userDetails,
                     'profitOrloss' => $pOrl, 'costOfSales'=>$cost, 'income'=>$income, 'adminCost'=>$totAdminCost,
-                    'cement'=>$cement, 'chemical'=>$chemical, 'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
+                    'holcim_extra'=>$holcim_extra_cement, 'holcim_ready'=>$holcim_ready_flow_plus, 'ordinary_portland'=>$ordinary_portland,
+            
+                    'adcrete'=>$adcrete, 'pozzolith300r'=>$pozzolith300r, 'rheobuild561'=>$rheobuild561,
+            
+                    'rheobuild1000'=>$rheobuild1000, 'supercrete'=>$supercrete, 'supercrete_hs'=>$supercrete_hs,  
+                    'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
                     'im'=>$userProfilePics, 'flag1' => false, 'flag2' => true));
             }
 
             else{
                 return $this->render('sepBundle:Profile:cashFlowAnalysis.html.twig', array('url' => $url, 'toDate' => $testDate, 'user'=>$user, 'userDetails' => $userDetails,
                     'profitOrloss' => $pOrl, 'costOfSales'=>$cost, 'income'=>$income, 'adminCost'=>$totAdminCost,
-                    'cement'=>$cement, 'chemical'=>$chemical, 'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
+                    'holcim_extra'=>$holcim_extra_cement, 'holcim_ready'=>$holcim_ready_flow_plus, 'ordinary_portland'=>$ordinary_portland,
+            
+                    'adcrete'=>$adcrete, 'pozzolith300r'=>$pozzolith300r, 'rheobuild561'=>$rheobuild561,
+            
+                    'rheobuild1000'=>$rheobuild1000, 'supercrete'=>$supercrete, 'supercrete_hs'=>$supercrete_hs, 
+                    'sand'=>$sand, 'chips'=>$chips, 'mSand'=>$mSand, 'diesel'=>$diesel, 'metal'=>$metal, 'adminExpenses'=> $adminExp, 'adminExpTitles'=>$adminExpTitles, 'sales'=>$sales,
                     'im'=>$userProfilePics, 'flag1' => true, 'flag2' => false));
             }
         

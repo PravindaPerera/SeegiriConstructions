@@ -266,10 +266,10 @@
                       <div class="col-xs-12">
                         <div class="box">
                           <div class="box-header">
-                            <h3 class="box-title">RM - Cement Inventory Status</h3>
+                            <h3 class="box-title">RM - Holcim Extra Cement Inventory Status</h3>
                           </div><!-- /.box-header -->
                           <div class="box-body">
-                            <table id="cement" class="table table-bordered table-hover">
+                            <table id="cement1" class="table table-bordered table-hover">
                                   <thead>
                                       <tr>
                                         <th>ID</th>
@@ -282,9 +282,9 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                                    {%for element in cement%}
+                                    {%for element in holcim_extra_cement%}
                                         <tr>
-                                            <td>{{element.c_id}}</td>
+                                            <td>{{element.id}}</td>
                                             <td>{{element.opening_balance}}</td>
                                             <td>{{element.clossing_balance}}</td>
                                             <td>{{element.stock_purchased}}</td>
@@ -310,15 +310,113 @@
                         </div><!-- /.box -->
                       </div>
                     </div>
+                        
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title">RM - Holcim Ready Flow Plus Cement Inventory Status</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="cement2" class="table table-bordered table-hover">
+                                  <thead>
+                                      <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    {%for element in holcim_ready_flow_plus_cement%}
+                                        <tr>
+                                            <td>{{element.id}}</td>
+                                            <td>{{element.opening_balance}}</td>
+                                            <td>{{element.clossing_balance}}</td>
+                                            <td>{{element.stock_purchased}}</td>
+                                            <td>{{element.stock_used}}</td>
+                                            <td>{{element.net_cost}}</td>
+                                            <td>{{element.date|date('Y-m-d')}}</td>
+                                        </tr>
+                                    {%endfor%}
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                    </tr>
+                                  </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                                  
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title">RM - Ordinary Portland Cement Inventory Status</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="cement3" class="table table-bordered table-hover">
+                                  <thead>
+                                      <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    {%for element in ordinary_portland_cement%}
+                                        <tr>
+                                            <td>{{element.id}}</td>
+                                            <td>{{element.opening_balance}}</td>
+                                            <td>{{element.clossing_balance}}</td>
+                                            <td>{{element.stock_purchased}}</td>
+                                            <td>{{element.stock_used}}</td>
+                                            <td>{{element.net_cost}}</td>
+                                            <td>{{element.date|date('Y-m-d')}}</td>
+                                        </tr>
+                                    {%endfor%}
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                    </tr>
+                                  </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>              
           
                     <div class="row">
                       <div class="col-xs-12">
                         <div class="box">
                           <div class="box-header">
-                            <h3 class="box-title">RM - Chemical Inventory Status</h3>
+                            <h3 class="box-title">RM - Adcrete Chemical Inventory Status</h3>
                           </div><!-- /.box-header -->
                           <div class="box-body">
-                            <table id="chemical" class="table table-bordered table-hover">
+                            <table id="chemical1" class="table table-bordered table-hover">
                                   <thead>
                                       <tr>
                                         <th>ID</th>
@@ -331,9 +429,9 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                                    {%for element in chemical%}
+                                    {%for element in adcrete_chemical%}
                                         <tr>
-                                            <td>{{element.chem_id}}</td>
+                                            <td>{{element.id}}</td>
                                             <td>{{element.opening_balance}}</td>
                                             <td>{{element.clossing_balance}}</td>
                                             <td>{{element.stock_purchased}}</td>
@@ -359,6 +457,251 @@
                         </div><!-- /.box -->
                       </div>
                     </div>
+                                 
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title">RM - Supercrete Chemical Inventory Status</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="chemical2" class="table table-bordered table-hover">
+                                  <thead>
+                                      <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    {%for element in supercrete_chemical%}
+                                        <tr>
+                                            <td>{{element.id}}</td>
+                                            <td>{{element.opening_balance}}</td>
+                                            <td>{{element.clossing_balance}}</td>
+                                            <td>{{element.stock_purchased}}</td>
+                                            <td>{{element.stock_used}}</td>
+                                            <td>{{element.net_cost}}</td>
+                                            <td>{{element.date|date('Y-m-d')}}</td>
+                                        </tr>
+                                    {%endfor%}
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                    </tr>
+                                  </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                                  
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title">RM - Supercrete - HS Chemical Inventory Status</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="chemical3" class="table table-bordered table-hover">
+                                  <thead>
+                                      <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    {%for element in supercrete_hs_chemical%}
+                                        <tr>
+                                            <td>{{element.id}}</td>
+                                            <td>{{element.opening_balance}}</td>
+                                            <td>{{element.clossing_balance}}</td>
+                                            <td>{{element.stock_purchased}}</td>
+                                            <td>{{element.stock_used}}</td>
+                                            <td>{{element.net_cost}}</td>
+                                            <td>{{element.date|date('Y-m-d')}}</td>
+                                        </tr>
+                                    {%endfor%}
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                    </tr>
+                                  </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                                  
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title">RM - Rheobuild 561 Chemical Inventory Status</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="chemical4" class="table table-bordered table-hover">
+                                  <thead>
+                                      <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    {%for element in rheobuild561_chemical%}
+                                        <tr>
+                                            <td>{{element.id}}</td>
+                                            <td>{{element.opening_balance}}</td>
+                                            <td>{{element.clossing_balance}}</td>
+                                            <td>{{element.stock_purchased}}</td>
+                                            <td>{{element.stock_used}}</td>
+                                            <td>{{element.net_cost}}</td>
+                                            <td>{{element.date|date('Y-m-d')}}</td>
+                                        </tr>
+                                    {%endfor%}
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                    </tr>
+                                  </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                                  
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title">RM - Rheobuild 1000 Chemical Inventory Status</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="chemical5" class="table table-bordered table-hover">
+                                  <thead>
+                                      <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    {%for element in rheobuild1000_chemical%}
+                                        <tr>
+                                            <td>{{element.id}}</td>
+                                            <td>{{element.opening_balance}}</td>
+                                            <td>{{element.clossing_balance}}</td>
+                                            <td>{{element.stock_purchased}}</td>
+                                            <td>{{element.stock_used}}</td>
+                                            <td>{{element.net_cost}}</td>
+                                            <td>{{element.date|date('Y-m-d')}}</td>
+                                        </tr>
+                                    {%endfor%}
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                    </tr>
+                                  </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>  
+                                  
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title">RM - Pozzolith 300R Chemical Inventory Status</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="chemical6" class="table table-bordered table-hover">
+                                  <thead>
+                                      <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    {%for element in pozzolith300r_chemical%}
+                                        <tr>
+                                            <td>{{element.id}}</td>
+                                            <td>{{element.opening_balance}}</td>
+                                            <td>{{element.clossing_balance}}</td>
+                                            <td>{{element.stock_purchased}}</td>
+                                            <td>{{element.stock_used}}</td>
+                                            <td>{{element.net_cost}}</td>
+                                            <td>{{element.date|date('Y-m-d')}}</td>
+                                        </tr>
+                                    {%endfor%}
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Opening Balance(Qty)</th>
+                                        <th>Clossing Balance(Qty)</th>
+                                        <th>Stock Purchased(Qty)</th>
+                                        <th>Stock Used(Qty)</th>
+                                        <th>Net Cost</th>
+                                        <th>Date</th>
+                                    </tr>
+                                  </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div> 
                                   
                     <div class="row">
                       <div class="col-xs-12">
@@ -962,7 +1305,7 @@
         
         <script>
             $(function () {
-              $("#cement").DataTable({
+              $("#cement1").DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": true,
@@ -975,7 +1318,98 @@
         
         <script>
             $(function () {
-              $("#chemical").DataTable({
+              $("#cement2").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+        <script>
+            $(function () {
+              $("#cement3").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+        <script>
+            $(function () {
+              $("#chemical1").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+        <script>
+            $(function () {
+              $("#chemical2").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+        <script>
+            $(function () {
+              $("#chemical3").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+        <script>
+            $(function () {
+              $("#chemical4").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+        <script>
+            $(function () {
+              $("#chemical5").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+        <script>
+            $(function () {
+              $("#chemical6").DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": true,
@@ -1038,7 +1472,7 @@
             });
         </script>
         
-                <script>
+        <script>
             $(function () {
               $("#chips").DataTable({
                 "paging": true,

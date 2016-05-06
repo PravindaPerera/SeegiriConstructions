@@ -71,98 +71,420 @@ class AdminProfileController extends Controller
                 $qur->execute();
                 $salesFig = $qur->fetchAll();
                 
-                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM cement where year = :yr GROUP BY month, year ORDER BY year");
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM holcim_extra_cement where year = :yr GROUP BY month, year ORDER BY year");
                 $qur->bindValue('yr', $currYear);
                 $qur->execute();
-                $cost_cement_year = $qur->fetchAll();
+                $holcimExtra_cement = $qur->fetchAll();
 
-                    for ($i = 0; $i < sizeof($cost_cement_year); $i++) {
-                        if($cost_cement_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_cement_year[$i]["sa"];
+                    for ($i = 0; $i < sizeof($holcimExtra_cement); $i++) {
+                        if($holcimExtra_cement[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
                         else{}
 
                     }
-                
-                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM chemical where year = :yr GROUP BY month, year ORDER BY year");
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM holcim_ready_flow_plus_cement where year = :yr GROUP BY month, year ORDER BY year");
                 $qur->bindValue('yr', $currYear);
                 $qur->execute();
-                $cost_chemical_year = $qur->fetchAll();
-                
-                    for ($i = 0; $i < sizeof($cost_chemical_year); $i++) {
-                        if($cost_chemical_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_chemical_year[$i]["sa"];
+                $holcimReadyFlowPlus_cement = $qur->fetchAll();
+
+                    for ($i = 0; $i < sizeof($holcimReadyFlowPlus_cement); $i++) {
+                        if($holcimReadyFlowPlus_cement[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else{}
 
                     }
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM ordinary_portland_cement_cement where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $ordinaryPortlandCement_cement = $qur->fetchAll();
+
+                    for ($i = 0; $i < sizeof($ordinaryPortlandCement_cement); $i++) {
+                        if($ordinaryPortlandCement_cement[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else{}
+
+                    }    
                 
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM adcrete_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $adcrete_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($adcrete_chemical); $i++) {
+                        if($adcrete_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM pozzolith300r_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $pozzolith300r_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($pozzolith300r_chemical); $i++) {
+                        if($pozzolith300r_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }    
+                
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM rheobuild561_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $rheobuild561_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($rheobuild561_chemical); $i++) {
+                        if($rheobuild561_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }  
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM rheobuild1000_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $rheobuild1000_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($rheobuild1000_chemical); $i++) {
+                        if($rheobuild1000_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }   
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM supercrete_hs_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $supercreteHS_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($supercreteHS_chemical); $i++) {
+                        if($supercreteHS_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }   
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM supercrete_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $supercrete_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($supercrete_chemical); $i++) {
+                        if($supercrete_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }    
+                    
                 $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM chips where year = :yr GROUP BY month, year ORDER BY year");
                 $qur->bindValue('yr', $currYear);
                 $qur->execute();
@@ -395,8 +717,15 @@ class AdminProfileController extends Controller
                 
                 
                 $cost = (int) 0;
-                $cost_cement = (int) 0;
-                $cost_chemical = (int) 0;
+                $cost_holcimExtra_cement = (int) 0;
+                $cost_holcimReadyFlowPlus_cement = (int) 0;
+                $cost_ordinaryPortlandCement_cement = (int) 0;
+                $cost_adcrete_chemical = (int) 0;
+                $cost_pozzolith300r_chemical = (int) 0;
+                $cost_rheobuild561_chemical = (int) 0;
+                $cost_rheobuild1000_chemical = (int) 0;
+                $cost_supercreteHS_chemical = (int) 0;
+                $cost_supercrete_chemical = (int) 0;
                 $cost_sand = (int) 0;
                 $cost_metal = (int) 0;
                 $cost_m_sand = (int) 0;
@@ -404,22 +733,85 @@ class AdminProfileController extends Controller
                 $cost_chips = (int) 0;
 
 
-                //Costs - Cement
-                $q1 = $con->prepare("SELECT * FROM cement where year = :yr");
+                //Costs - Cement1
+                $q1 = $con->prepare("SELECT * FROM holcim_extra_cement where year = :yr");
                 $q1->bindValue('yr', $currYear);
                 $q1->execute();
                 $cement = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($cement); $i++) {
-                    $cost_cement = $cost_cement + (int) $cement[$i]["net_cost"];
+                    $cost_holcimExtra_cement = $cost_holcimExtra_cement + (int) $cement[$i]["net_cost"];
+                }
+                
+                //Costs - Cement2
+                $q1 = $con->prepare("SELECT * FROM holcim_ready_flow_plus_cement where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $cement = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($cement); $i++) {
+                    $cost_holcimReadyFlowPlus_cement = $cost_holcimReadyFlowPlus_cement + (int) $cement[$i]["net_cost"];
+                }
+                
+                //Costs - Cement3
+                $q1 = $con->prepare("SELECT * FROM ordinary_portland_cement_cement where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $cement = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($cement); $i++) {
+                    $cost_ordinaryPortlandCement_cement = $cost_ordinaryPortlandCement_cement + (int) $cement[$i]["net_cost"];
                 }
 
-                //Costs - Chemical
-                $q1 = $con->prepare("SELECT * FROM chemical where year = :yr");
+                //Costs - Chemical1
+                $q1 = $con->prepare("SELECT * FROM adcrete_chemical where year = :yr");
                 $q1->bindValue('yr', $currYear);
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_chemical = $cost_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_adcrete_chemical = $cost_adcrete_chemical + (int) $chemical[$i]["net_cost"];
+                }
+                
+                //Costs - Chemical2
+                $q1 = $con->prepare("SELECT * FROM pozzolith300r_chemical where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $chemical = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($chemical); $i++) {
+                    $cost_pozzolith300r_chemical = $cost_pozzolith300r_chemical + (int) $chemical[$i]["net_cost"];
+                }
+                
+                //Costs - Chemical3
+                $q1 = $con->prepare("SELECT * FROM rheobuild561_chemical where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $chemical = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($chemical); $i++) {
+                    $cost_rheobuild561_chemical = $cost_rheobuild561_chemical + (int) $chemical[$i]["net_cost"];
+                }
+                
+                //Costs - Chemical4
+                $q1 = $con->prepare("SELECT * FROM rheobuild1000_chemical where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $chemical = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($chemical); $i++) {
+                    $cost_rheobuild1000_chemical = $cost_rheobuild1000_chemical + (int) $chemical[$i]["net_cost"];
+                }
+                
+                //Costs - Chemical5
+                $q1 = $con->prepare("SELECT * FROM supercrete_hs_chemical where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $chemical = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($chemical); $i++) {
+                    $cost_supercreteHS_chemical = $cost_supercreteHS_chemical + (int) $chemical[$i]["net_cost"];
+                }
+                
+                //Costs - Chemical6
+                $q1 = $con->prepare("SELECT * FROM supercrete_chemical where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $chemical = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($chemical); $i++) {
+                    $cost_supercrete_chemical = $cost_supercrete_chemical + (int) $chemical[$i]["net_cost"];
                 }
 
                 //Costs - Sand
@@ -480,8 +872,15 @@ class AdminProfileController extends Controller
                 
                 return $this->render('sepBundle:Profile:adminProfile.html.twig', array('flag' => false, 'flag1' => false, 'flag2' => false, 'flag3' => false, 'flag4' => false, 'url' => $url, 
                     'userDetails' => $userDetails, 'user' => $user, 'aceeptReq' => $res, 'sd' => $supDetails, 'ud' => $userD, 'sales'=>$salesFig,
-                    'adminCost'=>$totAdminCost, 'cementC'=>$cost_cement, 'chemicalC'=>$cost_chemical, 'sandC'=>$cost_sand, 'chipsC'=>$cost_chips, 'mSandC'=>$cost_m_sand, 'dieselC'=>$cost_diesel, 'metalC'=>$cost_metal,
-                    'cementCYear'=>$cost_cement_year, 'chemicalCYear'=>$cost_chemical_year, 'sandCYear'=>$cost_sand_year, 'chipsCYear'=>$cost_chips_year, 'mSandCYear'=>$cost_m_sand_year, 'dieselCYear'=>$cost_diesel_year, 'metalCYear'=>$cost_metal_year,
+                    'adminCost'=>$totAdminCost, 
+                    'holcimExtracementC'=>$cost_holcimExtra_cement, 'holcimReadyFlowPluscementC'=>$cost_holcimReadyFlowPlus_cement, 'ordinaryPortlandCementcementC'=>$cost_ordinaryPortlandCement_cement,
+                    'adcretechemicalC'=>$cost_adcrete_chemical, 'pozzolith300rchemicalC'=>$cost_pozzolith300r_chemical, 'rheobuild561chemicalC'=>$cost_rheobuild561_chemical,
+                    'rheobuild1000chemicalC'=>$cost_rheobuild1000_chemical, 'supercreteHSchemicalC'=>$cost_supercreteHS_chemical, 'supercretechemicalC'=>$cost_supercrete_chemical,
+                    'sandC'=>$cost_sand, 'chipsC'=>$cost_chips, 'mSandC'=>$cost_m_sand, 'dieselC'=>$cost_diesel, 'metalC'=>$cost_metal,
+                    'holcimExtra_cement'=>$holcimExtra_cement, 'holcimReadyFlowPlus_cement'=>$holcimReadyFlowPlus_cement, 'ordinaryPortlandCement_cement'=>$ordinaryPortlandCement_cement,
+                    'adcrete_chemical'=>$adcrete_chemical, 'pozzolith300r_chemical' => $pozzolith300r_chemical, 'rheobuild561_chemical'=>$rheobuild561_chemical,
+                    'rheobuild1000_chemical'=>$rheobuild1000_chemical, 'supercreteHS_chemical'=>$supercreteHS_chemical, 'supercrete_chemical' => $supercrete_chemical,
+                    'sandCYear'=>$cost_sand_year, 'chipsCYear'=>$cost_chips_year, 'mSandCYear'=>$cost_m_sand_year, 'dieselCYear'=>$cost_diesel_year, 'metalCYear'=>$cost_metal_year,
                     'jan'=>$janCost, 'feb'=>$febCost, 'mar'=>$marCost, 'apr'=>$aprCost, 'may'=>$mayCost, 'jun'=>$junCost, 'jul'=>$julCost, 'aug'=>$augCost, 'sep'=>$sepCost, 'oct'=>$octCost, 'nov'=>$novCost, 'dec'=>$decCost,
                     'currYear'=>$currYear, 'acc_years'=>$acc_years)); 
             } else {
@@ -609,98 +1008,420 @@ class AdminProfileController extends Controller
                 $qur->execute();
                 $salesFig = $qur->fetchAll();
                 
-                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM cement where year = :yr GROUP BY month, year ORDER BY year");
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM holcim_extra_cement where year = :yr GROUP BY month, year ORDER BY year");
                 $qur->bindValue('yr', $currYear);
                 $qur->execute();
-                $cost_cement_year = $qur->fetchAll();
+                $holcimExtra_cement = $qur->fetchAll();
 
-                    for ($i = 0; $i < sizeof($cost_cement_year); $i++) {
-                        if($cost_cement_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_cement_year[$i]["sa"];
+                    for ($i = 0; $i < sizeof($holcimExtra_cement); $i++) {
+                        if($holcimExtra_cement[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
-                        else if($cost_cement_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_cement_year[$i]["sa"];
+                        else if($holcimExtra_cement[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $holcimExtra_cement[$i]["sa"];
                         }
                         else{}
 
                     }
-                
-                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM chemical where year = :yr GROUP BY month, year ORDER BY year");
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM holcim_ready_flow_plus_cement where year = :yr GROUP BY month, year ORDER BY year");
                 $qur->bindValue('yr', $currYear);
                 $qur->execute();
-                $cost_chemical_year = $qur->fetchAll();
-                
-                    for ($i = 0; $i < sizeof($cost_chemical_year); $i++) {
-                        if($cost_chemical_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_chemical_year[$i]["sa"];
+                $holcimReadyFlowPlus_cement = $qur->fetchAll();
+
+                    for ($i = 0; $i < sizeof($holcimReadyFlowPlus_cement); $i++) {
+                        if($holcimReadyFlowPlus_cement[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
-                        else if($cost_chemical_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_chemical_year[$i]["sa"];
+                        else if($holcimReadyFlowPlus_cement[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else{}
 
                     }
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM ordinary_portland_cement_cement where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $ordinaryPortlandCement_cement = $qur->fetchAll();
+
+                    for ($i = 0; $i < sizeof($ordinaryPortlandCement_cement); $i++) {
+                        if($ordinaryPortlandCement_cement[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else if($ordinaryPortlandCement_cement[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                        }
+                        else{}
+
+                    }    
                 
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM adcrete_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $adcrete_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($adcrete_chemical); $i++) {
+                        if($adcrete_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else if($adcrete_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $adcrete_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM pozzolith300r_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $pozzolith300r_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($pozzolith300r_chemical); $i++) {
+                        if($pozzolith300r_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else if($pozzolith300r_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }    
+                
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM rheobuild561_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $rheobuild561_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($rheobuild561_chemical); $i++) {
+                        if($rheobuild561_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild561_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $rheobuild561_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }  
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM rheobuild1000_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $rheobuild1000_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($rheobuild1000_chemical); $i++) {
+                        if($rheobuild1000_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else if($rheobuild1000_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }   
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM supercrete_hs_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $supercreteHS_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($supercreteHS_chemical); $i++) {
+                        if($supercreteHS_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else if($supercreteHS_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $supercreteHS_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }   
+                    
+                $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM supercrete_chemical where year = :yr GROUP BY month, year ORDER BY year");
+                $qur->bindValue('yr', $currYear);
+                $qur->execute();
+                $supercrete_chemical = $qur->fetchAll();
+                
+                    for ($i = 0; $i < sizeof($supercrete_chemical); $i++) {
+                        if($supercrete_chemical[$i]["month"] == "January"){
+                           $janCost =  $janCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "February"){
+                            $febCost =  $febCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "March"){
+                            $marCost =  $marCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "April"){
+                            $aprCost =  $aprCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "May"){
+                            $mayCost =  $mayCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "June"){
+                            $junCost =  $junCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "July"){
+                            $julCost =  $julCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "August"){
+                            $augCost =  $augCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "September"){
+                            $sepCost =  $sepCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "October"){
+                            $octCost =  $octCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "November"){
+                            $novCost =  $novCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else if($supercrete_chemical[$i]["month"] == "December"){
+                            $decCost =  $decCost + (int) $supercrete_chemical[$i]["sa"];
+                        }
+                        else{}
+
+                    }    
+                    
                 $qur = $con->prepare("SELECT sum(net_cost) sa, month, year FROM chips where year = :yr GROUP BY month, year ORDER BY year");
                 $qur->bindValue('yr', $currYear);
                 $qur->execute();
@@ -933,8 +1654,15 @@ class AdminProfileController extends Controller
                 
                 
                 $cost = (int) 0;
-                $cost_cement = (int) 0;
-                $cost_chemical = (int) 0;
+                $cost_holcimExtra_cement = (int) 0;
+                $cost_holcimReadyFlowPlus_cement = (int) 0;
+                $cost_ordinaryPortlandCement_cement = (int) 0;
+                $cost_adcrete_chemical = (int) 0;
+                $cost_pozzolith300r_chemical = (int) 0;
+                $cost_rheobuild561_chemical = (int) 0;
+                $cost_rheobuild1000_chemical = (int) 0;
+                $cost_supercreteHS_chemical = (int) 0;
+                $cost_supercrete_chemical = (int) 0;
                 $cost_sand = (int) 0;
                 $cost_metal = (int) 0;
                 $cost_m_sand = (int) 0;
@@ -942,22 +1670,85 @@ class AdminProfileController extends Controller
                 $cost_chips = (int) 0;
 
 
-                //Costs - Cement
-                $q1 = $con->prepare("SELECT * FROM cement where year = :yr");
+                //Costs - Cement1
+                $q1 = $con->prepare("SELECT * FROM holcim_extra_cement where year = :yr");
                 $q1->bindValue('yr', $currYear);
                 $q1->execute();
                 $cement = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($cement); $i++) {
-                    $cost_cement = $cost_cement + (int) $cement[$i]["net_cost"];
+                    $cost_holcimExtra_cement = $cost_holcimExtra_cement + (int) $cement[$i]["net_cost"];
+                }
+                
+                //Costs - Cement2
+                $q1 = $con->prepare("SELECT * FROM holcim_ready_flow_plus_cement where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $cement = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($cement); $i++) {
+                    $cost_holcimReadyFlowPlus_cement = $cost_holcimReadyFlowPlus_cement + (int) $cement[$i]["net_cost"];
+                }
+                
+                //Costs - Cement3
+                $q1 = $con->prepare("SELECT * FROM ordinary_portland_cement_cement where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $cement = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($cement); $i++) {
+                    $cost_ordinaryPortlandCement_cement = $cost_ordinaryPortlandCement_cement + (int) $cement[$i]["net_cost"];
                 }
 
-                //Costs - Chemical
-                $q1 = $con->prepare("SELECT * FROM chemical where year = :yr");
+                //Costs - Chemical1
+                $q1 = $con->prepare("SELECT * FROM adcrete_chemical where year = :yr");
                 $q1->bindValue('yr', $currYear);
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_chemical = $cost_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_adcrete_chemical = $cost_adcrete_chemical + (int) $chemical[$i]["net_cost"];
+                }
+                
+                //Costs - Chemical2
+                $q1 = $con->prepare("SELECT * FROM pozzolith300r_chemical where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $chemical = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($chemical); $i++) {
+                    $cost_pozzolith300r_chemical = $cost_pozzolith300r_chemical + (int) $chemical[$i]["net_cost"];
+                }
+                
+                //Costs - Chemical3
+                $q1 = $con->prepare("SELECT * FROM rheobuild561_chemical where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $chemical = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($chemical); $i++) {
+                    $cost_rheobuild561_chemical = $cost_rheobuild561_chemical + (int) $chemical[$i]["net_cost"];
+                }
+                
+                //Costs - Chemical4
+                $q1 = $con->prepare("SELECT * FROM rheobuild1000_chemical where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $chemical = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($chemical); $i++) {
+                    $cost_rheobuild1000_chemical = $cost_rheobuild1000_chemical + (int) $chemical[$i]["net_cost"];
+                }
+                
+                //Costs - Chemical5
+                $q1 = $con->prepare("SELECT * FROM supercrete_hs_chemical where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $chemical = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($chemical); $i++) {
+                    $cost_supercreteHS_chemical = $cost_supercreteHS_chemical + (int) $chemical[$i]["net_cost"];
+                }
+                
+                //Costs - Chemical6
+                $q1 = $con->prepare("SELECT * FROM supercrete_chemical where year = :yr");
+                $q1->bindValue('yr', $currYear);
+                $q1->execute();
+                $chemical = $q1->fetchAll();
+                for ($i = 0; $i < sizeof($chemical); $i++) {
+                    $cost_supercrete_chemical = $cost_supercrete_chemical + (int) $chemical[$i]["net_cost"];
                 }
 
                 //Costs - Sand
@@ -1012,14 +1803,23 @@ class AdminProfileController extends Controller
                 for ($i = 0; $i < sizeof($adminExp); $i++) {
                     $totAdminCost = $totAdminCost + (int) $adminExp[$i]["amount"];
                 }
-
+                
+                
+               // return $this->render('sepBundle:Default:index.html.twig', array('rr' => $salesFig));
                 
                 return $this->render('sepBundle:Profile:adminProfile.html.twig', array('flag' => false, 'flag1' => false, 'flag2' => false, 'flag3' => false, 'flag4' => false, 'url' => $url, 
                     'userDetails' => $userDetails, 'user' => $user, 'aceeptReq' => $res, 'sd' => $supDetails, 'ud' => $userD, 'sales'=>$salesFig,
-                    'adminCost'=>$totAdminCost, 'cementC'=>$cost_cement, 'chemicalC'=>$cost_chemical, 'sandC'=>$cost_sand, 'chipsC'=>$cost_chips, 'mSandC'=>$cost_m_sand, 'dieselC'=>$cost_diesel, 'metalC'=>$cost_metal,
-                    'cementCYear'=>$cost_cement_year, 'chemicalCYear'=>$cost_chemical_year, 'sandCYear'=>$cost_sand_year, 'chipsCYear'=>$cost_chips_year, 'mSandCYear'=>$cost_m_sand_year, 'dieselCYear'=>$cost_diesel_year, 'metalCYear'=>$cost_metal_year,
+                    'adminCost'=>$totAdminCost, 
+                    'holcimExtracementC'=>$cost_holcimExtra_cement, 'holcimReadyFlowPluscementC'=>$cost_holcimReadyFlowPlus_cement, 'ordinaryPortlandCementcementC'=>$cost_ordinaryPortlandCement_cement,
+                    'adcretechemicalC'=>$cost_adcrete_chemical, 'pozzolith300rchemicalC'=>$cost_pozzolith300r_chemical, 'rheobuild561chemicalC'=>$cost_rheobuild561_chemical,
+                    'rheobuild1000chemicalC'=>$cost_rheobuild1000_chemical, 'supercreteHSchemicalC'=>$cost_supercreteHS_chemical, 'supercretechemicalC'=>$cost_supercrete_chemical,
+                    'sandC'=>$cost_sand, 'chipsC'=>$cost_chips, 'mSandC'=>$cost_m_sand, 'dieselC'=>$cost_diesel, 'metalC'=>$cost_metal,
+                    'holcimExtra_cement'=>$holcimExtra_cement, 'holcimReadyFlowPlus_cement'=>$holcimReadyFlowPlus_cement, 'ordinaryPortlandCement_cement'=>$ordinaryPortlandCement_cement,
+                    'adcrete_chemical'=>$adcrete_chemical, 'pozzolith300r_chemical' => $pozzolith300r_chemical, 'rheobuild561_chemical'=>$rheobuild561_chemical,
+                    'rheobuild1000_chemical'=>$rheobuild1000_chemical, 'supercreteHS_chemical'=>$supercreteHS_chemical, 'supercrete_chemical' => $supercrete_chemical,
+                    'sandCYear'=>$cost_sand_year, 'chipsCYear'=>$cost_chips_year, 'mSandCYear'=>$cost_m_sand_year, 'dieselCYear'=>$cost_diesel_year, 'metalCYear'=>$cost_metal_year,
                     'jan'=>$janCost, 'feb'=>$febCost, 'mar'=>$marCost, 'apr'=>$aprCost, 'may'=>$mayCost, 'jun'=>$junCost, 'jul'=>$julCost, 'aug'=>$augCost, 'sep'=>$sepCost, 'oct'=>$octCost, 'nov'=>$novCost, 'dec'=>$decCost,
-                    'currYear'=>$currYear, 'acc_years'=>$acc_years));
+                    'currYear'=>$currYear, 'acc_years'=>$acc_years)); 
             }
             else{
                 return $this->redirect($this->generateUrl('sep_homepage'));

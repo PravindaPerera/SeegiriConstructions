@@ -1,0 +1,60 @@
+sepBundle\Entity\Rheobuild1000Chemical:
+    type: entity
+    table: rheobuild1000_chemical
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        openingBalance:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: opening_balance
+        clossingBalance:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: clossing_balance
+        stockPurchased:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: stock_purchased
+        stockUsed:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: stock_used
+        netCost:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: net_cost
+        date:
+            type: date
+            nullable: false
+            comment: ''
+        month:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        year:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

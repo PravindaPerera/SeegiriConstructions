@@ -178,6 +178,22 @@
 
         </script>
         
+        <script type="text/javascript">
+            function validateSalesProceeds(form) {
+                if (form.sales.value < form.payment.value) {
+
+                        alert("Error: Cash payment value should not exceed the total sales value!!!");
+                        form.payment.focus();
+                        return false;
+
+                }
+                
+                return true;
+            
+            }
+            ;
+        </script>
+        
         <script id="source" language="javascript" type="text/javascript">
             function verifyCreditSales(){
                 $(function()
@@ -1113,7 +1129,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">{{userDetails.getFirstName()}} {{userDetails.getLastName()}} - Seegiri Constructions</h4>
               </div>
-              <form role="form" method="POST" action="{{path('submit_sales',{'url':url})}}">
+              <form role="form" onsubmit="return validateSalesProceeds(this);" method="POST" action="{{path('submit_sales',{'url':url})}}">
               <div class="modal-body">
                 <div class="box box-primary">
                     <div class="box-header">

@@ -26,7 +26,7 @@ sepBundle\Entity\SupplierDetails:
         supType:
             type: string
             nullable: false
-            length: 20
+            length: 50
             fixed: false
             comment: ''
             column: sup_type

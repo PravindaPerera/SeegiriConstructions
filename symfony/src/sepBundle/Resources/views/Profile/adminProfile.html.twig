@@ -623,17 +623,59 @@
         var pieChart = new Chart(pieChartCanvas);
         var PieData = [
           {
-            value: {{cementC}},
+            value: {{holcimExtracementC}},
             color: "#f56954",
             highlight: "#f56954",
-            label: "Cement Cost"
+            label: "Holcim Extra"
           },
           {
-            value: {{chemicalC}},
+            value: {{holcimReadyFlowPluscementC}},
+            color: "#999900",
+            highlight: "#999900",
+            label: "Holcim Ready Flow Plus"
+          },
+          {
+            value: {{ordinaryPortlandCementcementC}},
+            color: "#ffc04c",
+            highlight: "#ffc04c",
+            label: "Ordinary Portland Cement"
+          },        
+          {
+            value: {{adcretechemicalC}},
             color: "#00a65a",
             highlight: "#00a65a",
-            label: "Chemical Cost"
+            label: "Adcrete"
           },
+          {
+            value: {{pozzolith300rchemicalC}},
+            color: "#333300",
+            highlight: "#333300",
+            label: "Supercrete"
+          },
+          {
+            value: {{rheobuild561chemicalC}},
+            color: "#664200",
+            highlight: "#664200",
+            label: "Supercrete - HS"
+          },
+          {
+            value: {{rheobuild1000chemicalC}},
+            color: "#004c00",
+            highlight: "#004c00",
+            label: "Rheobuild 561"
+          },
+          {
+            value: {{supercreteHSchemicalC}},
+            color: "#8E388E",
+            highlight: "#8E388E",
+            label: "Rheobuild 1000"
+          },
+          {
+            value: {{supercretechemicalC}},
+            color: "#81ff81",
+            highlight: "#81ff81",
+            label: "Pozzolith 300R"
+          },        
           {
             value: {{metalC}},
             color: "#f39c12",

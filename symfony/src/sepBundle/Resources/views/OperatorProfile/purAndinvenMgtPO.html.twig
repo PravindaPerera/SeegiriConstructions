@@ -365,21 +365,21 @@
                             <!-- small box -->
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3>{{cbCement}}</h3>
-                                    <p>Cement Clossing Balance</p>
+                                    <h3>{{cbHolcim}}</h3>
+                                    <p>Holcim Extra Cement Clossing Balance</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
                                 <a href="#" class="small-box-footer" 
-                                   data-toggle="collapse" data-target="#reorderCement" 
-                                   aria-expanded="false" aria-controls="reorderCement">More info<i class="fa fa-arrow-circle-down"></i>
+                                   data-toggle="collapse" data-target="#reorderCement1" 
+                                   aria-expanded="false" aria-controls="reorderCement1">More info<i class="fa fa-arrow-circle-down"></i>
                                 </a>
-                                <div class="collapse" id="reorderCement">
+                                <div class="collapse" id="reorderCement1">
                                     <div class="box box-primary">
                                         <div class="box-header">
                                             <i class="ion ion-clipboard"></i>
-                                            <h3 class="box-title">RM: Cement</h3>
+                                            <h3 class="box-title">RM: Holcim Extra Cement</h3>
                                             <div class="box-tools pull-right">
                                             </div>
                                         </div><!-- /.box-header -->
@@ -388,18 +388,18 @@
                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <span class="text">Reorder Level:    {{lCement}}</span>
+                                                    <span class="text">Reorder Level:    {{lholcim}}</span>
                                                 
                                                 </li>
                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#CementOrder" aria-expanded="false" aria-controls="CementOrder">
-                                                        Use Cement</button>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#CementOrder1" aria-expanded="false" aria-controls="CementOrder1">
+                                                        Use RM</button>
                                                     
                                                     
-                                                    <div class="collapse" id="CementOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                    <div class="collapse" id="CementOrder1" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -408,12 +408,12 @@
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Usage Material:</label>
-                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Cement" readonly>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Holcim Extra" readonly>
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label>Usage Amount(Qty):</label>
-                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbCement}}">
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbHolcim}}">
                                                                 </div>
 
                                                                 <div class="form-group">                              
@@ -443,21 +443,21 @@
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3>{{cbCement}}</h3>
-                                    <p>Cement Clossing Balance</p>
+                                    <h3>{{cbHolcim}}</h3>
+                                    <p>Holcim Extra Cement Clossing Balance</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
                                 <a href="#" class="small-box-footer" 
-                                   data-toggle="collapse" data-target="#reorderCement" 
-                                   aria-expanded="false" aria-controls="reorderCement">More info<i class="fa fa-arrow-circle-down"></i>
+                                   data-toggle="collapse" data-target="#reorderCement1" 
+                                   aria-expanded="false" aria-controls="reorderCement1">More info<i class="fa fa-arrow-circle-down"></i>
                                 </a>
-                                <div class="collapse" id="reorderCement">
+                                <div class="collapse" id="reorderCement1">
                                     <div class="box box-primary">
                                         <div class="box-header">
                                             <i class="ion ion-clipboard"></i>
-                                            <h3 class="box-title">RM: Cement</h3>
+                                            <h3 class="box-title">RM: Holcim Extra Cement</h3>
                                             <div class="box-tools pull-right">
                                             </div>
                                         </div><!-- /.box-header -->
@@ -466,17 +466,17 @@
                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <span class="text">Reorder Level:    {{lCement}}</span>
+                                                    <span class="text">Reorder Level:    {{lholcim}}</span>
                                                 </li>    
                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#CementOrder" aria-expanded="false" aria-controls="CementOrder">
-                                                        Use Cement</button>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#CementOrder1" aria-expanded="false" aria-controls="CementOrder1">
+                                                        Use RM</button>
                                                     
                                                     
-                                                    <div class="collapse" id="CementOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                    <div class="collapse" id="CementOrder1" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -485,12 +485,12 @@
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Usage Material:</label>
-                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Cement" readonly>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Holcim Extra" readonly>
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label>Usage Amount(Qty):</label>
-                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbCement}}">
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbHolcim}}">
                                                                 </div>
 
                                                                 <div class="form-group">                              
@@ -517,27 +517,28 @@
                         </div><!-- ./col -->
                                 {%endif%}                            
                             {%endif%}
+                            
                             {%if loop.index==2%}
                                 {%if cb==0%}
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3>{{cbChemical}}</h3>
-                                    <p>Chemical Clossing Balance</p>
+                                    <h3>{{cbReadyFlow}}</h3>
+                                    <p>Holcim Ready Flow Plus Cement Clossing Balance</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
                                 <a href="#" class="small-box-footer" 
-                                   data-toggle="collapse" data-target="#reorderChemical" 
-                                   aria-expanded="false" aria-controls="reorderChemical">More info<i class="fa fa-arrow-circle-down"></i>
+                                   data-toggle="collapse" data-target="#reorderCement2" 
+                                   aria-expanded="false" aria-controls="reorderCement2">More info<i class="fa fa-arrow-circle-down"></i>
                                 </a>
-                                <div class="collapse" id="reorderChemical">
+                                <div class="collapse" id="reorderCement2">
                                     <div class="box box-primary">
                                         <div class="box-header">
                                             <i class="ion ion-clipboard"></i>
-                                            <h3 class="box-title">RM: Chemical</h3>
+                                            <h3 class="box-title">RM: Holcim Ready Cement</h3>
                                             <div class="box-tools pull-right">
                                             </div>
                                         </div><!-- /.box-header -->
@@ -546,17 +547,18 @@
                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <span class="text">Reorder Level:    {{lChemical}}</span>
+                                                    <span class="text">Reorder Level:    {{lreadyFlow}}</span>
+                                                
                                                 </li>
-                                                                                                <li>
+                                                <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder" aria-expanded="false" aria-controls="ChemicalOrder">
-                                                        Use Chemical</button>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#CementOrder2" aria-expanded="false" aria-controls="CementOrder2">
+                                                        Use RM</button>
                                                     
                                                     
-                                                    <div class="collapse" id="ChemicalOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                    <div class="collapse" id="CementOrder2" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -565,12 +567,12 @@
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Usage Material:</label>
-                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Chemical" readonly>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Holcim Ready Flow Plus" readonly>
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label>Usage Amount(Qty):</label>
-                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbChemical}}">
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbReadyFlow}}">
                                                                 </div>
 
                                                                 <div class="form-group">                              
@@ -588,7 +590,7 @@
                                                         </form>    
                                                     </div>
                                                         
-                                                </li> 
+                                                </li>                                                 
                                             </ul>
                                         </div><!-- /.box-body -->
                                     </div>
@@ -600,21 +602,21 @@
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3>{{cbChemical}}</h3>
-                                    <p>Chemical Clossing Balance</p>
+                                    <h3>{{cbReadyFlow}}</h3>
+                                    <p>Holcim Ready Flow Plus Cement Clossing Balance</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
                                 <a href="#" class="small-box-footer" 
-                                   data-toggle="collapse" data-target="#reorderChemical" 
-                                   aria-expanded="false" aria-controls="reorderChemical">More info<i class="fa fa-arrow-circle-down"></i>
+                                   data-toggle="collapse" data-target="#reorderCement2" 
+                                   aria-expanded="false" aria-controls="reorderCement2">More info<i class="fa fa-arrow-circle-down"></i>
                                 </a>
-                                <div class="collapse" id="reorderChemical">
+                                <div class="collapse" id="reorderCement2">
                                     <div class="box box-primary">
                                         <div class="box-header">
                                             <i class="ion ion-clipboard"></i>
-                                            <h3 class="box-title">RM: Chemical</h3>
+                                            <h3 class="box-title">RM: Holcim Ready Cement</h3>
                                             <div class="box-tools pull-right">
                                             </div>
                                         </div><!-- /.box-header -->
@@ -623,17 +625,17 @@
                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <span class="text">Reorder Level:    {{lChemical}}</span>
-                                                </li>
-                                                                                                <li>
+                                                    <span class="text">Reorder Level:    {{lreadyFlow}}</span>
+                                                </li>    
+                                                <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder" aria-expanded="false" aria-controls="ChemicalOrder">
-                                                        Use Chemical</button>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#CementOrder2" aria-expanded="false" aria-controls="CementOrder2">
+                                                        Use RM</button>
                                                     
                                                     
-                                                    <div class="collapse" id="ChemicalOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                    <div class="collapse" id="CementOrder2" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -642,12 +644,12 @@
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Usage Material:</label>
-                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Chemical" readonly>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Holcim Ready Flow Plus" readonly>
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label>Usage Amount(Qty):</label>
-                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbChemical}}">
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbReadyFlow}}">
                                                                 </div>
 
                                                                 <div class="form-group">                              
@@ -674,27 +676,28 @@
                         </div><!-- ./col -->
                                 {%endif%}                            
                             {%endif%}
+                            
                             {%if loop.index==3%}
                                 {%if cb==0%}
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3>{{cbMetal}}</h3>
-                                    <p>Metal Clossing Balance</p>
+                                    <h3>{{cbPortland}}</h3>
+                                    <p>Ordinary Portland Cement Clossing Balance</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
                                 <a href="#" class="small-box-footer" 
-                                   data-toggle="collapse" data-target="#reorderMetal" 
-                                   aria-expanded="false" aria-controls="reorderMetal">More info<i class="fa fa-arrow-circle-down"></i>
+                                   data-toggle="collapse" data-target="#reorderCement3" 
+                                   aria-expanded="false" aria-controls="reorderCement3">More info<i class="fa fa-arrow-circle-down"></i>
                                 </a>
-                                <div class="collapse" id="reorderMetal">
+                                <div class="collapse" id="reorderCement3">
                                     <div class="box box-primary">
                                         <div class="box-header">
                                             <i class="ion ion-clipboard"></i>
-                                            <h3 class="box-title">RM: Metal</h3>
+                                            <h3 class="box-title">RM: Portland Cement</h3>
                                             <div class="box-tools pull-right">
                                             </div>
                                         </div><!-- /.box-header -->
@@ -703,17 +706,18 @@
                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <span class="text">Reorder Level:    {{lMetal}}</span>
+                                                    <span class="text">Reorder Level:    {{lPortland}}</span>
+                                                
                                                 </li>
-                                                                                                <li>
+                                                <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#MetalOrder" aria-expanded="false" aria-controls="MetalOrder">
-                                                        Use Metal</button>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#CementOrder3" aria-expanded="false" aria-controls="CementOrder3">
+                                                        Use RM</button>
                                                     
                                                     
-                                                    <div class="collapse" id="MetalOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                    <div class="collapse" id="CementOrder3" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -722,12 +726,12 @@
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Usage Material:</label>
-                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Metal" readonly>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Ordinary Portland Cement" readonly>
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label>Usage Amount(Qty):</label>
-                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbMetal}}">
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbPortland}}">
                                                                 </div>
 
                                                                 <div class="form-group">                              
@@ -745,7 +749,7 @@
                                                         </form>    
                                                     </div>
                                                         
-                                                </li> 
+                                                </li>                                                 
                                             </ul>
                                         </div><!-- /.box-body -->
                                     </div>
@@ -757,21 +761,21 @@
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3>{{cbMetal}}</h3>
-                                    <p>Metal Clossing Balance</p>
+                                    <h3>{{cbPortland}}</h3>
+                                    <p>Ordinary Portland Cement Clossing Balance</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
                                 <a href="#" class="small-box-footer" 
-                                   data-toggle="collapse" data-target="#reorderMetal" 
-                                   aria-expanded="false" aria-controls="reorderMetal">More info<i class="fa fa-arrow-circle-down"></i>
+                                   data-toggle="collapse" data-target="#reorderCement3" 
+                                   aria-expanded="false" aria-controls="reorderCement3">More info<i class="fa fa-arrow-circle-down"></i>
                                 </a>
-                                <div class="collapse" id="reorderMetal">
+                                <div class="collapse" id="reorderCement3">
                                     <div class="box box-primary">
                                         <div class="box-header">
                                             <i class="ion ion-clipboard"></i>
-                                            <h3 class="box-title">RM: Metal</h3>
+                                            <h3 class="box-title">RM: Portland Cement</h3>
                                             <div class="box-tools pull-right">
                                             </div>
                                         </div><!-- /.box-header -->
@@ -780,17 +784,17 @@
                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <span class="text">Reorder Level:    {{lMetal}}</span>
-                                                </li>
-                                                                                                <li>
+                                                    <span class="text">Reorder Level:    {{lPortland}}</span>
+                                                </li>    
+                                                <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#MetalOrder" aria-expanded="false" aria-controls="MetalOrder">
-                                                        Use Metal</button>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#CementOrder3" aria-expanded="false" aria-controls="CementOrder3">
+                                                        Use RM</button>
                                                     
                                                     
-                                                    <div class="collapse" id="MetalOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                    <div class="collapse" id="CementOrder3" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -799,12 +803,12 @@
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Usage Material:</label>
-                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Metal" readonly>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Ordinary Portland Cement" readonly>
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label>Usage Amount(Qty):</label>
-                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbMetal}}">
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbPortland}}">
                                                                 </div>
 
                                                                 <div class="form-group">                              
@@ -831,27 +835,28 @@
                         </div><!-- ./col -->
                                 {%endif%}                            
                             {%endif%}
-                            {%if loop.index==4%}
+                            
+                        {%if loop.index==4%}
                                 {%if cb==0%}
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3>{{cbSand}}</h3>
-                                    <p>Sand Clossing Balance</p>
+                                    <h3>{{cbsupercrete_hs}}</h3>
+                                    <p>Supercrete - HS Chemical Clossing Balance</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
                                 <a href="#" class="small-box-footer" 
-                                   data-toggle="collapse" data-target="#reorderSand" 
-                                   aria-expanded="false" aria-controls="reorderSand">More info<i class="fa fa-arrow-circle-down"></i>
+                                   data-toggle="collapse" data-target="#reorderChemical1" 
+                                   aria-expanded="false" aria-controls="reorderChemical1">More info<i class="fa fa-arrow-circle-down"></i>
                                 </a>
-                                <div class="collapse" id="reorderSand">
+                                <div class="collapse" id="reorderChemical1">
                                     <div class="box box-primary">
                                         <div class="box-header">
                                             <i class="ion ion-clipboard"></i>
-                                            <h3 class="box-title">RM: Sand</h3>
+                                            <h3 class="box-title">RM: Supercrete - HS Chemical</h3>
                                             <div class="box-tools pull-right">
                                             </div>
                                         </div><!-- /.box-header -->
@@ -860,17 +865,17 @@
                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <span class="text">Reorder Level:    {{lSand}}</span>
+                                                    <span class="text">Reorder Level:    {{lsupercrete_hs}}</span>
                                                 </li>
                                                                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#SandOrder" aria-expanded="false" aria-controls="SandOrder">
-                                                        Use Sand</button>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder1" aria-expanded="false" aria-controls="ChemicalOrder1">
+                                                        Use RM</button>
                                                     
                                                     
-                                                    <div class="collapse" id="SandOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                    <div class="collapse" id="ChemicalOrder1" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -879,12 +884,12 @@
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Usage Material:</label>
-                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Sand" readonly>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Supercrete - HS" readonly>
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label>Usage Amount(Qty):</label>
-                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbSand}}">
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbsupercrete_hs}}">
                                                                 </div>
 
                                                                 <div class="form-group">                              
@@ -914,21 +919,21 @@
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3>{{cbSand}}</h3>
-                                    <p>Sand Clossing Balance</p>
+                                    <h3>{{cbsupercrete_hs}}</h3>
+                                    <p>Supercrete - HS Chemical Clossing Balance</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
                                 <a href="#" class="small-box-footer" 
-                                   data-toggle="collapse" data-target="#reorderSand" 
-                                   aria-expanded="false" aria-controls="reorderSand">More info<i class="fa fa-arrow-circle-down"></i>
+                                   data-toggle="collapse" data-target="#reorderChemical1" 
+                                   aria-expanded="false" aria-controls="reorderChemical1">More info<i class="fa fa-arrow-circle-down"></i>
                                 </a>
-                                <div class="collapse" id="reorderSand">
+                                <div class="collapse" id="reorderChemical1">
                                     <div class="box box-primary">
                                         <div class="box-header">
                                             <i class="ion ion-clipboard"></i>
-                                            <h3 class="box-title">RM: Sand</h3>
+                                            <h3 class="box-title">RM: Supercrete - HS Chemical</h3>
                                             <div class="box-tools pull-right">
                                             </div>
                                         </div><!-- /.box-header -->
@@ -937,17 +942,17 @@
                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <span class="text">Reorder Level:    {{lSand}}</span>
+                                                    <span class="text">Reorder Level:    {{lsupercrete_hs}}</span>
                                                 </li>
                                                                                                 <li>
                                                     <span class="glyphicon glyphicon-star">
                                                     </span>
-                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#SandOrder" aria-expanded="false" aria-controls="SandOrder">
-                                                        Use Sand</button>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder1" aria-expanded="false" aria-controls="ChemicalOrder1">
+                                                        Use RM</button>
                                                     
                                                     
-                                                    <div class="collapse" id="SandOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                    <div class="collapse" id="ChemicalOrder1" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -956,12 +961,12 @@
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Usage Material:</label>
-                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Sand" readonly>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Supercrete - HS" readonly>
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label>Usage Amount(Qty):</label>
-                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbSand}}">
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbsupercrete_hs}}">
                                                                 </div>
 
                                                                 <div class="form-group">                              
@@ -987,13 +992,1120 @@
                             </div>
                         </div><!-- ./col -->
                                 {%endif%}                            
-                            {%endif%}
+                            {%endif%}    
+                            
                             {%if loop.index==5%}
                                 {%if cb==0%}
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
                             <div class="small-box bg-red">
                                 <div class="inner">
+                                    <h3>{{cbpozzolith300r}}</h3>
+                                    <p>Pozzolith 300R Chemical Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderChemical2" 
+                                   aria-expanded="false" aria-controls="reorderChemical2">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderChemical2">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Pozzolith 300R Chemical</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lpozzolith300r}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder2" aria-expanded="false" aria-controls="ChemicalOrder2">
+                                                        Use RM</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="ChemicalOrder2" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Pozzolith 300R" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbpozzolith300r}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%else%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>{{cbpozzolith300r}}</h3>
+                                    <p>Pozzolith 300R Chemical Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderChemical2" 
+                                   aria-expanded="false" aria-controls="reorderChemical2">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderChemical2">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Pozzolith 300R Chemical</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lpozzolith300r}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder2" aria-expanded="false" aria-controls="ChemicalOrder2">
+                                                        Use RM</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="ChemicalOrder2" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Pozzolith 300R" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbpozzolith300r}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%endif%}                            
+                            {%endif%}
+                            
+                            {%if loop.index==6%}
+                                {%if cb==0%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>{{cbrheobuild561}}</h3>
+                                    <p>Rheobuild 561 Chemical Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderChemical3" 
+                                   aria-expanded="false" aria-controls="reorderChemical3">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderChemical3">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Rheobuild 561 Chemical</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lrheobuild561}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder3" aria-expanded="false" aria-controls="ChemicalOrder3">
+                                                        Use RM</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="ChemicalOrder3" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Rheobuild 561" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbrheobuild561}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%else%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>{{cbrheobuild561}}</h3>
+                                    <p>Rheobuild 561 Chemical Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderChemical3" 
+                                   aria-expanded="false" aria-controls="reorderChemical3">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderChemical3">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Rheobuild 561 Chemical</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lrheobuild561}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder3" aria-expanded="false" aria-controls="ChemicalOrder3">
+                                                        Use RM</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="ChemicalOrder3" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Rheobuild 561" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbrheobuild561}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%endif%}                            
+                            {%endif%}
+                            
+                            {%if loop.index==7%}
+                                {%if cb==0%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>{{cbrheobuild1000}}</h3>
+                                    <p>Rheobuild 1000 Chemical Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderChemical4" 
+                                   aria-expanded="false" aria-controls="reorderChemical4">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderChemical4">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Rheobuild 1000 Chemical</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lrheobuild1000}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder4" aria-expanded="false" aria-controls="ChemicalOrder4">
+                                                        Use RM</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="ChemicalOrder4" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Rheobuild 1000" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbrheobuild1000}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%else%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>{{cbrheobuild1000}}</h3>
+                                    <p>Rheobuild 1000 Chemical Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderChemical4" 
+                                   aria-expanded="false" aria-controls="reorderChemical4">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderChemical4">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Rheobuild 1000 Chemical</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lrheobuild1000}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder4" aria-expanded="false" aria-controls="ChemicalOrder4">
+                                                        Use RM</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="ChemicalOrder4" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Rheobuild 1000" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbrheobuild1000}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%endif%}                            
+                            {%endif%}
+                            
+                            {%if loop.index==8%}
+                                {%if cb==0%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>{{cbsupercrete}}</h3>
+                                    <p>Supercrete Chemical Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderChemical5" 
+                                   aria-expanded="false" aria-controls="reorderChemical5">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderChemical5">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Supercrete Chemical</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lsupercrete}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder5" aria-expanded="false" aria-controls="ChemicalOrder5">
+                                                        Use RM</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="ChemicalOrder5" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Supercrete" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbsupercrete}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%else%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>{{cbsupercrete}}</h3>
+                                    <p>Supercrete Chemical Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderChemical5" 
+                                   aria-expanded="false" aria-controls="reorderChemical5">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderChemical5">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Supercrete Chemical</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lsupercrete}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder5" aria-expanded="false" aria-controls="ChemicalOrder5">
+                                                        Use RM</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="ChemicalOrder5" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Supercrete" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbsupercrete}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%endif%}                            
+                            {%endif%}
+                            
+                            {%if loop.index==9%}
+                                {%if cb==0%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>{{cbadcrete}}</h3>
+                                    <p>Adcrete Chemical Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderChemical6" 
+                                   aria-expanded="false" aria-controls="reorderChemical6">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderChemical6">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Adcrete Chemical</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{ladcrete}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder6" aria-expanded="false" aria-controls="ChemicalOrder6">
+                                                        Use RM</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="ChemicalOrder6" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Adcrete" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbadcrete}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%else%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>{{cbadcrete}}</h3>
+                                    <p>Adcrete Chemical Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderChemical6" 
+                                   aria-expanded="false" aria-controls="reorderChemical6">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderChemical6">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Adcrete Chemical</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{ladcrete}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#ChemicalOrder6" aria-expanded="false" aria-controls="ChemicalOrder6">
+                                                        Use RM</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="ChemicalOrder6" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Adcrete" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbadcrete}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%endif%}                            
+                            {%endif%}
+                            
+                            
+                            
+                            {%if loop.index==10%}
+                                {%if cb==0%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>{{cbMetal}}</h3>
+                                    <p>Metal Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderMetal" 
+                                   aria-expanded="false" aria-controls="reorderMetal">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderMetal">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Metal</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lMetal}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#MetalOrder" aria-expanded="false" aria-controls="MetalOrder">
+                                                        Use Metal</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="MetalOrder" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Metal" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbMetal}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%else%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>{{cbMetal}}</h3>
+                                    <p>Metal Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderMetal" 
+                                   aria-expanded="false" aria-controls="reorderMetal">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderMetal">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Metal</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lMetal}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#MetalOrder" aria-expanded="false" aria-controls="MetalOrder">
+                                                        Use Metal</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="MetalOrder" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Metal" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbMetal}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%endif%}                            
+                            {%endif%}
+                            {%if loop.index==11%}
+                                {%if cb==0%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>{{cbSand}}</h3>
+                                    <p>Sand Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderSand" 
+                                   aria-expanded="false" aria-controls="reorderSand">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderSand">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Sand</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lSand}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#SandOrder" aria-expanded="false" aria-controls="SandOrder">
+                                                        Use Sand</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="SandOrder" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Sand" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbSand}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%else%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>{{cbSand}}</h3>
+                                    <p>Sand Clossing Balance</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" 
+                                   data-toggle="collapse" data-target="#reorderSand" 
+                                   aria-expanded="false" aria-controls="reorderSand">More info<i class="fa fa-arrow-circle-down"></i>
+                                </a>
+                                <div class="collapse" id="reorderSand">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <i class="ion ion-clipboard"></i>
+                                            <h3 class="box-title">RM: Sand</h3>
+                                            <div class="box-tools pull-right">
+                                            </div>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <ul class="todo-list">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <span class="text">Reorder Level:    {{lSand}}</span>
+                                                </li>
+                                                                                                <li>
+                                                    <span class="glyphicon glyphicon-star">
+                                                    </span>
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#SandOrder" aria-expanded="false" aria-controls="SandOrder">
+                                                        Use Sand</button>
+                                                    
+                                                    
+                                                    <div class="collapse" id="SandOrder" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Inventory Usage Details</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Sand" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbSand}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>
+                                                        
+                                                </li> 
+                                            </ul>
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- ./col -->
+                                {%endif%}                            
+                            {%endif%}
+                            {%if loop.index==12%}
+                                {%if cb==0%}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
                                     <h3>{{cbDiesel}}</h3>
                                     <p>Diesel Clossing Balance</p>
                                 </div>
@@ -1027,7 +2139,7 @@
                                                     
                                                     
                                                     <div class="collapse" id="DieselOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -1104,7 +2216,7 @@
                                                     
                                                     
                                                     <div class="collapse" id="DieselOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -1145,7 +2257,7 @@
                         </div><!-- ./col -->
                                 {%endif%}                            
                             {%endif%}
-                            {%if loop.index==6%}
+                            {%if loop.index==13%}
                                 {%if cb==0%}
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
@@ -1184,7 +2296,7 @@
                                                     
                                                     
                                                     <div class="collapse" id="MSandOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -1261,7 +2373,7 @@
                                                     
                                                     
                                                     <div class="collapse" id="MSandOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -1302,7 +2414,7 @@
                         </div><!-- ./col -->
                                 {%endif%}                            
                             {%endif%}
-                            {%if loop.index==7%}
+                            {%if loop.index==14%}
                                 {%if cb==0%}
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
@@ -1341,7 +2453,7 @@
                                                     
                                                     
                                                     <div class="collapse" id="ChipsOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -1418,7 +2530,7 @@
                                                     
                                                     
                                                     <div class="collapse" id="ChipsOrder" style="padding-top: 10px">
-                                                        <form role="form" method="POST" action="{{path('stock_usage_PO',{'url':url})}}">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
                                                         <div class="box box-primary">
                                                             <div class="box-header">
                                                               <h3 class="box-title">Inventory Usage Details</h3>
@@ -1515,6 +2627,55 @@
                       </div>
                     </div>
                 </section><!-- /.content -->
+                
+                <section class="content">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title">RM - Purchases History</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="purchasesHistory" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Delivery Order ID</th>
+                                            <th>RM type</th>
+                                            <th>Supplier Name</th>
+                                            <th>Amount</th>
+                                            <th>Cost</th>
+                                            <th>Purchased Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for ele in purchasesHis%}
+                                            <tr>
+                                                <td>{{ele.delivery_order_id}}</td>
+                                                <td>{{ele.material}}</td>
+                                                <td>{{ele.supplier_name}}</td>
+                                                <td>{{ele.amount}}</td>
+                                                <td>{{ele.cost}}</td>
+                                                <td>{{ele.date|date('Y-m-d')}}</td>
+                                            </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Delivery Order ID</th>
+                                            <th>RM type</th>
+                                            <th>Supplier Name</th>
+                                            <th>Amount</th>
+                                            <th>Cost</th>
+                                            <th>Purchased Date</th>
+                                        </tr>
+                                    </tfoot>
+                            </table>
+                          </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                      </div>
+                    </div>
+                </section><!-- /.content --> 
+                
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
@@ -2036,6 +3197,21 @@
               });
             });
         </script>
+        
+        <script>
+            $(function () {
+              $("#purchasesHistory").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false
+              });
+            });
+        </script>
+        
+        
         
 
     </body>
