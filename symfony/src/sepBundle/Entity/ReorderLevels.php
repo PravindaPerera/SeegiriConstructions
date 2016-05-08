@@ -20,7 +20,7 @@ class ReorderLevels
     private $title;
 
     /**
-     * @var integer
+     * @var float
      */
     private $reorderLevel;
 
@@ -61,7 +61,7 @@ class ReorderLevels
     /**
      * Set reorderLevel
      *
-     * @param integer $reorderLevel
+     * @param float $reorderLevel
      * @return ReorderLevels
      */
     public function setReorderLevel($reorderLevel)
@@ -74,7 +74,7 @@ class ReorderLevels
     /**
      * Get reorderLevel
      *
-     * @return integer 
+     * @return float 
      */
     public function getReorderLevel()
     {

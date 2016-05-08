@@ -15,27 +15,27 @@ class Rheobuild561Chemical
     private $id;
 
     /**
-     * @var integer
+     * @var float
      */
     private $openingBalance;
 
     /**
-     * @var integer
+     * @var float
      */
     private $clossingBalance;
 
     /**
-     * @var integer
+     * @var float
      */
     private $stockPurchased;
 
     /**
-     * @var integer
+     * @var float
      */
     private $stockUsed;
 
     /**
-     * @var integer
+     * @var float
      */
     private $netCost;
 
@@ -68,7 +68,7 @@ class Rheobuild561Chemical
     /**
      * Set openingBalance
      *
-     * @param integer $openingBalance
+     * @param float $openingBalance
      * @return Rheobuild561Chemical
      */
     public function setOpeningBalance($openingBalance)
@@ -81,7 +81,7 @@ class Rheobuild561Chemical
     /**
      * Get openingBalance
      *
-     * @return integer 
+     * @return float 
      */
     public function getOpeningBalance()
     {
@@ -91,7 +91,7 @@ class Rheobuild561Chemical
     /**
      * Set clossingBalance
      *
-     * @param integer $clossingBalance
+     * @param float $clossingBalance
      * @return Rheobuild561Chemical
      */
     public function setClossingBalance($clossingBalance)
@@ -104,7 +104,7 @@ class Rheobuild561Chemical
     /**
      * Get clossingBalance
      *
-     * @return integer 
+     * @return float 
      */
     public function getClossingBalance()
     {
@@ -114,7 +114,7 @@ class Rheobuild561Chemical
     /**
      * Set stockPurchased
      *
-     * @param integer $stockPurchased
+     * @param float $stockPurchased
      * @return Rheobuild561Chemical
      */
     public function setStockPurchased($stockPurchased)
@@ -127,7 +127,7 @@ class Rheobuild561Chemical
     /**
      * Get stockPurchased
      *
-     * @return integer 
+     * @return float 
      */
     public function getStockPurchased()
     {
@@ -137,7 +137,7 @@ class Rheobuild561Chemical
     /**
      * Set stockUsed
      *
-     * @param integer $stockUsed
+     * @param float $stockUsed
      * @return Rheobuild561Chemical
      */
     public function setStockUsed($stockUsed)
@@ -150,7 +150,7 @@ class Rheobuild561Chemical
     /**
      * Get stockUsed
      *
-     * @return integer 
+     * @return float 
      */
     public function getStockUsed()
     {
@@ -160,7 +160,7 @@ class Rheobuild561Chemical
     /**
      * Set netCost
      *
-     * @param integer $netCost
+     * @param float $netCost
      * @return Rheobuild561Chemical
      */
     public function setNetCost($netCost)
@@ -173,7 +173,7 @@ class Rheobuild561Chemical
     /**
      * Get netCost
      *
-     * @return integer 
+     * @return float 
      */
     public function getNetCost()
     {

@@ -17,14 +17,16 @@ sepBundle\Entity\Orders:
                 strategy: IDENTITY
     fields:
         amount:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
         purchasedAmount:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
             column: purchased_amount
         date:

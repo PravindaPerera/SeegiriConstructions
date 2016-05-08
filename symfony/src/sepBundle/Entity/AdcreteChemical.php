@@ -15,27 +15,27 @@ class AdcreteChemical
     private $id;
 
     /**
-     * @var integer
+     * @var float
      */
     private $openingBalance;
 
     /**
-     * @var integer
+     * @var float
      */
     private $clossingBalance;
 
     /**
-     * @var integer
+     * @var float
      */
     private $stockPurchased;
 
     /**
-     * @var integer
+     * @var float
      */
     private $stockUsed;
 
     /**
-     * @var integer
+     * @var float
      */
     private $netCost;
 
@@ -68,7 +68,7 @@ class AdcreteChemical
     /**
      * Set openingBalance
      *
-     * @param integer $openingBalance
+     * @param float $openingBalance
      * @return AdcreteChemical
      */
     public function setOpeningBalance($openingBalance)
@@ -81,7 +81,7 @@ class AdcreteChemical
     /**
      * Get openingBalance
      *
-     * @return integer 
+     * @return float 
      */
     public function getOpeningBalance()
     {
@@ -91,7 +91,7 @@ class AdcreteChemical
     /**
      * Set clossingBalance
      *
-     * @param integer $clossingBalance
+     * @param float $clossingBalance
      * @return AdcreteChemical
      */
     public function setClossingBalance($clossingBalance)
@@ -104,7 +104,7 @@ class AdcreteChemical
     /**
      * Get clossingBalance
      *
-     * @return integer 
+     * @return float 
      */
     public function getClossingBalance()
     {
@@ -114,7 +114,7 @@ class AdcreteChemical
     /**
      * Set stockPurchased
      *
-     * @param integer $stockPurchased
+     * @param float $stockPurchased
      * @return AdcreteChemical
      */
     public function setStockPurchased($stockPurchased)
@@ -127,7 +127,7 @@ class AdcreteChemical
     /**
      * Get stockPurchased
      *
-     * @return integer 
+     * @return float 
      */
     public function getStockPurchased()
     {
@@ -137,7 +137,7 @@ class AdcreteChemical
     /**
      * Set stockUsed
      *
-     * @param integer $stockUsed
+     * @param float $stockUsed
      * @return AdcreteChemical
      */
     public function setStockUsed($stockUsed)
@@ -150,7 +150,7 @@ class AdcreteChemical
     /**
      * Get stockUsed
      *
-     * @return integer 
+     * @return float 
      */
     public function getStockUsed()
     {
@@ -160,7 +160,7 @@ class AdcreteChemical
     /**
      * Set netCost
      *
-     * @param integer $netCost
+     * @param float $netCost
      * @return AdcreteChemical
      */
     public function setNetCost($netCost)
@@ -173,7 +173,7 @@ class AdcreteChemical
     /**
      * Get netCost
      *
-     * @return integer 
+     * @return float 
      */
     public function getNetCost()
     {

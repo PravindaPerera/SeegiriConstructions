@@ -15,27 +15,27 @@ class Diesel
     private $dId;
 
     /**
-     * @var integer
+     * @var float
      */
     private $openingBalance;
 
     /**
-     * @var integer
+     * @var float
      */
     private $clossingBalance;
 
     /**
-     * @var integer
+     * @var float
      */
     private $stockPurchased;
 
     /**
-     * @var integer
+     * @var float
      */
     private $stockUsed;
 
     /**
-     * @var integer
+     * @var float
      */
     private $netCost;
 
@@ -68,7 +68,7 @@ class Diesel
     /**
      * Set openingBalance
      *
-     * @param integer $openingBalance
+     * @param float $openingBalance
      * @return Diesel
      */
     public function setOpeningBalance($openingBalance)
@@ -81,7 +81,7 @@ class Diesel
     /**
      * Get openingBalance
      *
-     * @return integer 
+     * @return float 
      */
     public function getOpeningBalance()
     {
@@ -91,7 +91,7 @@ class Diesel
     /**
      * Set clossingBalance
      *
-     * @param integer $clossingBalance
+     * @param float $clossingBalance
      * @return Diesel
      */
     public function setClossingBalance($clossingBalance)
@@ -104,7 +104,7 @@ class Diesel
     /**
      * Get clossingBalance
      *
-     * @return integer 
+     * @return float 
      */
     public function getClossingBalance()
     {
@@ -114,7 +114,7 @@ class Diesel
     /**
      * Set stockPurchased
      *
-     * @param integer $stockPurchased
+     * @param float $stockPurchased
      * @return Diesel
      */
     public function setStockPurchased($stockPurchased)
@@ -127,7 +127,7 @@ class Diesel
     /**
      * Get stockPurchased
      *
-     * @return integer 
+     * @return float 
      */
     public function getStockPurchased()
     {
@@ -137,7 +137,7 @@ class Diesel
     /**
      * Set stockUsed
      *
-     * @param integer $stockUsed
+     * @param float $stockUsed
      * @return Diesel
      */
     public function setStockUsed($stockUsed)
@@ -150,7 +150,7 @@ class Diesel
     /**
      * Get stockUsed
      *
-     * @return integer 
+     * @return float 
      */
     public function getStockUsed()
     {
@@ -160,7 +160,7 @@ class Diesel
     /**
      * Set netCost
      *
-     * @param integer $netCost
+     * @param float $netCost
      * @return Diesel
      */
     public function setNetCost($netCost)
@@ -173,7 +173,7 @@ class Diesel
     /**
      * Get netCost
      *
-     * @return integer 
+     * @return float 
      */
     public function getNetCost()
     {

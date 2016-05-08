@@ -15,12 +15,12 @@ class Orders
     private $orderId;
 
     /**
-     * @var integer
+     * @var float
      */
     private $amount;
 
     /**
-     * @var integer
+     * @var float
      */
     private $purchasedAmount;
 
@@ -58,7 +58,7 @@ class Orders
     /**
      * Set amount
      *
-     * @param integer $amount
+     * @param float $amount
      * @return Orders
      */
     public function setAmount($amount)
@@ -71,7 +71,7 @@ class Orders
     /**
      * Get amount
      *
-     * @return integer 
+     * @return float 
      */
     public function getAmount()
     {
@@ -81,7 +81,7 @@ class Orders
     /**
      * Set purchasedAmount
      *
-     * @param integer $purchasedAmount
+     * @param float $purchasedAmount
      * @return Orders
      */
     public function setPurchasedAmount($purchasedAmount)
@@ -94,7 +94,7 @@ class Orders
     /**
      * Get purchasedAmount
      *
-     * @return integer 
+     * @return float 
      */
     public function getPurchasedAmount()
     {

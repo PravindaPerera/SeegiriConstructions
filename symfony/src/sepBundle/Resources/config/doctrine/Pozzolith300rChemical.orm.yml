@@ -12,33 +12,38 @@ sepBundle\Entity\Pozzolith300rChemical:
                 strategy: IDENTITY
     fields:
         openingBalance:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
             column: opening_balance
         clossingBalance:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
             column: clossing_balance
         stockPurchased:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
             column: stock_purchased
         stockUsed:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
             column: stock_used
         netCost:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
             column: net_cost
         date:

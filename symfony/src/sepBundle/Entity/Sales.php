@@ -40,12 +40,12 @@ class Sales
     private $year;
 
     /**
-     * @var integer
+     * @var float
      */
     private $salesAmount;
 
     /**
-     * @var integer
+     * @var float
      */
     private $paymentReceived;
 
@@ -178,7 +178,7 @@ class Sales
     /**
      * Set salesAmount
      *
-     * @param integer $salesAmount
+     * @param float $salesAmount
      * @return Sales
      */
     public function setSalesAmount($salesAmount)
@@ -191,7 +191,7 @@ class Sales
     /**
      * Get salesAmount
      *
-     * @return integer 
+     * @return float 
      */
     public function getSalesAmount()
     {
@@ -201,7 +201,7 @@ class Sales
     /**
      * Set paymentReceived
      *
-     * @param integer $paymentReceived
+     * @param float $paymentReceived
      * @return Sales
      */
     public function setPaymentReceived($paymentReceived)
@@ -214,7 +214,7 @@ class Sales
     /**
      * Get paymentReceived
      *
-     * @return integer 
+     * @return float 
      */
     public function getPaymentReceived()
     {

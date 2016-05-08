@@ -52,7 +52,7 @@ class PlantOperatorController extends Controller
     
     //Done
     public function invenManagementAction($url, Request $request) {
-        $session = $request->getSession();
+$session = $request->getSession();
         $userid=$session->get('id');
         if(isset($userid)){
             
@@ -73,22 +73,22 @@ class PlantOperatorController extends Controller
         $querry->execute();
         $typeDet = $querry->fetchAll();
 
-        $limitholcim_extra_cementVal = (int) 0;
-        $limitholcim_ready_flow_plus_cementVal = (int) 0;
-        $limitordinary_portland_cement_cementVal = (int) 0;
+        $limitholcim_extra_cementVal = (double) 0;
+        $limitholcim_ready_flow_plus_cementVal = (double) 0;
+        $limitordinary_portland_cement_cementVal = (double) 0;
         
-        $limitadcrete_chemicalVal = (int) 0;
-        $pozzolith300rVal = (int) 0;
-        $rheobuild561Val = (int) 0;
-        $rheobuild1000_chemicalVal = (int) 0;
-        $supercrete_chemicalVal = (int) 0;
-        $supercrete_hs_chemicalVal = (int) 0;
+        $limitadcrete_chemicalVal = (double) 0;
+        $pozzolith300rVal = (double) 0;
+        $rheobuild561Val = (double) 0;
+        $rheobuild1000_chemicalVal = (double) 0;
+        $supercrete_chemicalVal = (double) 0;
+        $supercrete_hs_chemicalVal = (double) 0;
         
-        $metalVal = (int) 0;
-        $sandVal = (int) 0;
-        $dieselVal = (int) 0;
-        $m_sandVal = (int) 0;
-        $chipsVal = (int) 0;
+        $metalVal = (double) 0;
+        $sandVal = (double) 0;
+        $dieselVal = (double) 0;
+        $m_sandVal = (double) 0;
+        $chipsVal = (double) 0;
         
         $querry = $con->prepare("SELECT * FROM reorder_levels");
         $querry->execute();
@@ -107,7 +107,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-            $rr = (int) $result[0]["clossing_balance"];
+            $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_holcim_extra_cement = $rr;
@@ -116,13 +116,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Holcim Extra");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitholcim_extra_cement = (int) $result[0]["reorder_level"];
+        $limitholcim_extra_cement = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitholcim_extra_cement) {
             
         }
         else{
-            $limitholcim_extra_cementVal = (int) 1;
+            $limitholcim_extra_cementVal = (double) 1;
         }
         
         //cement 2
@@ -134,7 +134,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         
@@ -144,13 +144,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Holcim Ready Flow Plus");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitholcim_ready_flow_plus_cement = (int) $result[0]["reorder_level"];
+        $limitholcim_ready_flow_plus_cement = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitholcim_ready_flow_plus_cement) {
             
         }
         else{
-            $limitholcim_ready_flow_plus_cementVal = (int) 1;
+            $limitholcim_ready_flow_plus_cementVal = (double) 1;
         }
         
         //cement 3
@@ -162,7 +162,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_ordinary_portland_cement_cement = $rr;
@@ -171,13 +171,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Ordinary Portland Cement");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitordinary_portland_cement_cement = (int) $result[0]["reorder_level"];
+        $limitordinary_portland_cement_cement = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitordinary_portland_cement_cement) {
             
         }
         else{
-            $limitordinary_portland_cement_cementVal = (int) 1;
+            $limitordinary_portland_cement_cementVal = (double) 1;
         }
         
         //Sand
@@ -189,7 +189,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_sand = $rr;
@@ -198,12 +198,12 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Sand");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitSand = (int) $result[0]["reorder_level"];
+        $limitSand = (double) $result[0]["reorder_level"];
         if ($rr <= $limitSand) {
             
         }
         else{
-            $sandVal = (int) 1;
+            $sandVal = (double) 1;
         }
         
         //Chemical 1
@@ -215,7 +215,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_adcrete_chemical = $rr;
@@ -224,13 +224,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Adcrete");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitadcrete_chemical = (int) $result[0]["reorder_level"];
+        $limitadcrete_chemical = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitadcrete_chemical) {
             
         }
         if ($rr > $limitadcrete_chemical) {
-            $limitadcrete_chemicalVal = (int) 1;
+            $limitadcrete_chemicalVal = (double) 1;
         }
         
         //Chemical 2
@@ -242,7 +242,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_pozzolith300r = $rr;
@@ -251,13 +251,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Pozzolith 300R");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitpozzolith300r = (int) $result[0]["reorder_level"];
+        $limitpozzolith300r = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitpozzolith300r) {
             
         }
         if ($rr > $limitpozzolith300r) {
-            $pozzolith300rVal = (int) 1;
+            $pozzolith300rVal = (double) 1;
         }
         
         //Chemical 3
@@ -269,7 +269,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_rheobuild561 = $rr;
@@ -278,13 +278,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Rheobuild 561");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitrheobuild561 = (int) $result[0]["reorder_level"];
+        $limitrheobuild561 = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitrheobuild561) {
             
         }
         if ($rr > $limitrheobuild561) {
-            $rheobuild561Val = (int) 1;
+            $rheobuild561Val = (double) 1;
         }
         
         //Chemical 4
@@ -296,7 +296,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_rheobuild1000_chemical = $rr;
@@ -305,13 +305,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Rheobuild 1000");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitrheobuild1000_chemical = (int) $result[0]["reorder_level"];
+        $limitrheobuild1000_chemical = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitrheobuild1000_chemical) {
             
         }
         if ($rr > $limitrheobuild1000_chemical) {
-            $rheobuild1000_chemicalVal = (int) 1;
+            $rheobuild1000_chemicalVal = (double) 1;
         }
         
         //Chemical 5
@@ -323,7 +323,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_supercrete_chemical = $rr;
@@ -332,13 +332,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Supercrete");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitsupercrete_chemical = (int) $result[0]["reorder_level"];
+        $limitsupercrete_chemical = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitsupercrete_chemical) {
             
         }
         if ($rr > $limitsupercrete_chemical) {
-            $supercrete_chemicalVal = (int) 1;
+            $supercrete_chemicalVal = (double) 1;
         }
         
         //Chemical 6
@@ -350,7 +350,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_supercrete_hs_chemical = $rr;
@@ -359,13 +359,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Supercrete - HS");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitsupercrete_hs_chemical = (int) $result[0]["reorder_level"];
+        $limitsupercrete_hs_chemical = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitsupercrete_hs_chemical) {
             
         }
         if ($rr > $limitsupercrete_hs_chemical) {
-            $supercrete_hs_chemicalVal = (int) 1;
+            $supercrete_hs_chemicalVal = (double) 1;
         }
         
         //Metal
@@ -377,7 +377,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_metal = $rr;
@@ -386,13 +386,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Metal");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitMetal = (int) $result[0]["reorder_level"];
+        $limitMetal = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitMetal) {
             
         }
         else {
-            $metalVal = (int) 1;
+            $metalVal = (double) 1;
         }
         
         //Diesel
@@ -404,7 +404,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_diesel = $rr;
@@ -413,13 +413,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Diesel");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitDiesel = (int) $result[0]["reorder_level"];
+        $limitDiesel = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitDiesel) {
             
         }
         else {
-            $dieselVal = (int) 1;
+            $dieselVal = (double) 1;
         }
 
         //Chips
@@ -431,7 +431,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_chips = $rr;
@@ -440,13 +440,13 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "Chips");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitChips = (int) $result[0]["reorder_level"];
+        $limitChips = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitChips) {
             
         }
         else {
-            $chipsVal = (int) 1;
+            $chipsVal = (double) 1;
         }
         //M-Sand
         $querry = $con->prepare("SELECT clossing_balance FROM m_sand ORDER BY date DESC LIMIT 1");
@@ -457,7 +457,7 @@ class PlantOperatorController extends Controller
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_m_sand = $rr;
@@ -466,15 +466,14 @@ class PlantOperatorController extends Controller
         $querry->bindValue('rm', "M_Sand");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitM_Sand = (int) $result[0]["reorder_level"];
+        $limitM_Sand = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitM_Sand) {
             
         }
         else {
-            $m_sandVal = (int) 1;
+            $m_sandVal = (double) 1;
         }
-        
         $counts = array("$limitholcim_extra_cementVal", "$limitholcim_ready_flow_plus_cementVal", "$limitordinary_portland_cement_cementVal", "$supercrete_hs_chemicalVal", "$pozzolith300rVal", "$rheobuild561Val", "$rheobuild1000_chemicalVal", "$supercrete_chemicalVal", "$limitadcrete_chemicalVal", "$metalVal", "$sandVal", "$dieselVal", "$m_sandVal", "$chipsVal");
 
         $userProfilePics = $this->displayImage($url);
@@ -602,8 +601,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE holcim_extra_cement SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -617,7 +616,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\HolcimExtraCement();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -646,8 +645,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE holcim_ready_flow_plus_cement SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -661,7 +660,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\HolcimReadyFlowPlusCement();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -690,8 +689,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE ordinary_portland_cement_cement SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -705,7 +704,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\OrdinaryPortlandCementCement();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -733,8 +732,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE adcrete_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -746,7 +745,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\AdcreteChemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -776,8 +775,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE supercrete_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -789,7 +788,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\SupercreteChemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -819,8 +818,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE supercrete_hs_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -832,7 +831,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\SupercreteHsChemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -862,8 +861,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE rheobuild561_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -875,7 +874,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\Rheobuild561Chemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -905,8 +904,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE rheobuild1000_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -918,7 +917,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\Rheobuild1000Chemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -948,8 +947,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE pozzolith300r_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -961,7 +960,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\Pozzolith300rChemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -990,8 +989,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE sand SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -1003,7 +1002,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\Sand();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -1031,8 +1030,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE metal SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -1044,7 +1043,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\Metal();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -1072,8 +1071,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE chips SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -1085,7 +1084,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\Chips();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -1113,8 +1112,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE diesel SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -1126,7 +1125,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\Diesel();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -1154,8 +1153,8 @@ class PlantOperatorController extends Controller
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE m_sand SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -1167,7 +1166,7 @@ class PlantOperatorController extends Controller
                     $entry = new \sepBundle\Entity\MSand();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -1403,15 +1402,16 @@ class PlantOperatorController extends Controller
             $repo_m_sand = $querry->fetchAll();
 
             if ($result == []) {
-
+                
                 return $this->redirect($this->generateUrl('sep_homepage'));
-                //return $this->render('sepBundle:OperatorProfile:purAndinvenMgtPO.html.twig', array('url' => $url, 'flag' => true, 'flag1' => false, 'flag2' => false, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand, 'user'=>$user, 'userDetails' => $userDetails, 'types' => $typeDet));
+
+                //return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => true, 'flag1' => false, 'flag2' => false, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand, 'user'=>$user, 'userDetails' => $userDetails, 'types' => $typeDet));
             } else {
                 $res = array($result[0]['order_id'], "$supplier_name", $result[0]['amount'], $result[0]['purchased_amount'], $result[0]['date']);
-                $extra = (int) $res[2] - (int) $res[3];
-                $new_pur_amount = (int) $res[3] + (int) $pur_amount;
+                $extra = (double) $res[2] - (double) $res[3];
+                $new_pur_amount = (double) $res[3] + (double) $pur_amount;
                 
-                if ($extra >= (int) $pur_amount) {
+                if ($extra >= (double) $pur_amount) {
                     $querry = $con->prepare("UPDATE orders SET purchased_amount = :pur_amount WHERE pur_date = :date  AND sup_id = :id");
                     $querry->bindValue('pur_amount', $new_pur_amount);
                     $querry->bindValue('date', $formDate);
@@ -1424,8 +1424,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\HolcimExtraCement();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1451,9 +1451,9 @@ class PlantOperatorController extends Controller
                             $usedBal = $cement_amount[0]['stock_used'];
                             $kk = $cement_amount[0]['stock_purchased'];
                             $prevCost = $cement_amount[0]['net_cost'];
-                            $new_cement_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_cement_amount - (int) $usedBal;
+                            $new_cement_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_cement_amount - (double) $usedBal;
 
 
                             $querry = $con->prepare("UPDATE holcim_extra_cement SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
@@ -1474,11 +1474,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_cement = $qur->fetchAll();
-                            $ob = (int) $clossing_cement[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_cement[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
 
                             $entry = new \sepBundle\Entity\HolcimExtraCement();
@@ -1513,8 +1513,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\HolcimReadyFlowPlusCement();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1540,9 +1540,9 @@ class PlantOperatorController extends Controller
                             $usedBal = $cement_amount[0]['stock_used'];
                             $kk = $cement_amount[0]['stock_purchased'];
                             $prevCost = $cement_amount[0]['net_cost'];
-                            $new_cement_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_cement_amount - (int) $usedBal;
+                            $new_cement_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_cement_amount - (double) $usedBal;
 
 
                             $querry = $con->prepare("UPDATE holcim_ready_flow_plus_cement SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
@@ -1562,11 +1562,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_cement = $qur->fetchAll();
-                            $ob = (int) $clossing_cement[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_cement[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
 
                             $entry = new \sepBundle\Entity\HolcimReadyFlowPlusCement();
@@ -1599,8 +1599,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\OrdinaryPortlandCementCement();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1626,9 +1626,9 @@ class PlantOperatorController extends Controller
                             $usedBal = $cement_amount[0]['stock_used'];
                             $kk = $cement_amount[0]['stock_purchased'];
                             $prevCost = $cement_amount[0]['net_cost'];
-                            $new_cement_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_cement_amount - (int) $usedBal;
+                            $new_cement_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_cement_amount - (double) $usedBal;
 
 
                             $querry = $con->prepare("UPDATE ordinary_portland_cement_cement SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
@@ -1648,11 +1648,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_cement = $qur->fetchAll();
-                            $ob = (int) $clossing_cement[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_cement[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
 
                             $entry = new \sepBundle\Entity\OrdinaryPortlandCementCement();
@@ -1684,8 +1684,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Sand();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1711,9 +1711,9 @@ class PlantOperatorController extends Controller
                             $usedBal = $sand_amount[0]['stock_used'];
                             $kk = $sand_amount[0]['stock_purchased'];
                             $prevCost = $sand_amount[0]['net_cost'];
-                            $new_sand_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_sand_amount - (int) $usedBal;
+                            $new_sand_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_sand_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE sand SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_sand_amount);
@@ -1732,11 +1732,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_sand = $qur->fetchAll();
-                            $ob = (int) $clossing_sand[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_sand[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Sand();
                             $entry->setDate($date);
@@ -1768,8 +1768,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\AdcreteChemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1795,9 +1795,9 @@ class PlantOperatorController extends Controller
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE adcrete_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -1816,11 +1816,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\AdcreteChemical();
                             $entry->setDate($date);
@@ -1852,8 +1852,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\SupercreteChemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1879,9 +1879,9 @@ class PlantOperatorController extends Controller
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE supercrete_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -1900,11 +1900,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\SupercreteChemical();
                             $entry->setDate($date);
@@ -1936,8 +1936,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\SupercreteHsChemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1963,9 +1963,9 @@ class PlantOperatorController extends Controller
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE supercrete_hs_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -1984,11 +1984,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\SupercreteHsChemical();
                             $entry->setDate($date);
@@ -2020,8 +2020,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Rheobuild561Chemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -2047,9 +2047,9 @@ class PlantOperatorController extends Controller
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE rheobuild561_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -2068,11 +2068,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Rheobuild561Chemical();
                             $entry->setDate($date);
@@ -2104,8 +2104,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Rheobuild1000Chemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -2131,9 +2131,9 @@ class PlantOperatorController extends Controller
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE rheobuild1000_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -2152,11 +2152,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Rheobuild1000Chemical();
                             $entry->setDate($date);
@@ -2188,8 +2188,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Pozzolith300rChemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -2215,9 +2215,9 @@ class PlantOperatorController extends Controller
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE pozzolith300r_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -2236,11 +2236,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Pozzolith300rChemical();
                             $entry->setDate($date);
@@ -2271,8 +2271,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Chips();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -2298,9 +2298,9 @@ class PlantOperatorController extends Controller
                             $kk = $chips_amount[0]['stock_purchased'];
                             $usedBal = $chips_amount[0]['stock_used'];
                             $prevCost = $chips_amount[0]['net_cost'];
-                            $new_chips_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chips_amount - (int) $usedBal;
+                            $new_chips_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chips_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE chips SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chips_amount);
@@ -2319,11 +2319,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chips = $qur->fetchAll();
-                            $ob = (int) $clossing_chips[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chips[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Chips();
                             $entry->setDate($date);
@@ -2353,8 +2353,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == 0){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Diesel();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -2380,9 +2380,9 @@ class PlantOperatorController extends Controller
                             $kk = $diesel_amount[0]['stock_purchased'];
                             $usedBal = $diesel_amount[0]['stock_used'];
                             $prevCost = $diesel_amount[0]['net_cost'];
-                            $new_diesel_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_diesel_amount - (int) $usedBal;
+                            $new_diesel_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_diesel_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE diesel SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_diesel_amount);
@@ -2401,11 +2401,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_diesel = $qur->fetchAll();
-                            $ob = (int) $clossing_diesel[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_diesel[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Diesel();
                             $entry->setDate($date);
@@ -2435,8 +2435,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\MSand();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -2462,9 +2462,9 @@ class PlantOperatorController extends Controller
                             $kk = $m_sand_amount[0]['stock_purchased'];
                             $usedBal = $m_sand_amount[0]['stock_used'];
                             $prevCost = $m_sand_amount[0]['net_cost'];
-                            $new_m_sand_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_m_sand_amount - (int) $usedBal;
+                            $new_m_sand_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_m_sand_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE m_sand SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_m_sand_amount);
@@ -2483,11 +2483,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_m_sand = $qur->fetchAll();
-                            $ob = (int) $clossing_m_sand[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_m_sand[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\MSand();
                             $entry->setDate($date);
@@ -2517,8 +2517,8 @@ class PlantOperatorController extends Controller
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Metal();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -2546,9 +2546,9 @@ class PlantOperatorController extends Controller
                             $usedBal = $metal_amount[0]['stock_used'];
 
                             $prevCost = $metal_amount[0]['net_cost'];
-                            $new_metal_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_metal_amount - (int) $usedBal;
+                            $new_metal_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_metal_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE metal SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_metal_amount);
@@ -2567,11 +2567,11 @@ class PlantOperatorController extends Controller
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_metal = $qur->fetchAll();
-                            $ob = (int) $clossing_metal[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_metal[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Metal();
                             $entry->setDate($date);
@@ -2597,8 +2597,8 @@ class PlantOperatorController extends Controller
                         
                     }
                     
-                    $pur_fig = (int)$pur_amount;
-                    $pur_cos = (int)$cost;
+                    $pur_fig = (double)$pur_amount;
+                    $pur_cos = (double)$cost;
                     
                     $pur_entry = new \sepBundle\Entity\Purchases();
                     $pur_entry->setDeliveryOrderId($doId);
@@ -2823,9 +2823,11 @@ class PlantOperatorController extends Controller
             }
             $start = $end + (int) 1;
         }
+        
         $querry = $con->prepare('SELECT * FROM orders WHERE purchased_amount = 0 ORDER BY date DESC');
         $querry->execute();
         $repo_cancel_orders = $querry->fetchAll();
+        
         
         $repo_companies = $em->getRepository('sepBundle:SupplierDetails');
         $companies = $repo_companies->findAll();

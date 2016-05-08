@@ -974,10 +974,10 @@ class UserProfileController extends Controller {
                 //return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => true, 'flag1' => false, 'flag2' => false, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand, 'user'=>$user, 'userDetails' => $userDetails, 'types' => $typeDet));
             } else {
                 $res = array($result[0]['order_id'], "$supplier_name", $result[0]['amount'], $result[0]['purchased_amount'], $result[0]['date']);
-                $extra = (int) $res[2] - (int) $res[3];
-                $new_pur_amount = (int) $res[3] + (int) $pur_amount;
+                $extra = (double) $res[2] - (double) $res[3];
+                $new_pur_amount = (double) $res[3] + (double) $pur_amount;
                 
-                if ($extra >= (int) $pur_amount) {
+                if ($extra >= (double) $pur_amount) {
                     $querry = $con->prepare("UPDATE orders SET purchased_amount = :pur_amount WHERE pur_date = :date  AND sup_id = :id");
                     $querry->bindValue('pur_amount', $new_pur_amount);
                     $querry->bindValue('date', $formDate);
@@ -990,8 +990,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\HolcimExtraCement();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1017,9 +1017,9 @@ class UserProfileController extends Controller {
                             $usedBal = $cement_amount[0]['stock_used'];
                             $kk = $cement_amount[0]['stock_purchased'];
                             $prevCost = $cement_amount[0]['net_cost'];
-                            $new_cement_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_cement_amount - (int) $usedBal;
+                            $new_cement_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_cement_amount - (double) $usedBal;
 
 
                             $querry = $con->prepare("UPDATE holcim_extra_cement SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
@@ -1040,11 +1040,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_cement = $qur->fetchAll();
-                            $ob = (int) $clossing_cement[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_cement[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
 
                             $entry = new \sepBundle\Entity\HolcimExtraCement();
@@ -1079,8 +1079,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\HolcimReadyFlowPlusCement();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1106,9 +1106,9 @@ class UserProfileController extends Controller {
                             $usedBal = $cement_amount[0]['stock_used'];
                             $kk = $cement_amount[0]['stock_purchased'];
                             $prevCost = $cement_amount[0]['net_cost'];
-                            $new_cement_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_cement_amount - (int) $usedBal;
+                            $new_cement_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_cement_amount - (double) $usedBal;
 
 
                             $querry = $con->prepare("UPDATE holcim_ready_flow_plus_cement SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
@@ -1128,11 +1128,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_cement = $qur->fetchAll();
-                            $ob = (int) $clossing_cement[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_cement[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
 
                             $entry = new \sepBundle\Entity\HolcimReadyFlowPlusCement();
@@ -1165,8 +1165,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\OrdinaryPortlandCementCement();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1192,9 +1192,9 @@ class UserProfileController extends Controller {
                             $usedBal = $cement_amount[0]['stock_used'];
                             $kk = $cement_amount[0]['stock_purchased'];
                             $prevCost = $cement_amount[0]['net_cost'];
-                            $new_cement_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_cement_amount - (int) $usedBal;
+                            $new_cement_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_cement_amount - (double) $usedBal;
 
 
                             $querry = $con->prepare("UPDATE ordinary_portland_cement_cement SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
@@ -1214,11 +1214,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_cement = $qur->fetchAll();
-                            $ob = (int) $clossing_cement[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_cement[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
 
                             $entry = new \sepBundle\Entity\OrdinaryPortlandCementCement();
@@ -1250,8 +1250,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Sand();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1277,9 +1277,9 @@ class UserProfileController extends Controller {
                             $usedBal = $sand_amount[0]['stock_used'];
                             $kk = $sand_amount[0]['stock_purchased'];
                             $prevCost = $sand_amount[0]['net_cost'];
-                            $new_sand_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_sand_amount - (int) $usedBal;
+                            $new_sand_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_sand_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE sand SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_sand_amount);
@@ -1298,11 +1298,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_sand = $qur->fetchAll();
-                            $ob = (int) $clossing_sand[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_sand[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Sand();
                             $entry->setDate($date);
@@ -1334,8 +1334,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\AdcreteChemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1361,9 +1361,9 @@ class UserProfileController extends Controller {
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE adcrete_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -1382,11 +1382,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\AdcreteChemical();
                             $entry->setDate($date);
@@ -1418,8 +1418,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\SupercreteChemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1445,9 +1445,9 @@ class UserProfileController extends Controller {
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE supercrete_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -1466,11 +1466,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\SupercreteChemical();
                             $entry->setDate($date);
@@ -1502,8 +1502,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\SupercreteHsChemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1529,9 +1529,9 @@ class UserProfileController extends Controller {
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE supercrete_hs_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -1550,11 +1550,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\SupercreteHsChemical();
                             $entry->setDate($date);
@@ -1586,8 +1586,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Rheobuild561Chemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1613,9 +1613,9 @@ class UserProfileController extends Controller {
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE rheobuild561_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -1634,11 +1634,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Rheobuild561Chemical();
                             $entry->setDate($date);
@@ -1670,8 +1670,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Rheobuild1000Chemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1697,9 +1697,9 @@ class UserProfileController extends Controller {
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE rheobuild1000_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -1718,11 +1718,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Rheobuild1000Chemical();
                             $entry->setDate($date);
@@ -1754,8 +1754,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Pozzolith300rChemical();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1781,9 +1781,9 @@ class UserProfileController extends Controller {
                             $kk = $chemical_amount[0]['stock_purchased'];
                             $usedBal = $chemical_amount[0]['stock_used'];
                             $prevCost = $chemical_amount[0]['net_cost'];
-                            $new_chemical_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chemical_amount - (int) $usedBal;
+                            $new_chemical_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chemical_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE pozzolith300r_chemical SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chemical_amount);
@@ -1802,11 +1802,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chemical = $qur->fetchAll();
-                            $ob = (int) $clossing_chemical[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chemical[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Pozzolith300rChemical();
                             $entry->setDate($date);
@@ -1837,8 +1837,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Chips();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1864,9 +1864,9 @@ class UserProfileController extends Controller {
                             $kk = $chips_amount[0]['stock_purchased'];
                             $usedBal = $chips_amount[0]['stock_used'];
                             $prevCost = $chips_amount[0]['net_cost'];
-                            $new_chips_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_chips_amount - (int) $usedBal;
+                            $new_chips_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_chips_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE chips SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_chips_amount);
@@ -1885,11 +1885,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_chips = $qur->fetchAll();
-                            $ob = (int) $clossing_chips[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_chips[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Chips();
                             $entry->setDate($date);
@@ -1919,8 +1919,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == 0){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Diesel();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -1946,9 +1946,9 @@ class UserProfileController extends Controller {
                             $kk = $diesel_amount[0]['stock_purchased'];
                             $usedBal = $diesel_amount[0]['stock_used'];
                             $prevCost = $diesel_amount[0]['net_cost'];
-                            $new_diesel_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_diesel_amount - (int) $usedBal;
+                            $new_diesel_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_diesel_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE diesel SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_diesel_amount);
@@ -1967,11 +1967,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_diesel = $qur->fetchAll();
-                            $ob = (int) $clossing_diesel[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_diesel[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Diesel();
                             $entry->setDate($date);
@@ -2001,8 +2001,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\MSand();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -2028,9 +2028,9 @@ class UserProfileController extends Controller {
                             $kk = $m_sand_amount[0]['stock_purchased'];
                             $usedBal = $m_sand_amount[0]['stock_used'];
                             $prevCost = $m_sand_amount[0]['net_cost'];
-                            $new_m_sand_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_m_sand_amount - (int) $usedBal;
+                            $new_m_sand_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_m_sand_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE m_sand SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_m_sand_amount);
@@ -2049,11 +2049,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_m_sand = $qur->fetchAll();
-                            $ob = (int) $clossing_m_sand[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_m_sand[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\MSand();
                             $entry->setDate($date);
@@ -2083,8 +2083,8 @@ class UserProfileController extends Controller {
                         $qur->execute();
                         $lastDate = $qur->fetchAll();
                         if($lastDate == []){
-                            $pa = (int)$pur_amount;
-                            $nCost = (int)$cost;
+                            $pa = (double)$pur_amount;
+                            $nCost = (double)$cost;
                             $entry = new \sepBundle\Entity\Metal();
                             $entry->setDate($date);
                             $entry->setOpeningBalance(0);
@@ -2112,9 +2112,9 @@ class UserProfileController extends Controller {
                             $usedBal = $metal_amount[0]['stock_used'];
 
                             $prevCost = $metal_amount[0]['net_cost'];
-                            $new_metal_amount = (int) $kk + (int) $pur_amount;
-                            $new_net_cost = (int) $prevCost + (int) $cost;
-                            $closeBal = (int) $opnBal + (int) $new_metal_amount - (int) $usedBal;
+                            $new_metal_amount = (double) $kk + (double) $pur_amount;
+                            $new_net_cost = (double) $prevCost + (double) $cost;
+                            $closeBal = (double) $opnBal + (double) $new_metal_amount - (double) $usedBal;
 
                             $querry = $con->prepare("UPDATE metal SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_metal_amount);
@@ -2133,11 +2133,11 @@ class UserProfileController extends Controller {
                             $qur->bindValue('date', $dd);
                             $qur->execute();
                             $clossing_metal = $qur->fetchAll();
-                            $ob = (int) $clossing_metal[0]['clossing_balance'];
-                            $pa = (int) $pur_amount;
-                            $su = (int) 0;
-                            $newCost = (int) $cost;
-                            $cb = (int) $ob + (int) $pa;
+                            $ob = (double) $clossing_metal[0]['clossing_balance'];
+                            $pa = (double) $pur_amount;
+                            $su = (double) 0;
+                            $newCost = (double) $cost;
+                            $cb = (double) $ob + (double) $pa;
 
                             $entry = new \sepBundle\Entity\Metal();
                             $entry->setDate($date);
@@ -2163,8 +2163,8 @@ class UserProfileController extends Controller {
                         
                     }
                     
-                    $pur_fig = (int)$pur_amount;
-                    $pur_cos = (int)$cost;
+                    $pur_fig = (double)$pur_amount;
+                    $pur_cos = (double)$cost;
                     
                     $pur_entry = new \sepBundle\Entity\Purchases();
                     $pur_entry->setDeliveryOrderId($doId);
@@ -2218,22 +2218,22 @@ class UserProfileController extends Controller {
         $querry->execute();
         $typeDet = $querry->fetchAll();
 
-        $limitholcim_extra_cementVal = (int) 0;
-        $limitholcim_ready_flow_plus_cementVal = (int) 0;
-        $limitordinary_portland_cement_cementVal = (int) 0;
+        $limitholcim_extra_cementVal = (double) 0;
+        $limitholcim_ready_flow_plus_cementVal = (double) 0;
+        $limitordinary_portland_cement_cementVal = (double) 0;
         
-        $limitadcrete_chemicalVal = (int) 0;
-        $pozzolith300rVal = (int) 0;
-        $rheobuild561Val = (int) 0;
-        $rheobuild1000_chemicalVal = (int) 0;
-        $supercrete_chemicalVal = (int) 0;
-        $supercrete_hs_chemicalVal = (int) 0;
+        $limitadcrete_chemicalVal = (double) 0;
+        $pozzolith300rVal = (double) 0;
+        $rheobuild561Val = (double) 0;
+        $rheobuild1000_chemicalVal = (double) 0;
+        $supercrete_chemicalVal = (double) 0;
+        $supercrete_hs_chemicalVal = (double) 0;
         
-        $metalVal = (int) 0;
-        $sandVal = (int) 0;
-        $dieselVal = (int) 0;
-        $m_sandVal = (int) 0;
-        $chipsVal = (int) 0;
+        $metalVal = (double) 0;
+        $sandVal = (double) 0;
+        $dieselVal = (double) 0;
+        $m_sandVal = (double) 0;
+        $chipsVal = (double) 0;
         
         $querry = $con->prepare("SELECT * FROM reorder_levels");
         $querry->execute();
@@ -2252,7 +2252,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-            $rr = (int) $result[0]["clossing_balance"];
+            $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_holcim_extra_cement = $rr;
@@ -2261,13 +2261,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Holcim Extra");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitholcim_extra_cement = (int) $result[0]["reorder_level"];
+        $limitholcim_extra_cement = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitholcim_extra_cement) {
             
         }
         else{
-            $limitholcim_extra_cementVal = (int) 1;
+            $limitholcim_extra_cementVal = (double) 1;
         }
         
         //cement 2
@@ -2279,7 +2279,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         
@@ -2289,13 +2289,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Holcim Ready Flow Plus");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitholcim_ready_flow_plus_cement = (int) $result[0]["reorder_level"];
+        $limitholcim_ready_flow_plus_cement = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitholcim_ready_flow_plus_cement) {
             
         }
         else{
-            $limitholcim_ready_flow_plus_cementVal = (int) 1;
+            $limitholcim_ready_flow_plus_cementVal = (double) 1;
         }
         
         //cement 3
@@ -2307,7 +2307,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_ordinary_portland_cement_cement = $rr;
@@ -2316,13 +2316,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Ordinary Portland Cement");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitordinary_portland_cement_cement = (int) $result[0]["reorder_level"];
+        $limitordinary_portland_cement_cement = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitordinary_portland_cement_cement) {
             
         }
         else{
-            $limitordinary_portland_cement_cementVal = (int) 1;
+            $limitordinary_portland_cement_cementVal = (double) 1;
         }
         
         //Sand
@@ -2334,7 +2334,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_sand = $rr;
@@ -2343,12 +2343,12 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Sand");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitSand = (int) $result[0]["reorder_level"];
+        $limitSand = (double) $result[0]["reorder_level"];
         if ($rr <= $limitSand) {
             
         }
         else{
-            $sandVal = (int) 1;
+            $sandVal = (double) 1;
         }
         
         //Chemical 1
@@ -2360,7 +2360,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_adcrete_chemical = $rr;
@@ -2369,13 +2369,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Adcrete");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitadcrete_chemical = (int) $result[0]["reorder_level"];
+        $limitadcrete_chemical = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitadcrete_chemical) {
             
         }
         if ($rr > $limitadcrete_chemical) {
-            $limitadcrete_chemicalVal = (int) 1;
+            $limitadcrete_chemicalVal = (double) 1;
         }
         
         //Chemical 2
@@ -2387,7 +2387,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_pozzolith300r = $rr;
@@ -2396,13 +2396,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Pozzolith 300R");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitpozzolith300r = (int) $result[0]["reorder_level"];
+        $limitpozzolith300r = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitpozzolith300r) {
             
         }
         if ($rr > $limitpozzolith300r) {
-            $pozzolith300rVal = (int) 1;
+            $pozzolith300rVal = (double) 1;
         }
         
         //Chemical 3
@@ -2414,7 +2414,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_rheobuild561 = $rr;
@@ -2423,13 +2423,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Rheobuild 561");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitrheobuild561 = (int) $result[0]["reorder_level"];
+        $limitrheobuild561 = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitrheobuild561) {
             
         }
         if ($rr > $limitrheobuild561) {
-            $rheobuild561Val = (int) 1;
+            $rheobuild561Val = (double) 1;
         }
         
         //Chemical 4
@@ -2441,7 +2441,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_rheobuild1000_chemical = $rr;
@@ -2450,13 +2450,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Rheobuild 1000");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitrheobuild1000_chemical = (int) $result[0]["reorder_level"];
+        $limitrheobuild1000_chemical = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitrheobuild1000_chemical) {
             
         }
         if ($rr > $limitrheobuild1000_chemical) {
-            $rheobuild1000_chemicalVal = (int) 1;
+            $rheobuild1000_chemicalVal = (double) 1;
         }
         
         //Chemical 5
@@ -2468,7 +2468,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_supercrete_chemical = $rr;
@@ -2477,13 +2477,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Supercrete");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitsupercrete_chemical = (int) $result[0]["reorder_level"];
+        $limitsupercrete_chemical = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitsupercrete_chemical) {
             
         }
         if ($rr > $limitsupercrete_chemical) {
-            $supercrete_chemicalVal = (int) 1;
+            $supercrete_chemicalVal = (double) 1;
         }
         
         //Chemical 6
@@ -2495,7 +2495,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_supercrete_hs_chemical = $rr;
@@ -2504,13 +2504,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Supercrete - HS");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitsupercrete_hs_chemical = (int) $result[0]["reorder_level"];
+        $limitsupercrete_hs_chemical = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitsupercrete_hs_chemical) {
             
         }
         if ($rr > $limitsupercrete_hs_chemical) {
-            $supercrete_hs_chemicalVal = (int) 1;
+            $supercrete_hs_chemicalVal = (double) 1;
         }
         
         //Metal
@@ -2522,7 +2522,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_metal = $rr;
@@ -2531,13 +2531,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Metal");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitMetal = (int) $result[0]["reorder_level"];
+        $limitMetal = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitMetal) {
             
         }
         else {
-            $metalVal = (int) 1;
+            $metalVal = (double) 1;
         }
         
         //Diesel
@@ -2549,7 +2549,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_diesel = $rr;
@@ -2558,13 +2558,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Diesel");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitDiesel = (int) $result[0]["reorder_level"];
+        $limitDiesel = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitDiesel) {
             
         }
         else {
-            $dieselVal = (int) 1;
+            $dieselVal = (double) 1;
         }
 
         //Chips
@@ -2576,7 +2576,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_chips = $rr;
@@ -2585,13 +2585,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "Chips");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitChips = (int) $result[0]["reorder_level"];
+        $limitChips = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitChips) {
             
         }
         else {
-            $chipsVal = (int) 1;
+            $chipsVal = (double) 1;
         }
         //M-Sand
         $querry = $con->prepare("SELECT clossing_balance FROM m_sand ORDER BY date DESC LIMIT 1");
@@ -2602,7 +2602,7 @@ class UserProfileController extends Controller {
           $rr = 0;  
         }
         else{
-           $rr = (int) $result[0]["clossing_balance"];
+           $rr = (double) $result[0]["clossing_balance"];
         }
         
         $cb_m_sand = $rr;
@@ -2611,13 +2611,13 @@ class UserProfileController extends Controller {
         $querry->bindValue('rm', "M_Sand");
         $querry->execute();
         $result = $querry->fetchAll();
-        $limitM_Sand = (int) $result[0]["reorder_level"];
+        $limitM_Sand = (double) $result[0]["reorder_level"];
         
         if ($rr <= $limitM_Sand) {
             
         }
         else {
-            $m_sandVal = (int) 1;
+            $m_sandVal = (double) 1;
         }
         $counts = array("$limitholcim_extra_cementVal", "$limitholcim_ready_flow_plus_cementVal", "$limitordinary_portland_cement_cementVal", "$supercrete_hs_chemicalVal", "$pozzolith300rVal", "$rheobuild561Val", "$rheobuild1000_chemicalVal", "$supercrete_chemicalVal", "$limitadcrete_chemicalVal", "$metalVal", "$sandVal", "$dieselVal", "$m_sandVal", "$chipsVal");
 
@@ -2735,8 +2735,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE holcim_extra_cement SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -2750,7 +2750,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\HolcimExtraCement();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -2779,8 +2779,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE holcim_ready_flow_plus_cement SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -2794,7 +2794,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\HolcimReadyFlowPlusCement();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -2823,8 +2823,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE ordinary_portland_cement_cement SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -2838,7 +2838,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\OrdinaryPortlandCementCement();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -2866,8 +2866,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE adcrete_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -2879,7 +2879,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\AdcreteChemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -2909,8 +2909,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE supercrete_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -2922,7 +2922,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\SupercreteChemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -2952,8 +2952,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE supercrete_hs_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -2965,7 +2965,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\SupercreteHsChemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -2995,8 +2995,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE rheobuild561_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -3008,7 +3008,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\Rheobuild561Chemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -3038,8 +3038,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE rheobuild1000_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -3051,7 +3051,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\Rheobuild1000Chemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -3081,8 +3081,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE pozzolith300r_chemical SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -3094,7 +3094,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\Pozzolith300rChemical();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -3123,8 +3123,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE sand SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -3136,7 +3136,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\Sand();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -3164,8 +3164,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE metal SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -3177,7 +3177,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\Metal();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -3205,8 +3205,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE chips SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -3218,7 +3218,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\Chips();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -3246,8 +3246,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE diesel SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -3259,7 +3259,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\Diesel();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -3287,8 +3287,8 @@ class UserProfileController extends Controller {
                     $querry->bindValue('date', $usedDate);
                     $querry->execute();
                     $val = $querry->fetchAll();
-                    $val1 = (int) $val[0]['stock_used'] + (int) $qty;
-                    $closeBal = (int) $val[0]['opening_balance'] + (int) $val[0]['stock_purchased'] - (int) $val1;
+                    $val1 = (double) $val[0]['stock_used'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE m_sand SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -3300,7 +3300,7 @@ class UserProfileController extends Controller {
                     $entry = new \sepBundle\Entity\MSand();
                     $entry->setDate($date);
                     $entry->setOpeningBalance($nRes[0]['clossing_balance']);
-                    $entry->setClossingBalance((int) $nRes[0]['clossing_balance'] - (int) $qty);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
                     $entry->setNetCost(0);
@@ -3512,8 +3512,8 @@ class UserProfileController extends Controller {
 
             $date = new \DateTime($salesDate);
             $cn = (int) $contact;
-            $sv = (int) $salesVal;
-            $pay = (int) $payment;
+            $sv = (double) $salesVal;
+            $pay = (double) $payment;
             $em = $this->getDoctrine()->getEntityManager();
             $con = $em->getConnection();
 
@@ -3560,7 +3560,7 @@ class UserProfileController extends Controller {
             //return $this->render('sepBundle:Default:index.html.twig', array('rr' => $month));
 
             $date = new \DateTime($salesDate);
-            $quantity = (int) $qty;
+            $quantity = (double) $qty;
             $status = 0;
             
             $em = $this->getDoctrine()->getEntityManager();
@@ -3603,8 +3603,8 @@ class UserProfileController extends Controller {
             $querry->bindValue('id', $id);
             $querry->execute();
             $result = $querry->fetchAll();
-            $test = (int) $result[0]["sales_amount"] - (int) $result[0]["payment_received"];
-            if ((int) $test < (int) $val) {
+            $test = (double) $result[0]["sales_amount"] - (double) $result[0]["payment_received"];
+            if ((double) $test < (double) $val) {
                 $rr = "False";
                 return new Response(json_encode($rr));
             } else {
@@ -3634,7 +3634,7 @@ class UserProfileController extends Controller {
             $repo_sales = $em->getRepository('sepBundle:Sales');
             $sales = $repo_sales->findOneBy(array('salesId' => $salesID));
             $payRecv = $sales->getPaymentReceived();
-            $newPayRecv = (int) $payRecv + (int) $payment;
+            $newPayRecv = (double) $payRecv + (double) $payment;
 
             $con = $em->getConnection();
             $qur = $con->prepare("UPDATE sales SET payment_received = :val WHERE sales_id = :id");
@@ -3736,32 +3736,32 @@ class UserProfileController extends Controller {
         
         $em = $this->getDoctrine()->getEntityManager();
         $con = $em->getConnection();
-        $income = (int) 0;
-        $cost = (int) 0;
+        $income = (double) 0;
+        $cost = (double) 0;
         
-        $cost_holcim_extra_cement = (int) 0;
-        $cost_holcim_ready = (int) 0;
-        $cost_ordinary_portland = (int) 0;
+        $cost_holcim_extra_cement = (double) 0;
+        $cost_holcim_ready = (double) 0;
+        $cost_ordinary_portland = (double) 0;
         
-        $cost_adcrete = (int) 0;
-        $cost_pozzolith300r = (int) 0;
-        $cost_rheobuild561 = (int) 0;
-        $cost_rheobuild1000 = (int) 0;
-        $cost_supercrete = (int) 0;
-        $cost_supercrete_hs = (int) 0;
+        $cost_adcrete = (double) 0;
+        $cost_pozzolith300r = (double) 0;
+        $cost_rheobuild561 = (double) 0;
+        $cost_rheobuild1000 = (double) 0;
+        $cost_supercrete = (double) 0;
+        $cost_supercrete_hs = (double) 0;
         
-        $cost_sand = (int) 0;
-        $cost_metal = (int) 0;
-        $cost_m_sand = (int) 0;
-        $cost_diesel = (int) 0;
-        $cost_chips = (int) 0;
+        $cost_sand = (double) 0;
+        $cost_metal = (double) 0;
+        $cost_m_sand = (double) 0;
+        $cost_diesel = (double) 0;
+        $cost_chips = (double) 0;
 
         //Income - Sales
         $q1 = $con->prepare("SELECT * FROM sales ORDER BY sales_date DESC");
         $q1->execute();
         $sales = $q1->fetchAll();
         for ($i = 0; $i < (int) sizeof($sales); $i++) {
-            $income = $income + (int) $sales[$i]["sales_amount"];
+            $income = $income + (double) $sales[$i]["sales_amount"];
         }
 
         //Costs - Cement 1
@@ -3769,7 +3769,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $holcim_extra_cement = $q1->fetchAll();
         for ($i = 0; $i < sizeof($holcim_extra_cement); $i++) {
-            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (int) $holcim_extra_cement[$i]["net_cost"];
+            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (double) $holcim_extra_cement[$i]["net_cost"];
         }
         
         //Costs - Cement 2
@@ -3777,7 +3777,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $holcim_ready_flow_plus = $q1->fetchAll();
         for ($i = 0; $i < sizeof($holcim_ready_flow_plus); $i++) {
-            $cost_holcim_ready = $cost_holcim_ready + (int) $holcim_ready_flow_plus[$i]["net_cost"];
+            $cost_holcim_ready = $cost_holcim_ready + (double) $holcim_ready_flow_plus[$i]["net_cost"];
         }
         
         //Costs - Cement 3
@@ -3785,7 +3785,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $ordinary_portland = $q1->fetchAll();
         for ($i = 0; $i < sizeof($ordinary_portland); $i++) {
-            $cost_ordinary_portland = $cost_ordinary_portland + (int) $ordinary_portland[$i]["net_cost"];
+            $cost_ordinary_portland = $cost_ordinary_portland + (double) $ordinary_portland[$i]["net_cost"];
         }
 
         //Costs - Chemical 1
@@ -3793,7 +3793,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $adcrete = $q1->fetchAll();
         for ($i = 0; $i < sizeof($adcrete); $i++) {
-            $cost_adcrete = $cost_adcrete + (int) $adcrete[$i]["net_cost"];
+            $cost_adcrete = $cost_adcrete + (double) $adcrete[$i]["net_cost"];
         }
         
         //Costs - Chemical 2
@@ -3801,7 +3801,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $pozzolith300r = $q1->fetchAll();
         for ($i = 0; $i < sizeof($pozzolith300r); $i++) {
-            $cost_pozzolith300r = $cost_pozzolith300r + (int) $pozzolith300r[$i]["net_cost"];
+            $cost_pozzolith300r = $cost_pozzolith300r + (double) $pozzolith300r[$i]["net_cost"];
         }
         
         //Costs - Chemical 3
@@ -3809,7 +3809,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $rheobuild561 = $q1->fetchAll();
         for ($i = 0; $i < sizeof($rheobuild561); $i++) {
-            $cost_rheobuild561 = $cost_rheobuild561 + (int) $rheobuild561[$i]["net_cost"];
+            $cost_rheobuild561 = $cost_rheobuild561 + (double) $rheobuild561[$i]["net_cost"];
         }
         
         //Costs - Chemical 4
@@ -3817,7 +3817,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $rheobuild1000 = $q1->fetchAll();
         for ($i = 0; $i < sizeof($rheobuild1000); $i++) {
-            $cost_rheobuild1000 = $cost_rheobuild1000 + (int) $rheobuild1000[$i]["net_cost"];
+            $cost_rheobuild1000 = $cost_rheobuild1000 + (double) $rheobuild1000[$i]["net_cost"];
         }
         
         //Costs - Chemical 5
@@ -3825,7 +3825,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $supercrete = $q1->fetchAll();
         for ($i = 0; $i < sizeof($supercrete); $i++) {
-            $cost_supercrete = $cost_supercrete + (int) $supercrete[$i]["net_cost"];
+            $cost_supercrete = $cost_supercrete + (double) $supercrete[$i]["net_cost"];
         }
         
         //Costs - Chemical 6
@@ -3833,7 +3833,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $supercrete_hs = $q1->fetchAll();
         for ($i = 0; $i < sizeof($supercrete_hs); $i++) {
-            $cost_supercrete_hs = $cost_supercrete_hs + (int) $supercrete_hs[$i]["net_cost"];
+            $cost_supercrete_hs = $cost_supercrete_hs + (double) $supercrete_hs[$i]["net_cost"];
         }
 
         //Costs - Sand
@@ -3841,7 +3841,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $sand = $q1->fetchAll();
         for ($i = 0; $i < sizeof($sand); $i++) {
-            $cost_sand = $cost_sand + (int) $sand[$i]["net_cost"];
+            $cost_sand = $cost_sand + (double) $sand[$i]["net_cost"];
         }
 
         //Costs - Metal
@@ -3849,7 +3849,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $metal = $q1->fetchAll();
         for ($i = 0; $i < sizeof($metal); $i++) {
-            $cost_metal = $cost_metal + (int) $metal[$i]["net_cost"];
+            $cost_metal = $cost_metal + (double) $metal[$i]["net_cost"];
         }
 
         //Costs - diesel
@@ -3857,7 +3857,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $diesel = $q1->fetchAll();
         for ($i = 0; $i < sizeof($diesel); $i++) {
-            $cost_diesel = $cost_diesel + (int) $diesel[$i]["net_cost"];
+            $cost_diesel = $cost_diesel + (double) $diesel[$i]["net_cost"];
         }
 
         //Costs - chips
@@ -3865,7 +3865,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $chips = $q1->fetchAll();
         for ($i = 0; $i < sizeof($chips); $i++) {
-            $cost_chips = $cost_chips + (int) $chips[$i]["net_cost"];
+            $cost_chips = $cost_chips + (double) $chips[$i]["net_cost"];
         }
 
         //Costs - M-Sand
@@ -3873,15 +3873,15 @@ class UserProfileController extends Controller {
         $q1->execute();
         $mSand = $q1->fetchAll();
         for ($i = 0; $i < sizeof($mSand); $i++) {
-            $cost_m_sand = $cost_m_sand + (int) $mSand[$i]["net_cost"];
+            $cost_m_sand = $cost_m_sand + (double) $mSand[$i]["net_cost"];
         }
         //Admin expenses 
         $q1 = $con->prepare("SELECT * FROM other_expenses");
         $q1->execute();
         $adminExp = $q1->fetchAll();
-        $totAdminCost = (int) 0;
+        $totAdminCost = (double) 0;
         for ($i = 0; $i < sizeof($adminExp); $i++) {
-            $totAdminCost = $totAdminCost + (int) $adminExp[$i]["amount"];
+            $totAdminCost = $totAdminCost + (double) $adminExp[$i]["amount"];
         }
 
         //Admin expense titles
@@ -3889,7 +3889,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $adminExpTitles = $q1->fetchAll();
 
-        $cost = (int) $cost_holcim_extra_cement + (int) $cost_holcim_ready + (int) $cost_ordinary_portland + (int) $cost_adcrete + (int) $cost_pozzolith300r + (int) $cost_rheobuild561 + (int) $cost_rheobuild1000 + (int) $cost_supercrete + (int) $cost_supercrete_hs + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
+        $cost = (double) $cost_holcim_extra_cement + (double) $cost_holcim_ready + (double) $cost_ordinary_portland + (double) $cost_adcrete + (double) $cost_pozzolith300r + (double) $cost_rheobuild561 + (double) $cost_rheobuild1000 + (double) $cost_supercrete + (double) $cost_supercrete_hs + (double) $cost_chips + (double) $cost_sand + (double) $cost_metal + (double) $cost_m_sand + (double) $cost_diesel;
         $pOrl = $this->calcProfit($income, $cost, $totAdminCost);
         
         
@@ -3931,7 +3931,7 @@ class UserProfileController extends Controller {
     //Done
     public function periodProfitAction($url, Request $request) {
         
-                $session = $request->getSession();
+        $session = $request->getSession();
         $userid=$session->get('id');
         if(isset($userid)){
                     if ($request->getMethod() == "POST") {
@@ -3972,25 +3972,25 @@ class UserProfileController extends Controller {
 
             $em = $this->getDoctrine()->getEntityManager();
             $con = $em->getConnection();
-            $income = (int) 0;
-            $cost = (int) 0;
+            $income = (double) 0;
+            $cost = (double) 0;
             
-            $cost_holcim_extra_cement = (int) 0;
-            $cost_holcim_ready = (int) 0;
-            $cost_ordinary_portland = (int) 0;
+            $cost_holcim_extra_cement = (double) 0;
+            $cost_holcim_ready = (double) 0;
+            $cost_ordinary_portland = (double) 0;
 
-            $cost_adcrete = (int) 0;
-            $cost_pozzolith300r = (int) 0;
-            $cost_rheobuild561 = (int) 0;
-            $cost_rheobuild1000 = (int) 0;
-            $cost_supercrete = (int) 0;
-            $cost_supercrete_hs = (int) 0;
+            $cost_adcrete = (double) 0;
+            $cost_pozzolith300r = (double) 0;
+            $cost_rheobuild561 = (double) 0;
+            $cost_rheobuild1000 = (double) 0;
+            $cost_supercrete = (double) 0;
+            $cost_supercrete_hs = (double) 0;
 
-            $cost_sand = (int) 0;
-            $cost_metal = (int) 0;
-            $cost_m_sand = (int) 0;
-            $cost_diesel = (int) 0;
-            $cost_chips = (int) 0;
+            $cost_sand = (double) 0;
+            $cost_metal = (double) 0;
+            $cost_m_sand = (double) 0;
+            $cost_diesel = (double) 0;
+            $cost_chips = (double) 0;
 
             //Income - Sales
             $q1 = $con->prepare("SELECT * FROM sales WHERE sales_date BETWEEN :sd AND :ed ORDER BY sales_date DESC");
@@ -3999,7 +3999,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $sales = $q1->fetchAll();
             for ($i = 0; $i < (int) sizeof($sales); $i++) {
-                $income = $income + (int) $sales[$i]["sales_amount"];
+                $income = $income + (double) $sales[$i]["sales_amount"];
             }
 
             //Costs - Cement 1
@@ -4009,7 +4009,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $holcim_extra_cement = $q1->fetchAll();
         for ($i = 0; $i < sizeof($holcim_extra_cement); $i++) {
-            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (int) $holcim_extra_cement[$i]["net_cost"];
+            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (double) $holcim_extra_cement[$i]["net_cost"];
         }
             
             //Costs - Cement 2
@@ -4019,7 +4019,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $holcim_ready_flow_plus = $q1->fetchAll();
         for ($i = 0; $i < sizeof($holcim_ready_flow_plus); $i++) {
-            $cost_holcim_ready = $cost_holcim_ready + (int) $holcim_ready_flow_plus[$i]["net_cost"];
+            $cost_holcim_ready = $cost_holcim_ready + (double) $holcim_ready_flow_plus[$i]["net_cost"];
         }
             
             //Costs - Cement 3
@@ -4029,7 +4029,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $ordinary_portland = $q1->fetchAll();
         for ($i = 0; $i < sizeof($ordinary_portland); $i++) {
-            $cost_ordinary_portland = $cost_ordinary_portland + (int) $ordinary_portland[$i]["net_cost"];
+            $cost_ordinary_portland = $cost_ordinary_portland + (double) $ordinary_portland[$i]["net_cost"];
         }
             
             //Costs - Chemical 1
@@ -4039,7 +4039,7 @@ class UserProfileController extends Controller {
             $q1->execute();
            $adcrete = $q1->fetchAll();
         for ($i = 0; $i < sizeof($adcrete); $i++) {
-            $cost_adcrete = $cost_adcrete + (int) $adcrete[$i]["net_cost"];
+            $cost_adcrete = $cost_adcrete + (double) $adcrete[$i]["net_cost"];
         }
             
             //Costs - Chemical 2
@@ -4049,7 +4049,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $pozzolith300r = $q1->fetchAll();
         for ($i = 0; $i < sizeof($pozzolith300r); $i++) {
-            $cost_pozzolith300r = $cost_pozzolith300r + (int) $pozzolith300r[$i]["net_cost"];
+            $cost_pozzolith300r = $cost_pozzolith300r + (double) $pozzolith300r[$i]["net_cost"];
         }
             
             //Costs - Chemical 3
@@ -4059,7 +4059,7 @@ class UserProfileController extends Controller {
             $q1->execute();
            $rheobuild561 = $q1->fetchAll();
         for ($i = 0; $i < sizeof($rheobuild561); $i++) {
-            $cost_rheobuild561 = $cost_rheobuild561 + (int) $rheobuild561[$i]["net_cost"];
+            $cost_rheobuild561 = $cost_rheobuild561 + (double) $rheobuild561[$i]["net_cost"];
         }
             
             //Costs - Chemical 4
@@ -4069,7 +4069,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $rheobuild1000 = $q1->fetchAll();
         for ($i = 0; $i < sizeof($rheobuild1000); $i++) {
-            $cost_rheobuild1000 = $cost_rheobuild1000 + (int) $rheobuild1000[$i]["net_cost"];
+            $cost_rheobuild1000 = $cost_rheobuild1000 + (double) $rheobuild1000[$i]["net_cost"];
         }
             
             //Costs - Chemical 5
@@ -4079,7 +4079,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $supercrete = $q1->fetchAll();
         for ($i = 0; $i < sizeof($supercrete); $i++) {
-            $cost_supercrete = $cost_supercrete + (int) $supercrete[$i]["net_cost"];
+            $cost_supercrete = $cost_supercrete + (double) $supercrete[$i]["net_cost"];
         }
             
             //Costs - Chemical 6
@@ -4089,7 +4089,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $supercrete_hs = $q1->fetchAll();
         for ($i = 0; $i < sizeof($supercrete_hs); $i++) {
-            $cost_supercrete_hs = $cost_supercrete_hs + (int) $supercrete_hs[$i]["net_cost"];
+            $cost_supercrete_hs = $cost_supercrete_hs + (double) $supercrete_hs[$i]["net_cost"];
         }
 
             //Costs - Sand
@@ -4099,7 +4099,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $sand = $q1->fetchAll();
             for ($i = 0; $i < sizeof($sand); $i++) {
-                $cost_sand = $cost_sand + (int) $sand[$i]["net_cost"];
+                $cost_sand = $cost_sand + (double) $sand[$i]["net_cost"];
             }
 
             //Costs - Metal
@@ -4109,7 +4109,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $metal = $q1->fetchAll();
             for ($i = 0; $i < sizeof($metal); $i++) {
-                $cost_metal = $cost_metal + (int) $metal[$i]["net_cost"];
+                $cost_metal = $cost_metal + (double) $metal[$i]["net_cost"];
             }
 
             //Costs - diesel
@@ -4119,7 +4119,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $diesel = $q1->fetchAll();
             for ($i = 0; $i < sizeof($diesel); $i++) {
-                $cost_diesel = $cost_diesel + (int) $diesel[$i]["net_cost"];
+                $cost_diesel = $cost_diesel + (double) $diesel[$i]["net_cost"];
             }
 
             //Costs - chips
@@ -4129,7 +4129,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $chips = $q1->fetchAll();
             for ($i = 0; $i < sizeof($chips); $i++) {
-                $cost_chips = $cost_chips + (int) $chips[$i]["net_cost"];
+                $cost_chips = $cost_chips + (double) $chips[$i]["net_cost"];
             }
 
             //Costs - M-Sand
@@ -4139,7 +4139,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $mSand = $q1->fetchAll();
             for ($i = 0; $i < sizeof($mSand); $i++) {
-                $cost_m_sand = $cost_m_sand + (int) $mSand[$i]["net_cost"];
+                $cost_m_sand = $cost_m_sand + (double) $mSand[$i]["net_cost"];
             }
             //Admin expenses 
             $q1 = $con->prepare("SELECT * FROM other_expenses WHERE date BETWEEN :sd AND :ed");
@@ -4147,9 +4147,9 @@ class UserProfileController extends Controller {
             $q1->bindValue('ed', $endDate);
             $q1->execute();
             $adminExp = $q1->fetchAll();
-            $totAdminCost = (int) 0;
+            $totAdminCost = (double) 0;
             for ($i = 0; $i < sizeof($adminExp); $i++) {
-                $totAdminCost = $totAdminCost + (int) $adminExp[$i]["amount"];
+                $totAdminCost = $totAdminCost + (double) $adminExp[$i]["amount"];
             }
             
             //Admin expense titles
@@ -4157,7 +4157,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $adminExpTitles = $q1->fetchAll();
 
-            $cost = (int) $cost_holcim_extra_cement + (int) $cost_holcim_ready + (int) $cost_ordinary_portland + (int) $cost_adcrete + (int) $cost_pozzolith300r + (int) $cost_rheobuild561 + (int) $cost_rheobuild1000 + (int) $cost_supercrete + (int) $cost_supercrete_hs + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
+            $cost = (double) $cost_holcim_extra_cement + (double) $cost_holcim_ready + (double) $cost_ordinary_portland + (double) $cost_adcrete + (double) $cost_pozzolith300r + (double) $cost_rheobuild561 + (double) $cost_rheobuild1000 + (double) $cost_supercrete + (double) $cost_supercrete_hs + (double) $cost_chips + (double) $cost_sand + (double) $cost_metal + (double) $cost_m_sand + (double) $cost_diesel;
             $pOrl = $this->calcProfit($income, $cost, $totAdminCost);
             
             $userProfilePics = $this->displayImage($url);
@@ -4215,32 +4215,32 @@ class UserProfileController extends Controller {
         
         $em = $this->getDoctrine()->getEntityManager();
         $con = $em->getConnection();
-        $income = (int) 0;
-        $cost = (int) 0;
+        $income = (double) 0;
+        $cost = (double) 0;
         
-        $cost_holcim_extra_cement = (int) 0;
-        $cost_holcim_ready = (int) 0;
-        $cost_ordinary_portland = (int) 0;
+        $cost_holcim_extra_cement = (double) 0;
+        $cost_holcim_ready = (double) 0;
+        $cost_ordinary_portland = (double) 0;
 
-        $cost_adcrete = (int) 0;
-        $cost_pozzolith300r = (int) 0;
-        $cost_rheobuild561 = (int) 0;
-        $cost_rheobuild1000 = (int) 0;
-        $cost_supercrete = (int) 0;
-        $cost_supercrete_hs = (int) 0;
+        $cost_adcrete = (double) 0;
+        $cost_pozzolith300r = (double) 0;
+        $cost_rheobuild561 = (double) 0;
+        $cost_rheobuild1000 = (double) 0;
+        $cost_supercrete = (double) 0;
+        $cost_supercrete_hs = (double) 0;
         
-        $cost_sand = (int) 0;
-        $cost_metal = (int) 0;
-        $cost_m_sand = (int) 0;
-        $cost_diesel = (int) 0;
-        $cost_chips = (int) 0;
+        $cost_sand = (double) 0;
+        $cost_metal = (double) 0;
+        $cost_m_sand = (double) 0;
+        $cost_diesel = (double) 0;
+        $cost_chips = (double) 0;
 
         //Income - Sales
         $q1 = $con->prepare("SELECT * FROM sales ORDER BY sales_date DESC");
         $q1->execute();
         $sales = $q1->fetchAll();
         for ($i = 0; $i < (int) sizeof($sales); $i++) {
-            $income = $income + (int) $sales[$i]["payment_received"];
+            $income = $income + (double) $sales[$i]["payment_received"];
         }
 
         //Costs - Cement 1
@@ -4248,7 +4248,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $holcim_extra_cement = $q1->fetchAll();
         for ($i = 0; $i < sizeof($holcim_extra_cement); $i++) {
-            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (int) $holcim_extra_cement[$i]["net_cost"];
+            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (double) $holcim_extra_cement[$i]["net_cost"];
         }
         
         //Costs - Cement 2
@@ -4256,7 +4256,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $holcim_ready_flow_plus = $q1->fetchAll();
         for ($i = 0; $i < sizeof($holcim_ready_flow_plus); $i++) {
-            $cost_holcim_ready = $cost_holcim_ready + (int) $holcim_ready_flow_plus[$i]["net_cost"];
+            $cost_holcim_ready = $cost_holcim_ready + (double) $holcim_ready_flow_plus[$i]["net_cost"];
         }
         
         //Costs - Cement 3
@@ -4264,7 +4264,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $ordinary_portland = $q1->fetchAll();
         for ($i = 0; $i < sizeof($ordinary_portland); $i++) {
-            $cost_ordinary_portland = $cost_ordinary_portland + (int) $ordinary_portland[$i]["net_cost"];
+            $cost_ordinary_portland = $cost_ordinary_portland + (double) $ordinary_portland[$i]["net_cost"];
         }
 
         //Costs - Chemical 1
@@ -4272,7 +4272,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $adcrete = $q1->fetchAll();
         for ($i = 0; $i < sizeof($adcrete); $i++) {
-            $cost_adcrete = $cost_adcrete + (int) $adcrete[$i]["net_cost"];
+            $cost_adcrete = $cost_adcrete + (double) $adcrete[$i]["net_cost"];
         }
         
         //Costs - Chemical 2
@@ -4280,7 +4280,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $pozzolith300r = $q1->fetchAll();
         for ($i = 0; $i < sizeof($pozzolith300r); $i++) {
-            $cost_pozzolith300r = $cost_pozzolith300r + (int) $pozzolith300r[$i]["net_cost"];
+            $cost_pozzolith300r = $cost_pozzolith300r + (double) $pozzolith300r[$i]["net_cost"];
         }
         
         //Costs - Chemical 3
@@ -4288,7 +4288,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $rheobuild561 = $q1->fetchAll();
         for ($i = 0; $i < sizeof($rheobuild561); $i++) {
-            $cost_rheobuild561 = $cost_rheobuild561 + (int) $rheobuild561[$i]["net_cost"];
+            $cost_rheobuild561 = $cost_rheobuild561 + (double) $rheobuild561[$i]["net_cost"];
         }
         
         //Costs - Chemical 4
@@ -4296,7 +4296,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $rheobuild1000 = $q1->fetchAll();
         for ($i = 0; $i < sizeof($rheobuild1000); $i++) {
-            $cost_rheobuild1000 = $cost_rheobuild1000 + (int) $rheobuild1000[$i]["net_cost"];
+            $cost_rheobuild1000 = $cost_rheobuild1000 + (double) $rheobuild1000[$i]["net_cost"];
         }
         
         //Costs - Chemical 5
@@ -4304,7 +4304,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $supercrete = $q1->fetchAll();
         for ($i = 0; $i < sizeof($supercrete); $i++) {
-            $cost_supercrete = $cost_supercrete + (int) $supercrete[$i]["net_cost"];
+            $cost_supercrete = $cost_supercrete + (double) $supercrete[$i]["net_cost"];
         }
         
         //Costs - Chemical 6
@@ -4312,7 +4312,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $supercrete_hs = $q1->fetchAll();
         for ($i = 0; $i < sizeof($supercrete_hs); $i++) {
-            $cost_supercrete_hs = $cost_supercrete_hs + (int) $supercrete_hs[$i]["net_cost"];
+            $cost_supercrete_hs = $cost_supercrete_hs + (double) $supercrete_hs[$i]["net_cost"];
         }
 
         //Costs - Sand
@@ -4320,7 +4320,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $sand = $q1->fetchAll();
         for ($i = 0; $i < sizeof($sand); $i++) {
-            $cost_sand = $cost_sand + (int) $sand[$i]["net_cost"];
+            $cost_sand = $cost_sand + (double) $sand[$i]["net_cost"];
         }
 
         //Costs - Metal
@@ -4328,7 +4328,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $metal = $q1->fetchAll();
         for ($i = 0; $i < sizeof($metal); $i++) {
-            $cost_metal = $cost_metal + (int) $metal[$i]["net_cost"];
+            $cost_metal = $cost_metal + (double) $metal[$i]["net_cost"];
         }
 
         //Costs - diesel
@@ -4336,7 +4336,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $diesel = $q1->fetchAll();
         for ($i = 0; $i < sizeof($diesel); $i++) {
-            $cost_diesel = $cost_diesel + (int) $diesel[$i]["net_cost"];
+            $cost_diesel = $cost_diesel + (double) $diesel[$i]["net_cost"];
         }
 
         //Costs - chips
@@ -4344,7 +4344,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $chips = $q1->fetchAll();
         for ($i = 0; $i < sizeof($chips); $i++) {
-            $cost_chips = $cost_chips + (int) $chips[$i]["net_cost"];
+            $cost_chips = $cost_chips + (double) $chips[$i]["net_cost"];
         }
 
         //Costs - M-Sand
@@ -4352,15 +4352,15 @@ class UserProfileController extends Controller {
         $q1->execute();
         $mSand = $q1->fetchAll();
         for ($i = 0; $i < sizeof($mSand); $i++) {
-            $cost_m_sand = $cost_m_sand + (int) $mSand[$i]["net_cost"];
+            $cost_m_sand = $cost_m_sand + (double) $mSand[$i]["net_cost"];
         }
         //Admin expenses 
         $q1 = $con->prepare("SELECT * FROM other_expenses where payment_status = '1'");
         $q1->execute();
         $adminExp = $q1->fetchAll();
-        $totAdminCost = (int) 0;
+        $totAdminCost = (double) 0;
         for ($i = 0; $i < sizeof($adminExp); $i++) {
-            $totAdminCost = $totAdminCost + (int) $adminExp[$i]["amount"];
+            $totAdminCost = $totAdminCost + (double) $adminExp[$i]["amount"];
         }
 
         //Admin expense titles
@@ -4368,7 +4368,7 @@ class UserProfileController extends Controller {
         $q1->execute();
         $adminExpTitles = $q1->fetchAll();
 
-        $cost = (int) $cost_holcim_extra_cement + (int) $cost_holcim_ready + (int) $cost_ordinary_portland + (int) $cost_adcrete + (int) $cost_pozzolith300r + (int) $cost_rheobuild561 + (int) $cost_rheobuild1000 + (int) $cost_supercrete + (int) $cost_supercrete_hs + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
+        $cost = (double) $cost_holcim_extra_cement + (double) $cost_holcim_ready + (double) $cost_ordinary_portland + (double) $cost_adcrete + (double) $cost_pozzolith300r + (double) $cost_rheobuild561 + (double) $cost_rheobuild1000 + (double) $cost_supercrete + (double) $cost_supercrete_hs + (double) $cost_chips + (double) $cost_sand + (double) $cost_metal + (double) $cost_m_sand + (double) $cost_diesel;
         $pOrl = $this->calcProfit($income, $cost, $totAdminCost);
         
         
@@ -4450,25 +4450,25 @@ class UserProfileController extends Controller {
             $em = $this->getDoctrine()->getEntityManager();
             $con = $em->getConnection();
             
-            $income = (int) 0;
-            $cost = (int) 0;
+            $income = (double) 0;
+            $cost = (double) 0;
             
-            $cost_holcim_extra_cement = (int) 0;
-            $cost_holcim_ready = (int) 0;
-            $cost_ordinary_portland = (int) 0;
+            $cost_holcim_extra_cement = (double) 0;
+            $cost_holcim_ready = (double) 0;
+            $cost_ordinary_portland = (double) 0;
 
-            $cost_adcrete = (int) 0;
-            $cost_pozzolith300r = (int) 0;
-            $cost_rheobuild561 = (int) 0;
-            $cost_rheobuild1000 = (int) 0;
-            $cost_supercrete = (int) 0;
-            $cost_supercrete_hs = (int) 0;
+            $cost_adcrete = (double) 0;
+            $cost_pozzolith300r = (double) 0;
+            $cost_rheobuild561 = (double) 0;
+            $cost_rheobuild1000 = (double) 0;
+            $cost_supercrete = (double) 0;
+            $cost_supercrete_hs = (double) 0;
             
-            $cost_sand = (int) 0;
-            $cost_metal = (int) 0;
-            $cost_m_sand = (int) 0;
-            $cost_diesel = (int) 0;
-            $cost_chips = (int) 0;
+            $cost_sand = (double) 0;
+            $cost_metal = (double) 0;
+            $cost_m_sand = (double) 0;
+            $cost_diesel = (double) 0;
+            $cost_chips = (double) 0;
 
             //Income - Sales
             $q1 = $con->prepare("SELECT * FROM sales WHERE sales_date BETWEEN :sd AND :ed ORDER BY sales_date DESC");
@@ -4477,7 +4477,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $sales = $q1->fetchAll();
             for ($i = 0; $i < (int) sizeof($sales); $i++) {
-                $income = $income + (int) $sales[$i]["payment_received"];
+                $income = $income + (double) $sales[$i]["payment_received"];
             }
 
             //Costs - Cement 1
@@ -4487,7 +4487,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $holcim_extra_cement = $q1->fetchAll();
         for ($i = 0; $i < sizeof($holcim_extra_cement); $i++) {
-            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (int) $holcim_extra_cement[$i]["net_cost"];
+            $cost_holcim_extra_cement = $cost_holcim_extra_cement+ (double) $holcim_extra_cement[$i]["net_cost"];
         }
             
             //Costs - Cement 2
@@ -4497,7 +4497,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $holcim_ready_flow_plus = $q1->fetchAll();
         for ($i = 0; $i < sizeof($holcim_ready_flow_plus); $i++) {
-            $cost_holcim_ready = $cost_holcim_ready + (int) $holcim_ready_flow_plus[$i]["net_cost"];
+            $cost_holcim_ready = $cost_holcim_ready + (double) $holcim_ready_flow_plus[$i]["net_cost"];
         }
             
             //Costs - Cement 3
@@ -4507,7 +4507,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $ordinary_portland = $q1->fetchAll();
         for ($i = 0; $i < sizeof($ordinary_portland); $i++) {
-            $cost_ordinary_portland = $cost_ordinary_portland + (int) $ordinary_portland[$i]["net_cost"];
+            $cost_ordinary_portland = $cost_ordinary_portland + (double) $ordinary_portland[$i]["net_cost"];
         }
             
             //Costs - Chemical 1
@@ -4517,7 +4517,7 @@ class UserProfileController extends Controller {
             $q1->execute();
            $adcrete = $q1->fetchAll();
         for ($i = 0; $i < sizeof($adcrete); $i++) {
-            $cost_adcrete = $cost_adcrete + (int) $adcrete[$i]["net_cost"];
+            $cost_adcrete = $cost_adcrete + (double) $adcrete[$i]["net_cost"];
         }
             
             //Costs - Chemical 2
@@ -4527,7 +4527,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $pozzolith300r = $q1->fetchAll();
         for ($i = 0; $i < sizeof($pozzolith300r); $i++) {
-            $cost_pozzolith300r = $cost_pozzolith300r + (int) $pozzolith300r[$i]["net_cost"];
+            $cost_pozzolith300r = $cost_pozzolith300r + (double) $pozzolith300r[$i]["net_cost"];
         }
             
             //Costs - Chemical 3
@@ -4537,7 +4537,7 @@ class UserProfileController extends Controller {
             $q1->execute();
            $rheobuild561 = $q1->fetchAll();
         for ($i = 0; $i < sizeof($rheobuild561); $i++) {
-            $cost_rheobuild561 = $cost_rheobuild561 + (int) $rheobuild561[$i]["net_cost"];
+            $cost_rheobuild561 = $cost_rheobuild561 + (double) $rheobuild561[$i]["net_cost"];
         }
             
             //Costs - Chemical 4
@@ -4547,7 +4547,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $rheobuild1000 = $q1->fetchAll();
         for ($i = 0; $i < sizeof($rheobuild1000); $i++) {
-            $cost_rheobuild1000 = $cost_rheobuild1000 + (int) $rheobuild1000[$i]["net_cost"];
+            $cost_rheobuild1000 = $cost_rheobuild1000 + (double) $rheobuild1000[$i]["net_cost"];
         }
             
             //Costs - Chemical 5
@@ -4557,7 +4557,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $supercrete = $q1->fetchAll();
         for ($i = 0; $i < sizeof($supercrete); $i++) {
-            $cost_supercrete = $cost_supercrete + (int) $supercrete[$i]["net_cost"];
+            $cost_supercrete = $cost_supercrete + (double) $supercrete[$i]["net_cost"];
         }
             
             //Costs - Chemical 6
@@ -4567,7 +4567,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $supercrete_hs = $q1->fetchAll();
         for ($i = 0; $i < sizeof($supercrete_hs); $i++) {
-            $cost_supercrete_hs = $cost_supercrete_hs + (int) $supercrete_hs[$i]["net_cost"];
+            $cost_supercrete_hs = $cost_supercrete_hs + (double) $supercrete_hs[$i]["net_cost"];
         }
 
             //Costs - Sand
@@ -4577,7 +4577,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $sand = $q1->fetchAll();
             for ($i = 0; $i < sizeof($sand); $i++) {
-                $cost_sand = $cost_sand + (int) $sand[$i]["net_cost"];
+                $cost_sand = $cost_sand + (double) $sand[$i]["net_cost"];
             }
 
             //Costs - Metal
@@ -4587,7 +4587,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $metal = $q1->fetchAll();
             for ($i = 0; $i < sizeof($metal); $i++) {
-                $cost_metal = $cost_metal + (int) $metal[$i]["net_cost"];
+                $cost_metal = $cost_metal + (double) $metal[$i]["net_cost"];
             }
 
             //Costs - diesel
@@ -4597,7 +4597,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $diesel = $q1->fetchAll();
             for ($i = 0; $i < sizeof($diesel); $i++) {
-                $cost_diesel = $cost_diesel + (int) $diesel[$i]["net_cost"];
+                $cost_diesel = $cost_diesel + (double) $diesel[$i]["net_cost"];
             }
 
             //Costs - chips
@@ -4607,7 +4607,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $chips = $q1->fetchAll();
             for ($i = 0; $i < sizeof($chips); $i++) {
-                $cost_chips = $cost_chips + (int) $chips[$i]["net_cost"];
+                $cost_chips = $cost_chips + (double) $chips[$i]["net_cost"];
             }
 
             //Costs - M-Sand
@@ -4617,7 +4617,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $mSand = $q1->fetchAll();
             for ($i = 0; $i < sizeof($mSand); $i++) {
-                $cost_m_sand = $cost_m_sand + (int) $mSand[$i]["net_cost"];
+                $cost_m_sand = $cost_m_sand + (double) $mSand[$i]["net_cost"];
             }
             //Admin expenses 
             $q1 = $con->prepare("SELECT * FROM other_expenses WHERE payment_status = '1' AND date BETWEEN :sd AND :ed");
@@ -4625,9 +4625,9 @@ class UserProfileController extends Controller {
             $q1->bindValue('ed', $endDate);
             $q1->execute();
             $adminExp = $q1->fetchAll();
-            $totAdminCost = (int) 0;
+            $totAdminCost = (double) 0;
             for ($i = 0; $i < sizeof($adminExp); $i++) {
-                $totAdminCost = $totAdminCost + (int) $adminExp[$i]["amount"];
+                $totAdminCost = $totAdminCost + (double) $adminExp[$i]["amount"];
             }
             
             //Admin expense titles
@@ -4635,7 +4635,7 @@ class UserProfileController extends Controller {
             $q1->execute();
             $adminExpTitles = $q1->fetchAll();
 
-            $cost = (int) $cost_holcim_extra_cement + (int) $cost_holcim_ready + (int) $cost_ordinary_portland + (int) $cost_adcrete + (int) $cost_pozzolith300r + (int) $cost_rheobuild561 + (int) $cost_rheobuild1000 + (int) $cost_supercrete + (int) $cost_supercrete_hs + (int) $cost_chips + (int) $cost_sand + (int) $cost_metal + (int) $cost_m_sand + (int) $cost_diesel;
+            $cost = (double) $cost_holcim_extra_cement + (double) $cost_holcim_ready + (double) $cost_ordinary_portland + (double) $cost_adcrete + (double) $cost_pozzolith300r + (double) $cost_rheobuild561 + (double) $cost_rheobuild1000 + (double) $cost_supercrete + (double) $cost_supercrete_hs + (double) $cost_chips + (double) $cost_sand + (double) $cost_metal + (double) $cost_m_sand + (double) $cost_diesel;
             $pOrl = $this->calcProfit($income, $cost, $totAdminCost);
             
             $userProfilePics = $this->displayImage($url);
@@ -4742,7 +4742,7 @@ class UserProfileController extends Controller {
             $expense = $repo_ex_details->findOneBy(array('expenseTitle' => $category));
 
             $entry = new \sepBundle\Entity\OtherExpenses();
-            $entry->setAmount((int) $amount);
+            $entry->setAmount((double) $amount);
             $entry->setDate($date);
             $entry->setExpenseType($expense);
             $entry->setPaymentStatus((int) 0);
@@ -5027,7 +5027,7 @@ class UserProfileController extends Controller {
     }
 
     public function calcProfit($revenue, $cost, $expenses) {
-        $porloss = (int) $revenue - (int) $cost - (int) $expenses;
+        $porloss = (double) $revenue - (double) $cost - (double) $expenses;
         return $porloss;
     }
 
@@ -5037,7 +5037,7 @@ class UserProfileController extends Controller {
     }
 
     public function calcClossingbalance($opnBal, $stkUsed, $purchased) {
-        $clBal = (int) $opnBal - (int) $stkUsed + (int) $purchased;
+        $clBal = (double) $opnBal - (double) $stkUsed + (double) $purchased;
         return $clBal;
     }
 

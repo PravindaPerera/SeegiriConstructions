@@ -19,9 +19,10 @@ sepBundle\Entity\ReorderLevels:
             fixed: false
             comment: ''
         reorderLevel:
-            type: integer
+            type: float
             nullable: true
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
             column: reorder_level
     lifecycleCallbacks: {  }

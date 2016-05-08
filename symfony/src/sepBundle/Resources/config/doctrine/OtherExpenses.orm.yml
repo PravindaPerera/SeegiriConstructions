@@ -17,9 +17,10 @@ sepBundle\Entity\OtherExpenses:
                 strategy: IDENTITY
     fields:
         amount:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
         date:
             type: date

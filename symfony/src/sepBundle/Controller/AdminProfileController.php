@@ -78,40 +78,40 @@ class AdminProfileController extends Controller
 
                     for ($i = 0; $i < sizeof($holcimExtra_cement); $i++) {
                         if($holcimExtra_cement[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $holcimExtra_cement[$i]["sa"];
+                           $janCost =  $janCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $febCost =  $febCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $marCost =  $marCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $junCost =  $junCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $julCost =  $julCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $augCost =  $augCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $octCost =  $octCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $novCost =  $novCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $decCost =  $decCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else{}
 
@@ -124,40 +124,40 @@ class AdminProfileController extends Controller
 
                     for ($i = 0; $i < sizeof($holcimReadyFlowPlus_cement); $i++) {
                         if($holcimReadyFlowPlus_cement[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                           $janCost =  $janCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $febCost =  $febCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $marCost =  $marCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $junCost =  $junCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $julCost =  $julCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $augCost =  $augCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $octCost =  $octCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $novCost =  $novCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $decCost =  $decCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else{}
 
@@ -170,40 +170,40 @@ class AdminProfileController extends Controller
 
                     for ($i = 0; $i < sizeof($ordinaryPortlandCement_cement); $i++) {
                         if($ordinaryPortlandCement_cement[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                           $janCost =  $janCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $febCost =  $febCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $marCost =  $marCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $junCost =  $junCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $julCost =  $julCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $augCost =  $augCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $octCost =  $octCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $novCost =  $novCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $decCost =  $decCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else{}
 
@@ -216,40 +216,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($adcrete_chemical); $i++) {
                         if($adcrete_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $adcrete_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $adcrete_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $adcrete_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $adcrete_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $adcrete_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $adcrete_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $adcrete_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $adcrete_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $adcrete_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $adcrete_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $adcrete_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $adcrete_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -262,40 +262,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($pozzolith300r_chemical); $i++) {
                         if($pozzolith300r_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -308,40 +308,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($rheobuild561_chemical); $i++) {
                         if($rheobuild561_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $rheobuild561_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -354,40 +354,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($rheobuild1000_chemical); $i++) {
                         if($rheobuild1000_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -400,40 +400,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($supercreteHS_chemical); $i++) {
                         if($supercreteHS_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $supercreteHS_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -446,40 +446,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($supercrete_chemical); $i++) {
                         if($supercrete_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $supercrete_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $supercrete_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $supercrete_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $supercrete_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $supercrete_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $supercrete_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $supercrete_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $supercrete_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $supercrete_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $supercrete_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $supercrete_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $supercrete_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -492,40 +492,40 @@ class AdminProfileController extends Controller
                 
                 for ($i = 0; $i < sizeof($cost_chips_year); $i++) {
                         if($cost_chips_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_chips_year[$i]["sa"];
+                           $janCost =  $janCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_chips_year[$i]["sa"];
+                            $febCost =  $febCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_chips_year[$i]["sa"];
+                            $marCost =  $marCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_chips_year[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_chips_year[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_chips_year[$i]["sa"];
+                            $junCost =  $junCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_chips_year[$i]["sa"];
+                            $julCost =  $julCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_chips_year[$i]["sa"];
+                            $augCost =  $augCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_chips_year[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_chips_year[$i]["sa"];
+                            $octCost =  $octCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_chips_year[$i]["sa"];
+                            $novCost =  $novCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_chips_year[$i]["sa"];
+                            $decCost =  $decCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else{}
 
@@ -538,40 +538,40 @@ class AdminProfileController extends Controller
                 
                 for ($i = 0; $i < sizeof($cost_diesel_year); $i++) {
                         if($cost_diesel_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_diesel_year[$i]["sa"];
+                           $janCost =  $janCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_diesel_year[$i]["sa"];
+                            $febCost =  $febCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_diesel_year[$i]["sa"];
+                            $marCost =  $marCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_diesel_year[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_diesel_year[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_diesel_year[$i]["sa"];
+                            $junCost =  $junCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_diesel_year[$i]["sa"];
+                            $julCost =  $julCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_diesel_year[$i]["sa"];
+                            $augCost =  $augCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_diesel_year[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_diesel_year[$i]["sa"];
+                            $octCost =  $octCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_diesel_year[$i]["sa"];
+                            $novCost =  $novCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_diesel_year[$i]["sa"];
+                            $decCost =  $decCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else{}
 
@@ -584,40 +584,40 @@ class AdminProfileController extends Controller
                 
                 for ($i = 0; $i < sizeof($cost_m_sand_year); $i++) {
                         if($cost_m_sand_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_m_sand_year[$i]["sa"];
+                           $janCost =  $janCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $febCost =  $febCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $marCost =  $marCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $junCost =  $junCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $julCost =  $julCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $augCost =  $augCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $octCost =  $octCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $novCost =  $novCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $decCost =  $decCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else{}
 
@@ -630,40 +630,40 @@ class AdminProfileController extends Controller
                 
                 for ($i = 0; $i < sizeof($cost_metal_year); $i++) {
                         if($cost_metal_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_metal_year[$i]["sa"];
+                           $janCost =  $janCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_metal_year[$i]["sa"];
+                            $febCost =  $febCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_metal_year[$i]["sa"];
+                            $marCost =  $marCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_metal_year[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_metal_year[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_metal_year[$i]["sa"];
+                            $junCost =  $junCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_metal_year[$i]["sa"];
+                            $julCost =  $julCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_metal_year[$i]["sa"];
+                            $augCost =  $augCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_metal_year[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_metal_year[$i]["sa"];
+                            $octCost =  $octCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_metal_year[$i]["sa"];
+                            $novCost =  $novCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_metal_year[$i]["sa"];
+                            $decCost =  $decCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else{}
 
@@ -676,61 +676,61 @@ class AdminProfileController extends Controller
                 
                 for ($i = 0; $i < sizeof($cost_sand_year); $i++) {
                         if($cost_sand_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_sand_year[$i]["sa"];
+                           $janCost =  $janCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_sand_year[$i]["sa"];
+                            $febCost =  $febCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_sand_year[$i]["sa"];
+                            $marCost =  $marCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_sand_year[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_sand_year[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_sand_year[$i]["sa"];
+                            $junCost =  $junCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_sand_year[$i]["sa"];
+                            $julCost =  $julCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_sand_year[$i]["sa"];
+                            $augCost =  $augCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_sand_year[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_sand_year[$i]["sa"];
+                            $octCost =  $octCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_sand_year[$i]["sa"];
+                            $novCost =  $novCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_sand_year[$i]["sa"];
+                            $decCost =  $decCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else{}
 
                     }
                 
                 
-                $cost = (int) 0;
-                $cost_holcimExtra_cement = (int) 0;
-                $cost_holcimReadyFlowPlus_cement = (int) 0;
-                $cost_ordinaryPortlandCement_cement = (int) 0;
-                $cost_adcrete_chemical = (int) 0;
-                $cost_pozzolith300r_chemical = (int) 0;
-                $cost_rheobuild561_chemical = (int) 0;
-                $cost_rheobuild1000_chemical = (int) 0;
-                $cost_supercreteHS_chemical = (int) 0;
-                $cost_supercrete_chemical = (int) 0;
-                $cost_sand = (int) 0;
-                $cost_metal = (int) 0;
-                $cost_m_sand = (int) 0;
-                $cost_diesel = (int) 0;
-                $cost_chips = (int) 0;
+                $cost = (double) 0;
+                $cost_holcimExtra_cement = (double) 0;
+                $cost_holcimReadyFlowPlus_cement = (double) 0;
+                $cost_ordinaryPortlandCement_cement = (double) 0;
+                $cost_adcrete_chemical = (double) 0;
+                $cost_pozzolith300r_chemical = (double) 0;
+                $cost_rheobuild561_chemical = (double) 0;
+                $cost_rheobuild1000_chemical = (double) 0;
+                $cost_supercreteHS_chemical = (double) 0;
+                $cost_supercrete_chemical = (double) 0;
+                $cost_sand = (double) 0;
+                $cost_metal = (double) 0;
+                $cost_m_sand = (double) 0;
+                $cost_diesel = (double) 0;
+                $cost_chips = (double) 0;
 
 
                 //Costs - Cement1
@@ -739,7 +739,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $cement = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($cement); $i++) {
-                    $cost_holcimExtra_cement = $cost_holcimExtra_cement + (int) $cement[$i]["net_cost"];
+                    $cost_holcimExtra_cement = $cost_holcimExtra_cement + (double) $cement[$i]["net_cost"];
                 }
                 
                 //Costs - Cement2
@@ -748,7 +748,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $cement = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($cement); $i++) {
-                    $cost_holcimReadyFlowPlus_cement = $cost_holcimReadyFlowPlus_cement + (int) $cement[$i]["net_cost"];
+                    $cost_holcimReadyFlowPlus_cement = $cost_holcimReadyFlowPlus_cement + (double) $cement[$i]["net_cost"];
                 }
                 
                 //Costs - Cement3
@@ -757,7 +757,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $cement = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($cement); $i++) {
-                    $cost_ordinaryPortlandCement_cement = $cost_ordinaryPortlandCement_cement + (int) $cement[$i]["net_cost"];
+                    $cost_ordinaryPortlandCement_cement = $cost_ordinaryPortlandCement_cement + (double) $cement[$i]["net_cost"];
                 }
 
                 //Costs - Chemical1
@@ -766,7 +766,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_adcrete_chemical = $cost_adcrete_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_adcrete_chemical = $cost_adcrete_chemical + (double) $chemical[$i]["net_cost"];
                 }
                 
                 //Costs - Chemical2
@@ -775,7 +775,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_pozzolith300r_chemical = $cost_pozzolith300r_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_pozzolith300r_chemical = $cost_pozzolith300r_chemical + (double) $chemical[$i]["net_cost"];
                 }
                 
                 //Costs - Chemical3
@@ -784,7 +784,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_rheobuild561_chemical = $cost_rheobuild561_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_rheobuild561_chemical = $cost_rheobuild561_chemical + (double) $chemical[$i]["net_cost"];
                 }
                 
                 //Costs - Chemical4
@@ -793,7 +793,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_rheobuild1000_chemical = $cost_rheobuild1000_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_rheobuild1000_chemical = $cost_rheobuild1000_chemical + (double) $chemical[$i]["net_cost"];
                 }
                 
                 //Costs - Chemical5
@@ -802,7 +802,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_supercreteHS_chemical = $cost_supercreteHS_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_supercreteHS_chemical = $cost_supercreteHS_chemical + (double) $chemical[$i]["net_cost"];
                 }
                 
                 //Costs - Chemical6
@@ -811,7 +811,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_supercrete_chemical = $cost_supercrete_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_supercrete_chemical = $cost_supercrete_chemical + (double) $chemical[$i]["net_cost"];
                 }
 
                 //Costs - Sand
@@ -820,7 +820,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $sand = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($sand); $i++) {
-                    $cost_sand = $cost_sand + (int) $sand[$i]["net_cost"];
+                    $cost_sand = $cost_sand + (double) $sand[$i]["net_cost"];
                 }
 
                 //Costs - Metal
@@ -829,7 +829,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $metal = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($metal); $i++) {
-                    $cost_metal = $cost_metal + (int) $metal[$i]["net_cost"];
+                    $cost_metal = $cost_metal + (double) $metal[$i]["net_cost"];
                 }
 
                 //Costs - diesel
@@ -838,7 +838,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $diesel = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($diesel); $i++) {
-                    $cost_diesel = $cost_diesel + (int) $diesel[$i]["net_cost"];
+                    $cost_diesel = $cost_diesel + (double) $diesel[$i]["net_cost"];
                 }
 
                 //Costs - chips
@@ -847,7 +847,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chips = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chips); $i++) {
-                    $cost_chips = $cost_chips + (int) $chips[$i]["net_cost"];
+                    $cost_chips = $cost_chips + (double) $chips[$i]["net_cost"];
                 }
 
                 //Costs - M-Sand
@@ -856,15 +856,15 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $mSand = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($mSand); $i++) {
-                    $cost_m_sand = $cost_m_sand + (int) $mSand[$i]["net_cost"];
+                    $cost_m_sand = $cost_m_sand + (double) $mSand[$i]["net_cost"];
                 }
                 //Admin expenses 
                 $q1 = $con->prepare("SELECT * FROM other_expenses");
                 $q1->execute();
                 $adminExp = $q1->fetchAll();
-                $totAdminCost = (int) 0;
+                $totAdminCost = (double) 0;
                 for ($i = 0; $i < sizeof($adminExp); $i++) {
-                    $totAdminCost = $totAdminCost + (int) $adminExp[$i]["amount"];
+                    $totAdminCost = $totAdminCost + (double) $adminExp[$i]["amount"];
                 }
                 
                 
@@ -1015,40 +1015,40 @@ class AdminProfileController extends Controller
 
                     for ($i = 0; $i < sizeof($holcimExtra_cement); $i++) {
                         if($holcimExtra_cement[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $holcimExtra_cement[$i]["sa"];
+                           $janCost =  $janCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $febCost =  $febCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $marCost =  $marCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $junCost =  $junCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $julCost =  $julCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $augCost =  $augCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $octCost =  $octCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $novCost =  $novCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else if($holcimExtra_cement[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $holcimExtra_cement[$i]["sa"];
+                            $decCost =  $decCost + (double) $holcimExtra_cement[$i]["sa"];
                         }
                         else{}
 
@@ -1061,40 +1061,40 @@ class AdminProfileController extends Controller
 
                     for ($i = 0; $i < sizeof($holcimReadyFlowPlus_cement); $i++) {
                         if($holcimReadyFlowPlus_cement[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                           $janCost =  $janCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $febCost =  $febCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $marCost =  $marCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $junCost =  $junCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $julCost =  $julCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $augCost =  $augCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $octCost =  $octCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $novCost =  $novCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else if($holcimReadyFlowPlus_cement[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $holcimReadyFlowPlus_cement[$i]["sa"];
+                            $decCost =  $decCost + (double) $holcimReadyFlowPlus_cement[$i]["sa"];
                         }
                         else{}
 
@@ -1107,40 +1107,40 @@ class AdminProfileController extends Controller
 
                     for ($i = 0; $i < sizeof($ordinaryPortlandCement_cement); $i++) {
                         if($ordinaryPortlandCement_cement[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                           $janCost =  $janCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $febCost =  $febCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $marCost =  $marCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $junCost =  $junCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $julCost =  $julCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $augCost =  $augCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $octCost =  $octCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $novCost =  $novCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else if($ordinaryPortlandCement_cement[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $ordinaryPortlandCement_cement[$i]["sa"];
+                            $decCost =  $decCost + (double) $ordinaryPortlandCement_cement[$i]["sa"];
                         }
                         else{}
 
@@ -1153,40 +1153,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($adcrete_chemical); $i++) {
                         if($adcrete_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $adcrete_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $adcrete_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $adcrete_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $adcrete_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $adcrete_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $adcrete_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $adcrete_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $adcrete_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $adcrete_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $adcrete_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $adcrete_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else if($adcrete_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $adcrete_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $adcrete_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -1199,40 +1199,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($pozzolith300r_chemical); $i++) {
                         if($pozzolith300r_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else if($pozzolith300r_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $pozzolith300r_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $pozzolith300r_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -1245,40 +1245,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($rheobuild561_chemical); $i++) {
                         if($rheobuild561_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $rheobuild561_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else if($rheobuild561_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $rheobuild561_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $rheobuild561_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -1291,40 +1291,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($rheobuild1000_chemical); $i++) {
                         if($rheobuild1000_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else if($rheobuild1000_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $rheobuild1000_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $rheobuild1000_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -1337,40 +1337,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($supercreteHS_chemical); $i++) {
                         if($supercreteHS_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $supercreteHS_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else if($supercreteHS_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $supercreteHS_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $supercreteHS_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -1383,40 +1383,40 @@ class AdminProfileController extends Controller
                 
                     for ($i = 0; $i < sizeof($supercrete_chemical); $i++) {
                         if($supercrete_chemical[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $supercrete_chemical[$i]["sa"];
+                           $janCost =  $janCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $supercrete_chemical[$i]["sa"];
+                            $febCost =  $febCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $supercrete_chemical[$i]["sa"];
+                            $marCost =  $marCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $supercrete_chemical[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $supercrete_chemical[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $supercrete_chemical[$i]["sa"];
+                            $junCost =  $junCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $supercrete_chemical[$i]["sa"];
+                            $julCost =  $julCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $supercrete_chemical[$i]["sa"];
+                            $augCost =  $augCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $supercrete_chemical[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $supercrete_chemical[$i]["sa"];
+                            $octCost =  $octCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $supercrete_chemical[$i]["sa"];
+                            $novCost =  $novCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else if($supercrete_chemical[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $supercrete_chemical[$i]["sa"];
+                            $decCost =  $decCost + (double) $supercrete_chemical[$i]["sa"];
                         }
                         else{}
 
@@ -1429,40 +1429,40 @@ class AdminProfileController extends Controller
                 
                 for ($i = 0; $i < sizeof($cost_chips_year); $i++) {
                         if($cost_chips_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_chips_year[$i]["sa"];
+                           $janCost =  $janCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_chips_year[$i]["sa"];
+                            $febCost =  $febCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_chips_year[$i]["sa"];
+                            $marCost =  $marCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_chips_year[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_chips_year[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_chips_year[$i]["sa"];
+                            $junCost =  $junCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_chips_year[$i]["sa"];
+                            $julCost =  $julCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_chips_year[$i]["sa"];
+                            $augCost =  $augCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_chips_year[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_chips_year[$i]["sa"];
+                            $octCost =  $octCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_chips_year[$i]["sa"];
+                            $novCost =  $novCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else if($cost_chips_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_chips_year[$i]["sa"];
+                            $decCost =  $decCost + (double) $cost_chips_year[$i]["sa"];
                         }
                         else{}
 
@@ -1475,40 +1475,40 @@ class AdminProfileController extends Controller
                 
                 for ($i = 0; $i < sizeof($cost_diesel_year); $i++) {
                         if($cost_diesel_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_diesel_year[$i]["sa"];
+                           $janCost =  $janCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_diesel_year[$i]["sa"];
+                            $febCost =  $febCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_diesel_year[$i]["sa"];
+                            $marCost =  $marCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_diesel_year[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_diesel_year[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_diesel_year[$i]["sa"];
+                            $junCost =  $junCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_diesel_year[$i]["sa"];
+                            $julCost =  $julCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_diesel_year[$i]["sa"];
+                            $augCost =  $augCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_diesel_year[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_diesel_year[$i]["sa"];
+                            $octCost =  $octCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_diesel_year[$i]["sa"];
+                            $novCost =  $novCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else if($cost_diesel_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_diesel_year[$i]["sa"];
+                            $decCost =  $decCost + (double) $cost_diesel_year[$i]["sa"];
                         }
                         else{}
 
@@ -1521,40 +1521,40 @@ class AdminProfileController extends Controller
                 
                 for ($i = 0; $i < sizeof($cost_m_sand_year); $i++) {
                         if($cost_m_sand_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_m_sand_year[$i]["sa"];
+                           $janCost =  $janCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $febCost =  $febCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $marCost =  $marCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $junCost =  $junCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $julCost =  $julCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $augCost =  $augCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $octCost =  $octCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $novCost =  $novCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else if($cost_m_sand_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_m_sand_year[$i]["sa"];
+                            $decCost =  $decCost + (double) $cost_m_sand_year[$i]["sa"];
                         }
                         else{}
 
@@ -1567,40 +1567,40 @@ class AdminProfileController extends Controller
                 
                 for ($i = 0; $i < sizeof($cost_metal_year); $i++) {
                         if($cost_metal_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_metal_year[$i]["sa"];
+                           $janCost =  $janCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_metal_year[$i]["sa"];
+                            $febCost =  $febCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_metal_year[$i]["sa"];
+                            $marCost =  $marCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_metal_year[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_metal_year[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_metal_year[$i]["sa"];
+                            $junCost =  $junCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_metal_year[$i]["sa"];
+                            $julCost =  $julCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_metal_year[$i]["sa"];
+                            $augCost =  $augCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_metal_year[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_metal_year[$i]["sa"];
+                            $octCost =  $octCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_metal_year[$i]["sa"];
+                            $novCost =  $novCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else if($cost_metal_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_metal_year[$i]["sa"];
+                            $decCost =  $decCost + (double) $cost_metal_year[$i]["sa"];
                         }
                         else{}
 
@@ -1613,61 +1613,61 @@ class AdminProfileController extends Controller
                 
                 for ($i = 0; $i < sizeof($cost_sand_year); $i++) {
                         if($cost_sand_year[$i]["month"] == "January"){
-                           $janCost =  $janCost + (int) $cost_sand_year[$i]["sa"];
+                           $janCost =  $janCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "February"){
-                            $febCost =  $febCost + (int) $cost_sand_year[$i]["sa"];
+                            $febCost =  $febCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "March"){
-                            $marCost =  $marCost + (int) $cost_sand_year[$i]["sa"];
+                            $marCost =  $marCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "April"){
-                            $aprCost =  $aprCost + (int) $cost_sand_year[$i]["sa"];
+                            $aprCost =  $aprCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "May"){
-                            $mayCost =  $mayCost + (int) $cost_sand_year[$i]["sa"];
+                            $mayCost =  $mayCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "June"){
-                            $junCost =  $junCost + (int) $cost_sand_year[$i]["sa"];
+                            $junCost =  $junCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "July"){
-                            $julCost =  $julCost + (int) $cost_sand_year[$i]["sa"];
+                            $julCost =  $julCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "August"){
-                            $augCost =  $augCost + (int) $cost_sand_year[$i]["sa"];
+                            $augCost =  $augCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "September"){
-                            $sepCost =  $sepCost + (int) $cost_sand_year[$i]["sa"];
+                            $sepCost =  $sepCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "October"){
-                            $octCost =  $octCost + (int) $cost_sand_year[$i]["sa"];
+                            $octCost =  $octCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "November"){
-                            $novCost =  $novCost + (int) $cost_sand_year[$i]["sa"];
+                            $novCost =  $novCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else if($cost_sand_year[$i]["month"] == "December"){
-                            $decCost =  $decCost + (int) $cost_sand_year[$i]["sa"];
+                            $decCost =  $decCost + (double) $cost_sand_year[$i]["sa"];
                         }
                         else{}
 
                     }
                 
                 
-                $cost = (int) 0;
-                $cost_holcimExtra_cement = (int) 0;
-                $cost_holcimReadyFlowPlus_cement = (int) 0;
-                $cost_ordinaryPortlandCement_cement = (int) 0;
-                $cost_adcrete_chemical = (int) 0;
-                $cost_pozzolith300r_chemical = (int) 0;
-                $cost_rheobuild561_chemical = (int) 0;
-                $cost_rheobuild1000_chemical = (int) 0;
-                $cost_supercreteHS_chemical = (int) 0;
-                $cost_supercrete_chemical = (int) 0;
-                $cost_sand = (int) 0;
-                $cost_metal = (int) 0;
-                $cost_m_sand = (int) 0;
-                $cost_diesel = (int) 0;
-                $cost_chips = (int) 0;
+                $cost = (double) 0;
+                $cost_holcimExtra_cement = (double) 0;
+                $cost_holcimReadyFlowPlus_cement = (double) 0;
+                $cost_ordinaryPortlandCement_cement = (double) 0;
+                $cost_adcrete_chemical = (double) 0;
+                $cost_pozzolith300r_chemical = (double) 0;
+                $cost_rheobuild561_chemical = (double) 0;
+                $cost_rheobuild1000_chemical = (double) 0;
+                $cost_supercreteHS_chemical = (double) 0;
+                $cost_supercrete_chemical = (double) 0;
+                $cost_sand = (double) 0;
+                $cost_metal = (double) 0;
+                $cost_m_sand = (double) 0;
+                $cost_diesel = (double) 0;
+                $cost_chips = (double) 0;
 
 
                 //Costs - Cement1
@@ -1676,7 +1676,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $cement = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($cement); $i++) {
-                    $cost_holcimExtra_cement = $cost_holcimExtra_cement + (int) $cement[$i]["net_cost"];
+                    $cost_holcimExtra_cement = $cost_holcimExtra_cement + (double) $cement[$i]["net_cost"];
                 }
                 
                 //Costs - Cement2
@@ -1685,7 +1685,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $cement = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($cement); $i++) {
-                    $cost_holcimReadyFlowPlus_cement = $cost_holcimReadyFlowPlus_cement + (int) $cement[$i]["net_cost"];
+                    $cost_holcimReadyFlowPlus_cement = $cost_holcimReadyFlowPlus_cement + (double) $cement[$i]["net_cost"];
                 }
                 
                 //Costs - Cement3
@@ -1694,7 +1694,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $cement = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($cement); $i++) {
-                    $cost_ordinaryPortlandCement_cement = $cost_ordinaryPortlandCement_cement + (int) $cement[$i]["net_cost"];
+                    $cost_ordinaryPortlandCement_cement = $cost_ordinaryPortlandCement_cement + (double) $cement[$i]["net_cost"];
                 }
 
                 //Costs - Chemical1
@@ -1703,7 +1703,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_adcrete_chemical = $cost_adcrete_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_adcrete_chemical = $cost_adcrete_chemical + (double) $chemical[$i]["net_cost"];
                 }
                 
                 //Costs - Chemical2
@@ -1712,7 +1712,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_pozzolith300r_chemical = $cost_pozzolith300r_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_pozzolith300r_chemical = $cost_pozzolith300r_chemical + (double) $chemical[$i]["net_cost"];
                 }
                 
                 //Costs - Chemical3
@@ -1721,7 +1721,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_rheobuild561_chemical = $cost_rheobuild561_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_rheobuild561_chemical = $cost_rheobuild561_chemical + (double) $chemical[$i]["net_cost"];
                 }
                 
                 //Costs - Chemical4
@@ -1730,7 +1730,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_rheobuild1000_chemical = $cost_rheobuild1000_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_rheobuild1000_chemical = $cost_rheobuild1000_chemical + (double) $chemical[$i]["net_cost"];
                 }
                 
                 //Costs - Chemical5
@@ -1739,7 +1739,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_supercreteHS_chemical = $cost_supercreteHS_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_supercreteHS_chemical = $cost_supercreteHS_chemical + (double) $chemical[$i]["net_cost"];
                 }
                 
                 //Costs - Chemical6
@@ -1748,7 +1748,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chemical = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chemical); $i++) {
-                    $cost_supercrete_chemical = $cost_supercrete_chemical + (int) $chemical[$i]["net_cost"];
+                    $cost_supercrete_chemical = $cost_supercrete_chemical + (double) $chemical[$i]["net_cost"];
                 }
 
                 //Costs - Sand
@@ -1757,7 +1757,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $sand = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($sand); $i++) {
-                    $cost_sand = $cost_sand + (int) $sand[$i]["net_cost"];
+                    $cost_sand = $cost_sand + (double) $sand[$i]["net_cost"];
                 }
 
                 //Costs - Metal
@@ -1766,7 +1766,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $metal = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($metal); $i++) {
-                    $cost_metal = $cost_metal + (int) $metal[$i]["net_cost"];
+                    $cost_metal = $cost_metal + (double) $metal[$i]["net_cost"];
                 }
 
                 //Costs - diesel
@@ -1775,7 +1775,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $diesel = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($diesel); $i++) {
-                    $cost_diesel = $cost_diesel + (int) $diesel[$i]["net_cost"];
+                    $cost_diesel = $cost_diesel + (double) $diesel[$i]["net_cost"];
                 }
 
                 //Costs - chips
@@ -1784,7 +1784,7 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $chips = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($chips); $i++) {
-                    $cost_chips = $cost_chips + (int) $chips[$i]["net_cost"];
+                    $cost_chips = $cost_chips + (double) $chips[$i]["net_cost"];
                 }
 
                 //Costs - M-Sand
@@ -1793,15 +1793,15 @@ class AdminProfileController extends Controller
                 $q1->execute();
                 $mSand = $q1->fetchAll();
                 for ($i = 0; $i < sizeof($mSand); $i++) {
-                    $cost_m_sand = $cost_m_sand + (int) $mSand[$i]["net_cost"];
+                    $cost_m_sand = $cost_m_sand + (double) $mSand[$i]["net_cost"];
                 }
                 //Admin expenses 
                 $q1 = $con->prepare("SELECT * FROM other_expenses");
                 $q1->execute();
                 $adminExp = $q1->fetchAll();
-                $totAdminCost = (int) 0;
+                $totAdminCost = (double) 0;
                 for ($i = 0; $i < sizeof($adminExp); $i++) {
-                    $totAdminCost = $totAdminCost + (int) $adminExp[$i]["amount"];
+                    $totAdminCost = $totAdminCost + (double) $adminExp[$i]["amount"];
                 }
                 
                 

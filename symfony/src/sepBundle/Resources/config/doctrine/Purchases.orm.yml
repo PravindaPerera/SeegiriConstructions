@@ -37,13 +37,15 @@ sepBundle\Entity\Purchases:
             nullable: false
             comment: ''
         amount:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
         cost:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
     lifecycleCallbacks: {  }

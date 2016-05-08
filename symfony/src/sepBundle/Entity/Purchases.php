@@ -35,12 +35,12 @@ class Purchases
     private $date;
 
     /**
-     * @var integer
+     * @var float
      */
     private $amount;
 
     /**
-     * @var integer
+     * @var float
      */
     private $cost;
 
@@ -150,7 +150,7 @@ class Purchases
     /**
      * Set amount
      *
-     * @param integer $amount
+     * @param float $amount
      * @return Purchases
      */
     public function setAmount($amount)
@@ -163,7 +163,7 @@ class Purchases
     /**
      * Get amount
      *
-     * @return integer 
+     * @return float 
      */
     public function getAmount()
     {
@@ -173,7 +173,7 @@ class Purchases
     /**
      * Set cost
      *
-     * @param integer $cost
+     * @param float $cost
      * @return Purchases
      */
     public function setCost($cost)
@@ -186,7 +186,7 @@ class Purchases
     /**
      * Get cost
      *
-     * @return integer 
+     * @return float 
      */
     public function getCost()
     {

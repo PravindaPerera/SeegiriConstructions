@@ -15,27 +15,27 @@ class HolcimExtraCement
     private $id;
 
     /**
-     * @var integer
+     * @var float
      */
     private $openingBalance;
 
     /**
-     * @var integer
+     * @var float
      */
     private $clossingBalance;
 
     /**
-     * @var integer
+     * @var float
      */
     private $stockPurchased;
 
     /**
-     * @var integer
+     * @var float
      */
     private $stockUsed;
 
     /**
-     * @var integer
+     * @var float
      */
     private $netCost;
 
@@ -68,7 +68,7 @@ class HolcimExtraCement
     /**
      * Set openingBalance
      *
-     * @param integer $openingBalance
+     * @param float $openingBalance
      * @return HolcimExtraCement
      */
     public function setOpeningBalance($openingBalance)
@@ -81,7 +81,7 @@ class HolcimExtraCement
     /**
      * Get openingBalance
      *
-     * @return integer 
+     * @return float 
      */
     public function getOpeningBalance()
     {
@@ -91,7 +91,7 @@ class HolcimExtraCement
     /**
      * Set clossingBalance
      *
-     * @param integer $clossingBalance
+     * @param float $clossingBalance
      * @return HolcimExtraCement
      */
     public function setClossingBalance($clossingBalance)
@@ -104,7 +104,7 @@ class HolcimExtraCement
     /**
      * Get clossingBalance
      *
-     * @return integer 
+     * @return float 
      */
     public function getClossingBalance()
     {
@@ -114,7 +114,7 @@ class HolcimExtraCement
     /**
      * Set stockPurchased
      *
-     * @param integer $stockPurchased
+     * @param float $stockPurchased
      * @return HolcimExtraCement
      */
     public function setStockPurchased($stockPurchased)
@@ -127,7 +127,7 @@ class HolcimExtraCement
     /**
      * Get stockPurchased
      *
-     * @return integer 
+     * @return float 
      */
     public function getStockPurchased()
     {
@@ -137,7 +137,7 @@ class HolcimExtraCement
     /**
      * Set stockUsed
      *
-     * @param integer $stockUsed
+     * @param float $stockUsed
      * @return HolcimExtraCement
      */
     public function setStockUsed($stockUsed)
@@ -150,7 +150,7 @@ class HolcimExtraCement
     /**
      * Get stockUsed
      *
-     * @return integer 
+     * @return float 
      */
     public function getStockUsed()
     {
@@ -160,7 +160,7 @@ class HolcimExtraCement
     /**
      * Set netCost
      *
-     * @param integer $netCost
+     * @param float $netCost
      * @return HolcimExtraCement
      */
     public function setNetCost($netCost)
@@ -173,7 +173,7 @@ class HolcimExtraCement
     /**
      * Get netCost
      *
-     * @return integer 
+     * @return float 
      */
     public function getNetCost()
     {

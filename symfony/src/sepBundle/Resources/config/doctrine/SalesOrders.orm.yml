@@ -39,9 +39,10 @@ sepBundle\Entity\SalesOrders:
             fixed: false
             comment: ''
         quantity:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
         salesOrderDate:
             type: date

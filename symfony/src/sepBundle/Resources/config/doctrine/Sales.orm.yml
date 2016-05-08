@@ -43,15 +43,17 @@ sepBundle\Entity\Sales:
             fixed: false
             comment: ''
         salesAmount:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
             column: sales_amount
         paymentReceived:
-            type: integer
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
             column: payment_received
     lifecycleCallbacks: {  }

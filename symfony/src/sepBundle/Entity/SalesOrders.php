@@ -35,7 +35,7 @@ class SalesOrders
     private $grade;
 
     /**
-     * @var integer
+     * @var float
      */
     private $quantity;
 
@@ -155,7 +155,7 @@ class SalesOrders
     /**
      * Set quantity
      *
-     * @param integer $quantity
+     * @param float $quantity
      * @return SalesOrders
      */
     public function setQuantity($quantity)
@@ -168,7 +168,7 @@ class SalesOrders
     /**
      * Get quantity
      *
-     * @return integer 
+     * @return float 
      */
     public function getQuantity()
     {

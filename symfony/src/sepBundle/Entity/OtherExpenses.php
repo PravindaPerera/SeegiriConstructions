@@ -15,7 +15,7 @@ class OtherExpenses
     private $paymentId;
 
     /**
-     * @var integer
+     * @var float
      */
     private $amount;
 
@@ -48,7 +48,7 @@ class OtherExpenses
     /**
      * Set amount
      *
-     * @param integer $amount
+     * @param float $amount
      * @return OtherExpenses
      */
     public function setAmount($amount)
@@ -61,7 +61,7 @@ class OtherExpenses
     /**
      * Get amount
      *
-     * @return integer 
+     * @return float 
      */
     public function getAmount()
     {
