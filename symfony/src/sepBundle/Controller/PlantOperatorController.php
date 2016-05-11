@@ -722,7 +722,7 @@ $session = $request->getSession();
             }
             
             //Chemical 1
-            if ($rmType == "Chemical") {
+            if ($rmType == "Adcrete") {
                 $querry = $con->prepare("SELECT * FROM adcrete_chemical ORDER BY date DESC LIMIT 1");
                 $querry->execute();
                 $nRes = $querry->fetchAll();
