@@ -1113,7 +1113,7 @@ $session = $request->getSession();
                     $querry->execute();
                     $val = $querry->fetchAll();
                     $val1 = (double) $val[0]['stock_used'] + (double) $qty;
-                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val[0]['transportation'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE diesel SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -1128,6 +1128,49 @@ $session = $request->getSession();
                     $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
+                    $entry->setTransportation(0);
+                    $entry->setNetCost(0);
+                    $entry->setMonth($month);
+                    $entry->setYear($year);
+
+                    $em->persist($entry);
+                    $em->flush();
+                }
+
+
+                $querry = $con->prepare("SELECT * FROM diesel WHERE date = :date");
+                $querry->bindValue('date', $usedDate);
+                $querry->execute();
+                $res = $querry->fetchAll();
+
+            }
+            if ($rmType == "Transportation") {
+                $querry = $con->prepare("SELECT * FROM diesel ORDER BY date DESC LIMIT 1");
+                $querry->execute();
+                $nRes = $querry->fetchAll();
+                $dt = $nRes[0]['date'];
+                if ($dt == $usedDate) {
+                    $querry = $con->prepare("SELECT * FROM diesel WHERE date = :date");
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                    $val = $querry->fetchAll();
+                    $val1 = (double) $val[0]['transportation'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val[0]['stock_used'] - (double) $val1;
+
+                    $querry = $con->prepare("UPDATE diesel SET transportation = :val1, clossing_balance = :cb WHERE date = :date");
+                    $querry->bindValue('val1', $val1);
+                    $querry->bindValue('cb', $closeBal);
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                } else {
+                    $date = new \DateTime($usedDate);
+                    $entry = new \sepBundle\Entity\Diesel();
+                    $entry->setDate($date);
+                    $entry->setOpeningBalance($nRes[0]['clossing_balance']);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
+                    $entry->setStockPurchased(0);
+                    $entry->setStockUsed(0);
+                    $entry->setTransportation($qty);
                     $entry->setNetCost(0);
                     $entry->setMonth($month);
                     $entry->setYear($year);
@@ -2361,6 +2404,7 @@ $session = $request->getSession();
                             $entry->setClossingBalance($pa);
                             $entry->setStockPurchased($pa);
                             $entry->setStockUsed(0);
+                            $entry->setTransportation(0);
                             $entry->setNetCost($nCost);
                             $entry->setMonth($month);
                             $entry->setYear($year);
@@ -2379,10 +2423,11 @@ $session = $request->getSession();
                             $opnBal = $diesel_amount[0]['opening_balance'];
                             $kk = $diesel_amount[0]['stock_purchased'];
                             $usedBal = $diesel_amount[0]['stock_used'];
+                            $movedBal = $diesel_amount[0]['transportation'];
                             $prevCost = $diesel_amount[0]['net_cost'];
                             $new_diesel_amount = (double) $kk + (double) $pur_amount;
                             $new_net_cost = (double) $prevCost + (double) $cost;
-                            $closeBal = (double) $opnBal + (double) $new_diesel_amount - (double) $usedBal;
+                            $closeBal = (double) $opnBal + (double) $new_diesel_amount - (double) $usedBal - (double) $movedBal;
 
                             $querry = $con->prepare("UPDATE diesel SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_diesel_amount);
@@ -2413,6 +2458,7 @@ $session = $request->getSession();
                             $entry->setClossingBalance($cb);
                             $entry->setStockPurchased($pa);
                             $entry->setStockUsed($su);
+                            $entry->setTransportation($su);
                             $entry->setNetCost($newCost);
                             $entry->setMonth($month);
                             $entry->setYear($year);

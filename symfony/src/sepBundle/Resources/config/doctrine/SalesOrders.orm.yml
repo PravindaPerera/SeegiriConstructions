@@ -12,6 +12,13 @@ sepBundle\Entity\SalesOrders:
             generator:
                 strategy: IDENTITY
     fields:
+        invoiceNum:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+            column: invoice_num
         customerName:
             type: string
             nullable: false

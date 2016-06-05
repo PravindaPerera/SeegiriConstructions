@@ -171,6 +171,31 @@
                             }
                             html2 += '</option>';
                             $('#contactNumber').html(html2);
+                            
+                            var html3;
+                            for (var i = 0; i < obj.length; i++) {
+                                html3 += '<option ="">' + obj[i].grade
+                                        + '</option>';
+                            }
+                            html3 += '</option>';
+                            $('#orGrade').html(html3);
+                            
+                            var html4;
+                            for (var i = 0; i < obj.length; i++) {
+                                html4 += '<option ="">' + obj[i].quantity
+                                        + '</option>';
+                            }
+                            html4 += '</option>';
+                            $('#orQty').html(html4);
+                            
+                            var html5;
+                            for (var i = 0; i < obj.length; i++) {
+                                html5 += '<option ="">' + obj[i].invoice_num
+                                        + '</option>';
+                            }
+                            html5 += '</option>';
+                            $('#invNumber').html(html5);
+                            
                         }
                     });
                 });
@@ -180,7 +205,7 @@
         
         <script type="text/javascript">
             function validateSalesProceeds(form) {
-                if (form.sales.value < form.payment.value) {
+                if (Number(form.sales.value) < Number(form.payment.value)) {
 
                         alert("Error: Cash payment value should not exceed the total sales value!!!");
                         form.payment.focus();
@@ -194,6 +219,45 @@
             ;
         </script>
         
+        <script id="source" language="javascript" type="text/javascript">
+            function checkCreditDetails() {
+                $(function()
+                {
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{path('select_credit_sales_order_details',{'url': url})}}', //the script to call to get data          
+                        data: $('form').serialize(), //you can insert url argumnets here to pass to api.php
+                        //for example "id=5&parent=6"
+                        dataType: 'json', //data format      
+                        success: function(response)          //on recieve of reply
+                        {
+                            
+                            var myJSONText = JSON.stringify(response);
+                            var obj = JSON.parse(myJSONText);
+                            
+                            var html;
+                            for (var i = 0; i < obj.length; i++) {
+                                html += '<option ="">' + obj[i].customer_name
+                                        + '</option>';
+                            }
+                            html += '</option>';
+                            $('#customer').html(html);
+                            
+                            var html5;
+                            for (var i = 0; i < obj.length; i++) {
+                                html5 += '<option ="">' + obj[i].invoice_num
+                                        + '</option>';
+                            }
+                            html5 += '</option>';
+                            $('#invNum').html(html5);
+                            
+                        }
+                    });
+                });
+            }
+
+        </script>
+                
         <script id="source" language="javascript" type="text/javascript">
             function verifyCreditSales(){
                 $(function()
@@ -417,10 +481,14 @@
                                     <thead>
                                         <tr>
                                             <th>Sales ID</th>
+                                            <th>Sales Invoice Number</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Total Sales Value(Rs)</th>
                                             <th>Payment Received(Rs)</th>
+                                            <th>NDT Value(Rs)</th>
+                                            <th>VAT Value(Rs)</th>
+                                            <th>SVAT Value(Rs)</th>
                                             <th>Date of Sales</th>
                                         </tr>
                                     </thead>
@@ -428,10 +496,14 @@
                                         {%for ele in sales%}
                                             <tr>
                                                 <td>{{ele.sales_id}}</td>
+                                                <td>{{ele.invoice_num}}</td>
                                                 <td>{{ele.customer_name}}</td>
                                                 <td>{{ele.contact_num}}</td>
                                                 <td>{{ele.sales_amount}}</td>
                                                 <td>{{ele.payment_received}}</td>
+                                                <td>{{ele.NDT}}</td>
+                                                <td>{{ele.VAT}}</td>
+                                                <td>{{ele.SVAT}}</td>
                                                 <td>{{ele.sales_date|date('Y-m-d')}}</td>
                                             </tr>
                                         {%endfor%}
@@ -439,10 +511,14 @@
                                     <tfoot>
                                         <tr>
                                             <th>Sales ID</th>
+                                            <th>Sales Invoice Number</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Total Sales Value(Rs)</th>
                                             <th>Payment Received(Rs)</th>
+                                            <th>NDT Value(Rs)</th>
+                                            <th>VAT Value(Rs)</th>
+                                            <th>SVAT Value(Rs)</th>
                                             <th>Date of Sales</th>
                                         </tr>
                                     </tfoot>
@@ -465,6 +541,7 @@
                                     <thead>
                                         <tr>
                                             <th>Sales Order ID</th>
+                                            <th>Sales Invoice Number</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Location</th>
@@ -477,6 +554,7 @@
                                         {%for ele in salesOrderDet%}
                                             <tr>
                                                 <td>{{ele.sales_order_id}}</td>
+                                                <td>{{ele.invoice_num}}</td>
                                                 <td>{{ele.customer_name}}</td>
                                                 <td>{{ele.contact_num}}</td>
                                                 <td>{{ele.location}}</td>
@@ -489,6 +567,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Sales Order ID</th>
+                                            <th>Sales Invoice Number</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Location</th>
@@ -516,19 +595,21 @@
                           <table id="CancelSales" class="table table-bordered table-hover">
                               <thead>
                                     <tr>
-                                        <th>Sales Order ID</th>
-                                        <th>Customer Name</th>
-                                        <th>Customer Contact Number</th>
-                                        <th>Location</th>
-                                        <th>Grade</th>
-                                        <th>Qunatity</th>
-                                        <th>Sales Order Date</th>
+                                            <th>Sales Order ID</th>
+                                            <th>Sales Invoice Number</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Contact Number</th>
+                                            <th>Location</th>
+                                            <th>Grade</th>
+                                            <th>Qunatity</th>
+                                            <th>Sales Order Date</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                         {%for ele in salesOrderDet%}
                                             <tr>
                                                 <td><input type="checkbox" name="{{ele.sales_order_id}}" id="{{ele.sales_order_id}}">{{ele.sales_order_id}}</td>
+                                                <td>{{ele.invoice_num}}</td>
                                                 <td>{{ele.customer_name}}</td>
                                                 <td>{{ele.contact_num}}</td>
                                                 <td>{{ele.location}}</td>
@@ -541,6 +622,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Sales Order ID</th>
+                                            <th>Sales Invoice Number</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Location</th>
@@ -573,6 +655,7 @@
                                     <thead>
                                         <tr>
                                             <th>Sales ID</th>
+                                            <th>Sales Invoice ID</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Total Sales Value(Rs)</th>
@@ -584,6 +667,7 @@
                                         {%for ele in agedDebt1%}
                                             <tr>
                                                 <td>{{ele.sales_id}}</td>
+                                                <td>{{ele.invoice_num}}</td>
                                                 <td>{{ele.customer_name}}</td>
                                                 <td>{{ele.contact_num}}</td>
                                                 <td>{{ele.sales_amount}}</td>
@@ -595,6 +679,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Sales ID</th>
+                                            <th>Sales Invoice ID</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Total Sales Value(Rs)</th>
@@ -622,6 +707,7 @@
                                     <thead>
                                         <tr>
                                             <th>Sales ID</th>
+                                            <th>Sales Invoice ID</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Total Sales Value(Rs)</th>
@@ -633,6 +719,7 @@
                                         {%for ele in agedDebt2%}
                                             <tr>
                                                 <td>{{ele.sales_id}}</td>
+                                                <td>{{ele.invoice_num}}</td>
                                                 <td>{{ele.customer_name}}</td>
                                                 <td>{{ele.contact_num}}</td>
                                                 <td>{{ele.sales_amount}}</td>
@@ -644,6 +731,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Sales ID</th>
+                                            <th>Sales Invoice ID</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Total Sales Value(Rs)</th>
@@ -671,6 +759,7 @@
                                     <thead>
                                         <tr>
                                             <th>Sales ID</th>
+                                            <th>Sales Invoice ID</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Total Sales Value(Rs)</th>
@@ -682,6 +771,7 @@
                                         {%for ele in agedDebt3%}
                                             <tr>
                                                 <td>{{ele.sales_id}}</td>
+                                                <td>{{ele.invoice_num}}</td>
                                                 <td>{{ele.customer_name}}</td>
                                                 <td>{{ele.contact_num}}</td>
                                                 <td>{{ele.sales_amount}}</td>
@@ -693,6 +783,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Sales ID</th>
+                                            <th>Sales Invoice ID</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Total Sales Value(Rs)</th>
@@ -720,6 +811,7 @@
                                     <thead>
                                         <tr>
                                             <th>Sales ID</th>
+                                            <th>Sales Invoice ID</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Total Sales Value(Rs)</th>
@@ -731,6 +823,7 @@
                                         {%for ele in agedDebt4%}
                                             <tr>
                                                 <td>{{ele.sales_id}}</td>
+                                                <td>{{ele.invoice_num}}</td>
                                                 <td>{{ele.customer_name}}</td>
                                                 <td>{{ele.contact_num}}</td>
                                                 <td>{{ele.sales_amount}}</td>
@@ -742,6 +835,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Sales ID</th>
+                                            <th>Sales Invoice ID</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Total Sales Value(Rs)</th>
@@ -1067,20 +1161,30 @@
                 <div class="box box-primary">
                     <div class="box-header">
                         <i class="ion ion-clipboard"></i>
-                        <h3 class="box-title">New Sales Proceeds</h3>
+                        <h3 class="box-title">New Sales Order</h3>
                         <div class="box-tools pull-right">
                         </div>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                          
                         <div class="form-group">
+                           
+                        <div class="form-group col-md-6" style="padding-left: 0px">
                             <label>Customer Name:</label>
                             <input type="text" class="form-control" style="width: 200px" name ="cus_name">
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group col-md-6" style="padding-left: 0px">
                             <label>Customer Contact Number:</label>
                             <input type="text" class="form-control" style="width: 200px" name ="contact">
+                        </div>
+                            
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                            <label>Sales Invoice Number:</label>
+                            <input type="text" class="form-control" style="width: 200px" name ="invoiceNum">
                         </div>
                         
                         <div class="form-group">     
@@ -1092,16 +1196,20 @@
                                 <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
                             </div>                   
                         </div>
-                            
+                         
                         <div class="form-group">
+                        
+                        <div class="form-group col-md-6" style="padding-left: 0px">
                             <label>Delivery Location:</label>
                             <input type="text" class="form-control" style="width: 200px" name ="location">
                         </div>
                             
-                        <div class="form-group">
+                        <div class="form-group col-md-6" style="padding-left: 0px">
                             <label>Grade:</label>
                             <input type="text" class="form-control" style="width: 200px" name ="grade">
                         </div>
+                        
+                        </div>    
                             
                         <div class="form-group">
                             <label>Quantity</label>
@@ -1129,7 +1237,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">{{userDetails.getFirstName()}} {{userDetails.getLastName()}} - Seegiri Constructions</h4>
               </div>
-              <form role="form" onsubmit="return validateSalesProceeds(this);" method="POST" action="{{path('submit_sales',{'url':url})}}">
+              <form role="form" method="POST" onsubmit="return validateSalesProceeds(this);" action="{{path('submit_sales',{'url':url})}}">
               <div class="modal-body">
                 <div class="box box-primary">
                     <div class="box-header">
@@ -1149,20 +1257,47 @@
                             {%endfor%}
                             </select>
                         </div>
-                        
                         <div class="form-group">
+                            
+                        <div class="form-group col-md-6" style="padding-left: 0px">
                             <label>Customer Name:</label>
                             <select class="droplist form-control" id="customerName"  name ="cus_name" style="width: 200px" required autocomplete="off"/>
                             </select>
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group col-md-6" style="padding-left: 0px">
                             <label>Customer Contact Number:</label>
                             <select class="droplist form-control" id="contactNumber"  name ="contact" style="width: 200px" required autocomplete="off"/>
                             </select>
                         </div>
+                            
+                        </div>    
                         
-                        <div class="form-group">     
+                        <div class="form-group">
+                            
+                        <div class="form-group col-md-6" style="padding-left: 0px">
+                            <label>Grade:</label>
+                            <select class="droplist form-control" id="orGrade"  name ="orgr" style="width: 200px" required autocomplete="off"/>
+                            </select>
+                        </div>
+                            
+                        <div class="form-group col-md-6 pull-left" style="padding-left: 0px">
+                            <label>Quantity:</label>
+                            <select class="droplist form-control" id="orQty"  name ="orqty" style="width: 200px" required autocomplete="off"/>
+                            </select>
+                        </div>
+                            
+                        </div>  
+                            
+                        <div class="form-group">
+                            
+                        <div class="form-group col-md-6 pull-left" style="padding-left: 0px">
+                            <label>Sales Invoice Nuber:</label>
+                            <select class="droplist form-control" id="invNumber"  name ="invNumber" style="width: 200px" required autocomplete="off"/>
+                            </select>
+                        </div>    
+                            
+                        <div class="form-group col-md-6 pull-left" style="padding-left: 0px">     
                             <label>Sales Date:</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
@@ -1172,14 +1307,35 @@
                             </div>                   
                         </div>
                             
+                        </div>    
+                            
                         <div class="form-group">
                             <label>Total Sales Value:</label>
-                            <input type="text" class="form-control" style="width: 200px" name ="sales">
+                            <input type="text" class="form-control" style="width: 200px" id="sales" name ="sales">
                         </div>
                             
                         <div class="form-group">
+                            
+                        <div class="form-group col-md-4" style="padding-left: 0px">
+                            <label>NDT:</label>
+                            <input type="text" id="ndtID"  name ="ndt" style="width: 150px">
+                        </div>
+                            
+                        <div class="form-group col-md-4 pull-left" style="padding-left: 0px">
+                            <label>VAT:</label>
+                            <input type="text" id="vatID"  name ="vat" style="width: 150px">
+                        </div>
+                        
+                        <div class="form-group col-md-4 pull-left" style="padding-left: 0px">
+                            <label>SVAT:</label>
+                            <input type="text" id="svatID"  name ="svat" style="width: 150px">
+                        </div>
+                            
+                        </div>      
+                            
+                        <div class="form-group">
                             <label>Cash Payament:</label>
-                            <input type="text" class="form-control" style="width: 200px" name ="payment">
+                            <input type="text" class="form-control" style="width: 200px" id="payment" name ="payment" max="<script>">
                         </div>
                     </div><!-- /.box-body -->
                 </div>
@@ -1215,7 +1371,7 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label>Sales Description ID:</label>
-                            <select class="form-control select2" name="salesID" onchange="selectCustomer()" style="width: 100%;" required autocomplete="off"/>
+                            <select class="form-control select2" name="salesID" onchange="checkCreditDetails();" style="width: 100%;" required autocomplete="off"/>
                             <option>Select Sales Description</option>
                             {%for ele in sales%}
                                 {%if ele.sales_amount > ele.payment_received%}
@@ -1231,6 +1387,12 @@
                             <select class="droplist" id="customer"  name="customer" style="width: 100%;" required autocomplete="off"/>
                             </select> 
                         </div>
+                            
+                        <div class="form-group">
+                            <label>Sales Invoice Number:</label>
+                            <select class="droplist" id="invNum"  name="invNum" style="width: 100%;" required autocomplete="off"/>
+                            </select> 
+                        </div>    
                             
                         <div class="form-group">
                             <label>Payment Value:</label>
@@ -1420,7 +1582,7 @@
               });
             });
         </script>
-        
+                
 
     </body>
 </html>

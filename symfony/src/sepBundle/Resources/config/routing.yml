@@ -119,7 +119,11 @@ submit_sales_order:
 select_sales_order_details:    
     path:  /home/profile/user/SalesOrderDetails/{url}
     defaults: { _controller: sepBundle:UserProfile:SalesOrderDetails }
-    
+
+select_credit_sales_order_details:    
+    path:  /home/profile/user/CredSalesOrderDetails/{url}
+    defaults: { _controller: sepBundle:UserProfile:CreditSalesOrderDetails }
+       
 submit_sales:
     path:  /home/profile/user/SalesEntry/{url}
     defaults: { _controller: sepBundle:UserProfile:salesEntry }    

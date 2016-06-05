@@ -12,6 +12,13 @@ sepBundle\Entity\Sales:
             generator:
                 strategy: IDENTITY
     fields:
+        invoiceNum:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+            column: invoice_num
         customerName:
             type: string
             nullable: false
@@ -56,4 +63,28 @@ sepBundle\Entity\Sales:
             scale: 0
             comment: ''
             column: payment_received
+        ndt:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            default: '0'
+            column: NDT
+        vat:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            default: '0'
+            column: VAT
+        svat:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            default: '0'
+            column: SVAT
     lifecycleCallbacks: {  }

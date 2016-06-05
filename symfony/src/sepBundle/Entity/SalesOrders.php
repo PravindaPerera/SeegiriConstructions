@@ -17,6 +17,11 @@ class SalesOrders
     /**
      * @var string
      */
+    private $invoiceNum;
+
+    /**
+     * @var string
+     */
     private $customerName;
 
     /**
@@ -58,6 +63,29 @@ class SalesOrders
     public function getSalesOrderId()
     {
         return $this->salesOrderId;
+    }
+
+    /**
+     * Set invoiceNum
+     *
+     * @param string $invoiceNum
+     * @return SalesOrders
+     */
+    public function setInvoiceNum($invoiceNum)
+    {
+        $this->invoiceNum = $invoiceNum;
+
+        return $this;
+    }
+
+    /**
+     * Get invoiceNum
+     *
+     * @return string 
+     */
+    public function getInvoiceNum()
+    {
+        return $this->invoiceNum;
     }
 
     /**

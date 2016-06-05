@@ -1927,6 +1927,7 @@ class UserProfileController extends Controller {
                             $entry->setClossingBalance($pa);
                             $entry->setStockPurchased($pa);
                             $entry->setStockUsed(0);
+                            $entry->setTransportation(0);
                             $entry->setNetCost($nCost);
                             $entry->setMonth($month);
                             $entry->setYear($year);
@@ -1945,10 +1946,11 @@ class UserProfileController extends Controller {
                             $opnBal = $diesel_amount[0]['opening_balance'];
                             $kk = $diesel_amount[0]['stock_purchased'];
                             $usedBal = $diesel_amount[0]['stock_used'];
+                            $movedBal = $diesel_amount[0]['transportation'];
                             $prevCost = $diesel_amount[0]['net_cost'];
                             $new_diesel_amount = (double) $kk + (double) $pur_amount;
                             $new_net_cost = (double) $prevCost + (double) $cost;
-                            $closeBal = (double) $opnBal + (double) $new_diesel_amount - (double) $usedBal;
+                            $closeBal = (double) $opnBal + (double) $new_diesel_amount - (double) $usedBal - (double) $movedBal;
 
                             $querry = $con->prepare("UPDATE diesel SET stock_purchased = :s_amount, net_cost = :nCost, clossing_balance = :stkUsed WHERE date = :date");
                             $querry->bindValue('s_amount', $new_diesel_amount);
@@ -1979,6 +1981,7 @@ class UserProfileController extends Controller {
                             $entry->setClossingBalance($cb);
                             $entry->setStockPurchased($pa);
                             $entry->setStockUsed($su);
+                            $entry->setTransportation($su);
                             $entry->setNetCost($newCost);
                             $entry->setMonth($month);
                             $entry->setYear($year);
@@ -3247,7 +3250,7 @@ class UserProfileController extends Controller {
                     $querry->execute();
                     $val = $querry->fetchAll();
                     $val1 = (double) $val[0]['stock_used'] + (double) $qty;
-                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val1;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val[0]['transportation'] - (double) $val1;
 
                     $querry = $con->prepare("UPDATE diesel SET stock_used = :val1, clossing_balance = :cb WHERE date = :date");
                     $querry->bindValue('val1', $val1);
@@ -3262,6 +3265,49 @@ class UserProfileController extends Controller {
                     $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
                     $entry->setStockPurchased(0);
                     $entry->setStockUsed($qty);
+                    $entry->setTransportation(0);
+                    $entry->setNetCost(0);
+                    $entry->setMonth($month);
+                    $entry->setYear($year);
+
+                    $em->persist($entry);
+                    $em->flush();
+                }
+
+
+                $querry = $con->prepare("SELECT * FROM diesel WHERE date = :date");
+                $querry->bindValue('date', $usedDate);
+                $querry->execute();
+                $res = $querry->fetchAll();
+
+            }
+            if ($rmType == "Transportation") {
+                $querry = $con->prepare("SELECT * FROM diesel ORDER BY date DESC LIMIT 1");
+                $querry->execute();
+                $nRes = $querry->fetchAll();
+                $dt = $nRes[0]['date'];
+                if ($dt == $usedDate) {
+                    $querry = $con->prepare("SELECT * FROM diesel WHERE date = :date");
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                    $val = $querry->fetchAll();
+                    $val1 = (double) $val[0]['transportation'] + (double) $qty;
+                    $closeBal = (double) $val[0]['opening_balance'] + (double) $val[0]['stock_purchased'] - (double) $val[0]['stock_used'] - (double) $val1;
+
+                    $querry = $con->prepare("UPDATE diesel SET transportation = :val1, clossing_balance = :cb WHERE date = :date");
+                    $querry->bindValue('val1', $val1);
+                    $querry->bindValue('cb', $closeBal);
+                    $querry->bindValue('date', $usedDate);
+                    $querry->execute();
+                } else {
+                    $date = new \DateTime($usedDate);
+                    $entry = new \sepBundle\Entity\Diesel();
+                    $entry->setDate($date);
+                    $entry->setOpeningBalance($nRes[0]['clossing_balance']);
+                    $entry->setClossingBalance((double) $nRes[0]['clossing_balance'] - (double) $qty);
+                    $entry->setStockPurchased(0);
+                    $entry->setStockUsed(0);
+                    $entry->setTransportation($qty);
                     $entry->setNetCost(0);
                     $entry->setMonth($month);
                     $entry->setYear($year);
@@ -3381,35 +3427,35 @@ class UserProfileController extends Controller {
         $res = $qur->fetchAll();
         
         //Aged debtor analysis  - less than 30 days
-        $qur = $con->prepare("SELECT sales_id, customer_name, contact_num, sales_date, DATE_ADD(sales_date,INTERVAL 30 DAY) AS after_30_days, sales_amount, payment_received "
+        $qur = $con->prepare("SELECT sales_id, customer_name, contact_num, sales_date, invoice_num, DATE_ADD(sales_date,INTERVAL 30 DAY) AS after_30_days, sales_amount, payment_received "
                 . "FROM sales WHERE sales_amount > payment_received AND "
                 . "(CURDATE() < DATE_ADD(sales_date,INTERVAL 30 DAY)) ORDER BY sales_date DESC");
         $qur->execute();
         $agedDebt1 = $qur->fetchAll();
         
         //Aged debtor analysis  - 30 to 60 days
-        $qur = $con->prepare("SELECT sales_id, customer_name, contact_num, sales_date, DATE_ADD(sales_date,INTERVAL 30 DAY) AS after_30_days, sales_amount, payment_received "
+        $qur = $con->prepare("SELECT sales_id, customer_name, contact_num, sales_date, invoice_num, DATE_ADD(sales_date,INTERVAL 30 DAY) AS after_30_days, sales_amount, payment_received "
                 . "FROM sales WHERE sales_amount > payment_received AND "
                 . "(CURDATE() BETWEEN DATE_ADD(sales_date,INTERVAL 30 DAY) AND DATE_ADD(sales_date,INTERVAL 60 DAY)) ORDER BY sales_date DESC");
         $qur->execute();
         $agedDebt2 = $qur->fetchAll();
         
         //Aged debtor analysis  - 60 to 90 days
-        $qur = $con->prepare("SELECT sales_id, customer_name, contact_num, sales_date, DATE_ADD(sales_date,INTERVAL 30 DAY) AS after_30_days, sales_amount, payment_received "
+        $qur = $con->prepare("SELECT sales_id, customer_name, contact_num, sales_date, invoice_num, DATE_ADD(sales_date,INTERVAL 30 DAY) AS after_30_days, sales_amount, payment_received "
                 . "FROM sales WHERE sales_amount > payment_received AND "
                 . "(CURDATE() BETWEEN DATE_ADD(sales_date,INTERVAL 60 DAY) AND DATE_ADD(sales_date,INTERVAL 90 DAY)) ORDER BY sales_date DESC");
         $qur->execute();
         $agedDebt3 = $qur->fetchAll();
         
         //Aged debtor analysis  - more than 90 days
-        $qur = $con->prepare("SELECT sales_id, customer_name, contact_num, sales_date, DATE_ADD(sales_date,INTERVAL 30 DAY) AS after_30_days, sales_amount, payment_received "
+        $qur = $con->prepare("SELECT sales_id, customer_name, contact_num, sales_date, invoice_num, DATE_ADD(sales_date,INTERVAL 30 DAY) AS after_30_days, sales_amount, payment_received "
                 . "FROM sales WHERE sales_amount > payment_received AND "
                 . "(CURDATE() > DATE_ADD(sales_date,INTERVAL 60 DAY)) ORDER BY sales_date DESC");
         $qur->execute();
         $agedDebt4 = $qur->fetchAll();
         
         //Sales order details
-        $qur = $con->prepare("SELECT * FROM sales_orders WHERE status = 0 ORDER BY sales_order_date DESC");
+        $qur = $con->prepare("SELECT * FROM sales_orders WHERE status = 0 ORDER BY sales_order_date DESC, sales_order_id DESC");
         $qur->execute();
         $salesOrderDet = $qur->fetchAll();
         
@@ -3448,9 +3494,17 @@ class UserProfileController extends Controller {
             if ($request->getMethod() == 'POST') {
             $cusName = $request->get('cus_name');
             $contact = $request->get('contact');
+            
+            $salesInvNum = $request->get('invNumber');
             $salesDate = $request->get('calDate');
+            
             $salesVal = $request->get('sales');
             $payment = $request->get('payment');
+            
+            $ndt = $request->get('ndt');
+            $vat = $request->get('vat');
+            $svat = $request->get('svat');
+            
             $month;
             
             $full_url = explode('-', $salesDate);
@@ -3518,13 +3572,21 @@ class UserProfileController extends Controller {
             $con = $em->getConnection();
 
             $entry = new \sepBundle\Entity\Sales();
+            
             $entry->setCustomerName($cusName);
             $entry->setContactNum($cn);
+            $entry->setInvoiceNum($salesInvNum);
+            
             $entry->setSalesDate($date);
             $entry->setMonth($month);
             $entry->setYear($year);
+            
             $entry->setSalesAmount($sv);
             $entry->setPaymentReceived($pay);
+            
+            $entry->setNdt($ndt);
+            $entry->setVat($vat);
+            $entry->setSvat($svat);
 
             $em->persist($entry);
             $em->flush();
@@ -3551,6 +3613,7 @@ class UserProfileController extends Controller {
             if ($request->getMethod() == 'POST') {
             $cusName = $request->get('cus_name');
             $contact = $request->get('contact');
+            $salesInvNum = $request->get('invoiceNum');
             $salesDate = $request->get('calDate');
             $location = $request->get('location');
             $grade = $request->get('grade');
@@ -3570,6 +3633,7 @@ class UserProfileController extends Controller {
             
             $entry->setCustomerName($cusName);
             $entry->setContactNum($contact);
+            $entry->setInvoiceNum($salesInvNum);
             $entry->setSalesOrderDate($date);
             $entry->setLocation($location);
             $entry->setGrade($grade);
@@ -3677,7 +3741,25 @@ class UserProfileController extends Controller {
             $em = $this->getDoctrine()->getEntityManager();
 
             $con = $em->getConnection();
-            $qur = $con->prepare("SELECT customer_name, contact_num FROM sales_orders WHERE sales_order_id = :id");
+            $qur = $con->prepare("SELECT customer_name, contact_num, grade, quantity, invoice_num FROM sales_orders WHERE sales_order_id = :id");
+            $qur->bindValue('id', $salesOrderDetails);
+            $qur->execute();
+            $res = $qur->fetchAll();
+            
+            return new Response(json_encode($res));
+        } else {
+            
+        }
+    }
+    
+    //Done
+    public function CreditSalesOrderDetailsAction($url, Request $request) {
+        if ($request->getMethod() == "POST") {
+            $salesOrderDetails = $request->get('salesID');
+            $em = $this->getDoctrine()->getEntityManager();
+
+            $con = $em->getConnection();
+            $qur = $con->prepare("SELECT customer_name, invoice_num FROM sales WHERE sales_id = :id");
             $qur->bindValue('id', $salesOrderDetails);
             $qur->execute();
             $res = $qur->fetchAll();

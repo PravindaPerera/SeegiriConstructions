@@ -40,6 +40,13 @@ sepBundle\Entity\Diesel:
             scale: 0
             comment: ''
             column: stock_used
+        transportation:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            default: '0'
         netCost:
             type: float
             nullable: false

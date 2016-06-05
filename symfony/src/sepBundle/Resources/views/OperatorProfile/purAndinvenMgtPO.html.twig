@@ -2170,6 +2170,42 @@
                                                         </div>                       
                                                         </form>    
                                                     </div>
+                                                                    
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#DieselTransOrder" aria-expanded="false" aria-controls="DieselTransOrder">
+                                                        Move Diesel</button>
+                                                                    
+                                                    <div class="collapse" id="DieselTransOrder" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Diesel - Transportation</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Transportation" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" step="any" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbDiesel}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>                 
                                                         
                                                 </li> 
                                             </ul>
@@ -2246,6 +2282,42 @@
                                                         </div>                       
                                                         </form>    
                                                     </div>
+                                                                    
+                                                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#DieselTransOrder" aria-expanded="false" aria-controls="DieselTransOrder">
+                                                        Move Diesel</button>
+                                                                    
+                                                    <div class="collapse" id="DieselTransOrder" style="padding-top: 10px">
+                                                        <form role="form" method="POST" action="{{path('stock_usage',{'url':url})}}">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                              <h3 class="box-title">Diesel - Transportation</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Usage Material:</label>
+                                                                    <input type="text" class="form-control" style="width: 180px" name ="type" value="Transportation" readonly>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Usage Amount(Qty):</label>
+                                                                    <input type="number" step="any" class="form-control" style="width: 180px" name ="quantity" min="0" max="{{cbDiesel}}">
+                                                                </div>
+
+                                                                <div class="form-group">                              
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                        <input type="date" id="datepicker" value="{{toDate}}" name="calDate" min="{{toDate}}">
+                                                                    </div>                   
+                                                                </div>
+                                                                    
+                                                              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                                                            </div>                           
+                                                        </div>                       
+                                                        </form>    
+                                                    </div>                 
                                                         
                                                 </li> 
                                             </ul>
@@ -2588,6 +2660,7 @@
                                     <thead>
                                         <tr>
                                             <th>Sales Order ID</th>
+                                            <th>Sales Invoice Number</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Location</th>
@@ -2600,6 +2673,7 @@
                                         {%for ele in salesOrderDet%}
                                             <tr>
                                                 <td>{{ele.sales_order_id}}</td>
+                                                <td>{{ele.invoice_num}}</td>
                                                 <td>{{ele.customer_name}}</td>
                                                 <td>{{ele.contact_num}}</td>
                                                 <td>{{ele.location}}</td>
@@ -2612,6 +2686,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Sales Order ID</th>
+                                            <th>Sales Invoice Number</th>
                                             <th>Customer Name</th>
                                             <th>Customer Contact Number</th>
                                             <th>Location</th>

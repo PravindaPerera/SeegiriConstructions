@@ -37,6 +37,11 @@ class Diesel
     /**
      * @var float
      */
+    private $transportation;
+
+    /**
+     * @var float
+     */
     private $netCost;
 
     /**
@@ -155,6 +160,29 @@ class Diesel
     public function getStockUsed()
     {
         return $this->stockUsed;
+    }
+
+    /**
+     * Set transportation
+     *
+     * @param float $transportation
+     * @return Diesel
+     */
+    public function setTransportation($transportation)
+    {
+        $this->transportation = $transportation;
+
+        return $this;
+    }
+
+    /**
+     * Get transportation
+     *
+     * @return float 
+     */
+    public function getTransportation()
+    {
+        return $this->transportation;
     }
 
     /**

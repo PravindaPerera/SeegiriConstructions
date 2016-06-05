@@ -17,6 +17,11 @@ class Sales
     /**
      * @var string
      */
+    private $invoiceNum;
+
+    /**
+     * @var string
+     */
     private $customerName;
 
     /**
@@ -49,6 +54,21 @@ class Sales
      */
     private $paymentReceived;
 
+    /**
+     * @var float
+     */
+    private $ndt;
+
+    /**
+     * @var float
+     */
+    private $vat;
+
+    /**
+     * @var float
+     */
+    private $svat;
+
 
     /**
      * Get salesId
@@ -58,6 +78,29 @@ class Sales
     public function getSalesId()
     {
         return $this->salesId;
+    }
+
+    /**
+     * Set invoiceNum
+     *
+     * @param string $invoiceNum
+     * @return Sales
+     */
+    public function setInvoiceNum($invoiceNum)
+    {
+        $this->invoiceNum = $invoiceNum;
+
+        return $this;
+    }
+
+    /**
+     * Get invoiceNum
+     *
+     * @return string 
+     */
+    public function getInvoiceNum()
+    {
+        return $this->invoiceNum;
     }
 
     /**
@@ -219,5 +262,74 @@ class Sales
     public function getPaymentReceived()
     {
         return $this->paymentReceived;
+    }
+
+    /**
+     * Set ndt
+     *
+     * @param float $ndt
+     * @return Sales
+     */
+    public function setNdt($ndt)
+    {
+        $this->ndt = $ndt;
+
+        return $this;
+    }
+
+    /**
+     * Get ndt
+     *
+     * @return float 
+     */
+    public function getNdt()
+    {
+        return $this->ndt;
+    }
+
+    /**
+     * Set vat
+     *
+     * @param float $vat
+     * @return Sales
+     */
+    public function setVat($vat)
+    {
+        $this->vat = $vat;
+
+        return $this;
+    }
+
+    /**
+     * Get vat
+     *
+     * @return float 
+     */
+    public function getVat()
+    {
+        return $this->vat;
+    }
+
+    /**
+     * Set svat
+     *
+     * @param float $svat
+     * @return Sales
+     */
+    public function setSvat($svat)
+    {
+        $this->svat = $svat;
+
+        return $this;
+    }
+
+    /**
+     * Get svat
+     *
+     * @return float 
+     */
+    public function getSvat()
+    {
+        return $this->svat;
     }
 }
