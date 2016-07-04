@@ -752,8 +752,9 @@ class UserProfileController extends Controller {
             $em1 = $this->getDoctrine()->getEntityManager();
             $con1 = $em1->getConnection();
 
-            $qur = $con1->prepare("SELECT user_id FROM supplier_details WHERE sup_company_name = :comp");
+            $qur = $con1->prepare("SELECT user_id FROM supplier_details WHERE sup_company_name = :comp and sup_type = :type");
             $qur->bindValue('comp', $supplier);
+            $qur->bindValue('type', $type);
             $qur->execute();
             $res = $qur->fetchAll();
 
