@@ -739,10 +739,15 @@ class UserProfileController extends Controller {
     
     //Done
     public function searchForOrderAction($url, Request $request) {
+
+        $logger = $this->get('logger');//TODO Change Added by Buddhika to debug
             
         $session = $request->getSession();
         $userid=$session->get('id');
         if(isset($userid)){
+
+            $logger->debug('session is set');
+
             if ($request->getMethod() == "POST") {
             $type = $request->get('type');
             $supplier = $request->get('supName');
@@ -784,6 +789,7 @@ class UserProfileController extends Controller {
         }
         }
         else{
+            $logger->debug('session is not set');//TODO Change Added by Buddhika to debug
             return $this->redirect($this->generateUrl('sep_homepage'));
         }
 
@@ -792,7 +798,8 @@ class UserProfileController extends Controller {
 
     //Done
     public function submitPurchaseAction($url, Request $request) {
-        
+
+        $logger = $this->get('logger');
         $session = $request->getSession();
         $userid=$session->get('id');
         if(isset($userid)){
@@ -970,11 +977,15 @@ class UserProfileController extends Controller {
             $repo_m_sand = $querry->fetchAll();
 
             if ($result == []) {
-                
+
+                $logger->debug('result is empty');//TODO Change Added by Buddhika to debug
+
                 return $this->redirect($this->generateUrl('sep_homepage'));
 
                 //return $this->render('sepBundle:Profile:purchaseRM.html.twig', array('url' => $url, 'flag' => true, 'flag1' => false, 'flag2' => false, 'orders' => $repo_orders, 'names' => $companies, 'toDate' => $testDate, 'cement' => $repo_cement, 'chemical' => $repo_chemical, 'chips' => $repo_chips, 'sand' => $repo_sand, 'diesel' => $repo_diesel, 'metal' => $repo_metal, 'm_sand' => $repo_m_sand, 'user'=>$user, 'userDetails' => $userDetails, 'types' => $typeDet));
             } else {
+                $logger->debug('result is not empty');//TODO Change Added by Buddhika to debug
+
                 $res = array($result[0]['order_id'], "$supplier_name", $result[0]['amount'], $result[0]['purchased_amount'], $result[0]['date']);
                 $extra = (double) $res[2] - (double) $res[3];
                 $new_pur_amount = (double) $res[3] + (double) $pur_amount;
