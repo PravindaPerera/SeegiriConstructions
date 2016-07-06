@@ -872,8 +872,9 @@ class UserProfileController extends Controller {
             $querry->execute();
             $typeDet = $querry->fetchAll();
 
-            $qur = $con->prepare("SELECT user_id FROM supplier_details WHERE sup_company_name = :comp");
+            $qur = $con->prepare("SELECT user_id FROM supplier_details WHERE sup_company_name = :comp and sup_type = :tpe");
             $qur->bindValue('comp', $supplier_name);
+            $qur->bindValue('tpe', $supplier_type);
             $qur->execute();
             $res = $qur->fetchAll();
 
